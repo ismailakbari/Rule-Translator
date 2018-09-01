@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Document [
+  <!ENTITY rif  "http://www.w3.org/2007/rif#">
+]>
+<?xml-stylesheet type="text/xsl" href="RIFBLD_XML2PRES.xsl"?>
+<Document xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:ruleml="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/2007/rif#">
+	
+	<!-- 
+	<directive>
+	    <Import>
+	      <location>http://sample1.org</location>
+	      <profile>http://sample2.org</profile>
+	    </Import>
+    </directive>
+  	-->
+  	
+	<payload>
+		<Group>
+			<sentence>
+						<!-- 
+						<Implies>
+							<if>
+								<formula>
+									<Atom>
+									<op>CompliesInspectionRequirementsUnloaded</op>
+									<args ordered="yes">
+									<Var>s</Var>
+									</args>
+									</Atom>
+								</formula>
+							</if>
+							<then>
+								<And>
+								<Atom>
+								<op>MayEnterDutchPortUnloaded</op>
+								<args ordered="yes">
+								<Var>s</Var>
+								</args>
+								</Atom>
+								</And>
+							</then>
+						</Implies>
+						-->
+						 <Forall>
+					          <declare>
+					            <Var>buyer</Var>
+					          </declare>
+					          <declare>
+					            <Var>item</Var>
+					          </declare>
+					          <declare>
+					            <Var>seller</Var>
+					          </declare>
+					          <formula>
+					            <Implies>
+					              <if>
+					                <And>
+								     <formula>
+								       <Exists>
+								         <declare><Var>Buyer</Var></declare>
+								         <formula>
+								           <Atom>
+								             <op><Const type="&rif;iri">purchase</Const></op>
+								             <args ordered="yes">
+								               <Var>Buyer</Var>
+								               <Var>Seller</Var>
+								               <Expr>
+								                 <op><Const type="&rif;iri">book</Const></op>
+								                 <args ordered="yes">
+								                   <Var>Author</Var>
+								                   <Const type="&rif;iri">LeRif</Const>
+								                 </args>
+								               </Expr>
+								               <Expr>
+								                 <op><Const type="&rif;iri">USD</Const></op>
+								                 <args ordered="yes"><Const type="integer">49</Const></args>
+								               </Expr>
+								             </args>
+								           </Atom>
+								         </formula>
+								       </Exists>
+								     </formula>
+								     <formula>
+								       <Equal>
+								         <left><Var>Seller</Var></left>
+								         <right><Var>Author</Var></right>
+								       </Equal>
+								     </formula>
+								   </And>
+					              	<!--
+					              	 <External>
+					                 <content>
+					                  <Atom>
+					                      <op>
+					                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#literal-not-identical</Const>
+					                      </op>
+					                        <args ordered="yes">
+					                          <Const type="integer">1</Const>
+					                          <Const type="string">1</Const>
+					                        </args>
+					                  </Atom>
+					                 </content>
+					                </External>
+					                -->
+					              <!-- 					              
+					                <Atom>
+					                  <op>
+					                    <Const type="&rif;iri">http://example.org/example#Sell</Const>
+					                  </op>
+					                    <args ordered="yes">
+					                      <Var>seller</Var>
+					                      <Var>item</Var>
+					                      <Var>buyer</Var>
+					                      <Var>price</Var>
+					                    </args>
+					                </Atom>
+					                -->
+					              </if>
+					              <then>
+					              	 <Atom>
+						                  <op>
+						                    <Const type="&rif;iri">http://example.org/example#Buy</Const>
+						                  </op>
+						                    <args ordered="yes">
+						                      <Var>buyer</Var>
+						                      <Var>item</Var>
+						                      <Var>seller</Var>
+						                    </args>
+						                </Atom>
+					              <!-- 
+					              	<And>
+					              		<formula>
+						                <Atom>
+						                  <op>
+						                    <Const type="&rif;iri">http://example.org/example#Buy</Const>
+						                  </op>
+						                    <args ordered="yes">
+						                      <Var>buyer</Var>
+						                      <Var>item</Var>
+						                      <Var>seller</Var>
+						                    </args>
+						                </Atom>
+						                </formula>
+						                <formula>
+						                 <Atom>
+						                  <op>
+						                    <Const type="&rif;iri">http://example.org/example#Buy</Const>
+						                  </op>
+						                    <args ordered="yes">
+						                      <Var>buyer</Var>
+						                      <Var>item</Var>
+						                      <Var>seller</Var>
+						                    </args>
+						                </Atom>
+						                </formula>
+					                </And>
+					                -->
+					              </then>
+					            </Implies>
+					          </formula>
+					     </Forall>
+			</sentence>
+		</Group>
+	</payload>
+</Document>

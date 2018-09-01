@@ -1,0 +1,1196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE Document [
+  <!ENTITY rif  "http://www.w3.org/2007/rif#">
+  <!ENTITY xs   "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY rdf  "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+]>
+
+<Document xmlns="&rif;">
+  <payload>
+    <Group>
+      <sentence>
+        <Implies>
+          <if>
+            <And>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-double</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;double">1.2E34</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-float</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;float">-INF</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-decimal</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-integer</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-long</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-int</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-short</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-byte</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-nonNegativeInteger</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-positiveInteger</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-unsignedLong</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-unsignedInt</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-unsignedShort</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-unsignedByte</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-nonPositiveInteger</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">-1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-negativeInteger</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">-1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-double</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-float</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-hexBinary</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-decimal</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-integer</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-long</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-int</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-short</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-byte</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-nonNegativeInteger</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-positiveInteger</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-unsignedLong</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-unsignedInt</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-unsignedShort</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-unsignedByte</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-nonPositiveInteger</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-not-negativeInteger</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;string">foo</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-double</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#double</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">1.2E34</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-float</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#float</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">-1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-hexBinary</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#hexBinary</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">aabb</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-decimal</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#decimal</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-integer</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#integer</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-long</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#long</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-int</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#int</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-short</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#short</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-byte</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#byte</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-nonNegativeInteger</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#nonNegativeInteger</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-positiveInteger</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#positiveInteger</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-unsignedLong</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#unsignedLong</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-unsignedInt</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#unsignedInt</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-unsignedShort</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#unsignedShort</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-unsignedByte</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#unsignedByte</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-nonPositiveInteger</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#nonPositiveInteger</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">-1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#is-literal-negativeInteger</Const>
+                      </op>
+                        <args ordered="yes">
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2001/XMLSchema#negativeInteger</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;string">-1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <Equal>
+                  <left>
+                    <Const type="&xs;integer">2</Const>
+                  </left>
+                  <right>
+                    <External>
+                     <content>
+                      <Expr>
+                          <op>
+                            <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-function#numeric-add</Const>
+                          </op>
+                            <args ordered="yes">
+                              <Const type="&xs;integer">1</Const>
+                              <Const type="&xs;integer">1</Const>
+                            </args>
+                      </Expr>
+                     </content>
+                    </External>
+                  </right>
+                </Equal>
+              </formula>
+              <formula>
+                <Equal>
+                  <left>
+                    <Const type="&xs;integer">1</Const>
+                  </left>
+                  <right>
+                    <External>
+                     <content>
+                      <Expr>
+                          <op>
+                            <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-function#numeric-subtract</Const>
+                          </op>
+                            <args ordered="yes">
+                              <Const type="&xs;integer">2</Const>
+                              <Const type="&xs;integer">1</Const>
+                            </args>
+                      </Expr>
+                     </content>
+                    </External>
+                  </right>
+                </Equal>
+              </formula>
+              <formula>
+                <Equal>
+                  <left>
+                    <Const type="&xs;integer">6</Const>
+                  </left>
+                  <right>
+                    <External>
+                     <content>
+                      <Expr>
+                          <op>
+                            <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-function#numeric-multiply</Const>
+                          </op>
+                            <args ordered="yes">
+                              <Const type="&xs;integer">2</Const>
+                              <Const type="&xs;integer">3</Const>
+                            </args>
+                      </Expr>
+                     </content>
+                    </External>
+                  </right>
+                </Equal>
+              </formula>
+              <formula>
+                <Equal>
+                  <left>
+                    <Const type="&xs;integer">2</Const>
+                  </left>
+                  <right>
+                    <External>
+                     <content>
+                      <Expr>
+                          <op>
+                            <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-function#numeric-divide</Const>
+                          </op>
+                            <args ordered="yes">
+                              <Const type="&xs;integer">6</Const>
+                              <Const type="&xs;integer">3</Const>
+                            </args>
+                      </Expr>
+                     </content>
+                    </External>
+                  </right>
+                </Equal>
+              </formula>
+              <formula>
+                <Equal>
+                  <left>
+                    <Const type="&xs;integer">1</Const>
+                  </left>
+                  <right>
+                    <External>
+                     <content>
+                      <Expr>
+                          <op>
+                            <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-function#numeric-integer-divide</Const>
+                          </op>
+                            <args ordered="yes">
+                              <Const type="&xs;integer">5</Const>
+                              <Const type="&xs;integer">3</Const>
+                            </args>
+                      </Expr>
+                     </content>
+                    </External>
+                  </right>
+                </Equal>
+              </formula>
+              <formula>
+                <Equal>
+                  <left>
+                    <Const type="&xs;integer">2</Const>
+                  </left>
+                  <right>
+                    <External>
+                     <content>
+                      <Expr>
+                          <op>
+                            <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-function#numeric-integer-mod</Const>
+                          </op>
+                            <args ordered="yes">
+                              <Const type="&xs;integer">5</Const>
+                              <Const type="&xs;integer">3</Const>
+                            </args>
+                      </Expr>
+                     </content>
+                    </External>
+                  </right>
+                </Equal>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#numeric-equal</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;double">0.0E0</Const>
+                          <External>
+                           <content>
+                            <Expr>
+                                <op>
+                                  <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-function#numeric-subtract</Const>
+                                </op>
+                                  <args ordered="yes">
+                                    <Const type="&xs;integer">1</Const>
+                                    <Const type="&xs;integer">1</Const>
+                                  </args>
+                            </Expr>
+                           </content>
+                          </External>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#numeric-not-equal</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">0</Const>
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#numeric-less-than</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                          <Const type="&xs;integer">2</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#numeric-less-than-or-equal</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                          <Const type="&xs;integer">2</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#numeric-less-than-or-equal</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">1</Const>
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#numeric-greater-than</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">2</Const>
+                          <Const type="&xs;integer">-1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#numeric-greater-than-or-equal</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">2</Const>
+                          <Const type="&xs;integer">-1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#numeric-greater-than-or-equal</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">2</Const>
+                          <Const type="&xs;integer">2</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+              <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op>
+                        <Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#numeric-not-equal</Const>
+                      </op>
+                        <args ordered="yes">
+                          <Const type="&xs;integer">0</Const>
+                          <Const type="&xs;integer">1</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+              </formula>
+            </And>
+          </if>
+          <then>
+            <Atom>
+              <op>
+                <Const type="&rif;iri">http://example.org/example#ok</Const>
+              </op>
+            </Atom>
+          </then>
+        </Implies>
+      </sentence>
+    </Group>
+  </payload>
+</Document>
+<!--XML document generated on Sun Nov 07 10:35:45 EST 2010-->

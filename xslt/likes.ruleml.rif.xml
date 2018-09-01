@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="RIFBLD_XML2PRES2.xsl"?>
+<Document xmlns="http://www.w3.org/2007/rif#" xmlns:ruleml="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<payload>
+<Group>
+<sentence>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">likes</Const>
+</op>
+<args ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">Mary</Const>
+<Const type="http://www.w3.org/2007/rif#iri">wine</Const>
+</args>
+</Atom>
+<Implies>
+<if>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">likes</Const>
+</op>
+<args ordered="yes">
+<Var>x</Var>
+<Const type="http://www.w3.org/2007/rif#iri">wine</Const>
+</args>
+</Atom>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">likes</Const>
+</op>
+<args ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">John</Const>
+<Var>x</Var>
+</args>
+</Atom>
+</then>
+</Implies>
+<Retract>
+            in Retract: NOT SUPPORTED.               
+        </Retract>
+<Query>
+            in Query: NOT SUPPORTED.              
+        </Query>
+</sentence>
+</Group>
+</payload>
+</Document>

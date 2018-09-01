@@ -1,0 +1,14 @@
+xmlns="http://www.w3.org/2007/rif#"
+
+
+<!ENTITY rif  "http://www.w3.org/2007/rif#">
+
+to check xslt:
+
+${workspace_loc:/Rule Translator/xslt/a.rif}
+
+${workspace_loc:/Rule Translator/xslt/RIFImportExample.rif}
+
+ <xsl:template match="text()">
+    	<xsl:value-of select ="text()"/>
+    </xsl:template> 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="RIFBLD_XML2PRES.xsl"?>
+<Document xmlns="http://www.w3.org/2007/rif#" xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<payload>
+	<Group>
+	<_rlab>ignored.</_rlab>
+	<sentence>
+	<Forall>
+	<declare>
+	<Var>s</Var>
+	</declare>
+	<formula>
+	<Implies>
+	<if>
+	<Atom>
+	<op>CompliesInspectionRequirementsUnloaded</op>
+	<args ordered="yes">
+	<Var>s</Var>
+	</args>
+	</Atom>
+	</if>
+	<then>
+	<Atom>
+	<op>MayEnterDutchPortUnloaded</op>
+	<args ordered="yes">
+	<Var>s</Var>
+	</args>
+	</Atom>
+	</then>
+	</Implies>
+	</formula>
+	</Forall>
+	</sentence>
+	</Group>
+	</payload>
+	<Annotation>ignored.</Annotation>
+	<VersionInfo>ignored.</VersionInfo>
+</Document>
