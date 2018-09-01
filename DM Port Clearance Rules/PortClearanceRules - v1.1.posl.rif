@@ -1,0 +1,193 @@
+Document(
+Group(
+	Forall ?s(
+		MayEnterDutchPortUnloaded( ?s) :- CompliesInspectionRequirementsUnloaded( ?s)
+	)
+	
+	Forall ?s(
+		CompliesInspectionRequirementsUnloaded( ?s) :- 
+	And(
+		HasValidCertificate( ?s)
+		MeetsSafetyRequirementsUnloaded( ?s)
+		)
+	)
+	
+Forall ?cd ?s ?e(
+HasValidCertificate( ?s) :- 
+And(
+	registryExpirationDate( ship(?s) ?e)
+	currentDate( ?cd)
+	greaterThanOrEqual( ?e ?cd)
+)
+)
+Forall ?s ?h(
+MeetsSafetyRequirementsUnloaded( ?s) :- 
+And(
+	size( ship(?s) "small")
+	hold( ship(?s) shipHold(?h))
+	status( shipHold(?h) "clean")
+)
+)
+Forall ?s ?h(
+MeetsSafetyRequirementsUnloaded( ?s) :- 
+And(
+	size( ship(?s) "large")
+	hold( ship(?s) shipHold(?h))
+	status( shipHold(?h) "clean")
+	hull( shipHold(?h) "double")
+)
+)
+Forall ?s ?l(
+size( ship(?s) "small") :- 
+And(
+	totalLength( ship(?s) ?l)
+	lessThan( ?l 80)
+)
+)
+Forall ?s ?l(
+size( ship(?s) "large") :- 
+And(
+	totalLength( ship(?s) ?l)
+	greaterThanOrEqual( ?l 80)
+)
+)
+Forall ?c ?h(
+status( shipHold(?h) "clean") :- 
+And(
+	residualCargoMeasurement( shipHold(?h) ?c)
+	LessEq( ?c 0.5)
+)
+)
+
+ship(ship1)
+registryExpirationDate(ship1 "2017-01-01")
+totalLength (ship1 20)
+hold(ship1 h1)
+shipHold(h1)
+residualCargoMeasurement (h1 0.2)
+hull(h1 "single")
+
+
+ship(ship2)
+registryExpirationDate(ship2 "2020-01-01")
+totalLength (ship2 20)
+hold(ship2 h2)
+shipHold(h2)
+residualCargoMeasurement (h2 0.2)
+hull(h2 "single")
+
+
+
+ship(ship3)
+registryExpirationDate(ship3 "2020-01-01")
+totalLength (ship3 70)
+hold(ship3 h3)
+shipHold(h3)
+residualCargoMeasurement (h3 0.6)
+hull(h3 "single")
+
+
+
+ship(ship4)
+registryExpirationDate(ship4 "2020-01-01")
+totalLength (ship4 70)
+hold(ship4 h4)
+shipHold(h4)
+residualCargoMeasurement (h4 0.4)
+hull(h4 "single")
+
+
+
+ship(ship5)
+registryExpirationDate(ship5 "2020-01-01")
+totalLength (ship5 90)
+hold(ship5 h5)
+shipHold(h5)
+residualCargoMeasurement (h5 0.6)
+hull(h5 "double")
+
+
+ship(ship6)
+registryExpirationDate(ship6 "2020-01-01")
+totalLength (ship6 90)
+hold(ship6 h6)
+shipHold(h6)
+residualCargoMeasurement (h6 0.4)
+hull(h6 "single")
+
+
+
+ship(ship7)
+registryExpirationDate(ship7 "2020-01-01")
+totalLength (ship7 90)
+hold(ship7 h7)
+shipHold(h7)
+residualCargoMeasurement (h7 0.4)
+hull(h7 "double")
+
+
+ship(ship8)
+registryExpirationDate(ship8 "2017-01-01")
+totalLength (ship8 90)
+hold(ship8 h8)
+shipHold(h8)
+residualCargoMeasurement (h8 0.9)
+hull(h8 "single")
+
+
+ship(ship9)
+registryExpirationDate(ship9 "2020-01-01")
+totalLength (ship9 90)
+hold(ship9 h9)
+shipHold(h9)
+residualCargoMeasurement (h9 0.9)
+hull(h9 "single")
+
+
+ship(ship10)
+registryExpirationDate(ship10 "2017-01-01")
+totalLength (ship10 90)
+hold(ship10 h10)
+shipHold(h10)
+residualCargoMeasurement (h10 0.2)
+hull(h10 "single")
+
+
+
+ship(ship11)
+registryExpirationDate(ship11 "2017-01-01")
+totalLength (ship11 90)
+hold(ship11 h11)
+shipHold(h11)
+residualCargoMeasurement (h11 0.9)
+hull(h11 "double")
+
+
+
+ship(ship12)
+registryExpirationDate(ship12 "2020-01-01")
+totalLength (ship12 60)
+hold(ship12 h12)
+shipHold(h12)
+residualCargoMeasurement (h12 0.1)
+hull(h12 "double")
+
+
+
+ship(ship13)
+registryExpirationDate(ship13 "2020-01-01")
+totalLength (ship13 120)
+hold(ship13 h13)
+shipHold(h13)
+residualCargoMeasurement (h13 0.2)
+
+
+ship(ship14)
+registryExpirationDate(ship14 "2018-01-21")
+totalLength (ship14 80)
+hold(ship14 h14)
+shipHold(h14)
+residualCargoMeasurement (h14 0.5)
+hull(h14 "double")
+
+))

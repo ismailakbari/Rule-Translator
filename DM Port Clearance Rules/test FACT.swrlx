@@ -1,0 +1,54 @@
+<?xml version='1.0' ?>
+<!DOCTYPE swrlx:Ontology [
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">  
+	<!ENTITY swrlb  "http://www.w3.org/2003/11/swrlb#" >	
+    <!ENTITY dm "https://dmcommunity.org/challenge/challenge-march-2016#">	
+]>
+
+<?xml-stylesheet type="text/xsl" href="SWRL2RIF.xsl"?>
+<swrlx:Ontology
+  xmlns:owlx="http://www.w3.org/2003/05/owl-xml"
+  xmlns:swrlx="http://www.w3.org/2003/11/swrlx"
+  xmlns:ruleml="http://www.w3.org/2003/11/ruleml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.w3.org/2003/11/swrlx http://www.ruleml.org/swrl/xsd/swrlx.xsd"
+>
+ 
+<!--
+# Ship 1 - No, registry has expired
+:ship1 rdf:Type :ship ;	
+	   :registryExpirationDate "2017-01-01"  ;
+       :totalLength "20" ;
+       :hold [
+		rdf:Type :ShipHold ;
+		:residualCargoMeasurement "0.2" ;
+		:hull :single ] .	
+-->
+<owlx:Individual owlx:name="ship1">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2017-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">20</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.2</owlx:DataValue>
+      </owlx:DataPropertyValue>
+      <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">single</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+
+
+</swrlx:Ontology>

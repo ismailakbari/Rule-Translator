@@ -1,0 +1,149 @@
+# this file formalizes the port clearance rules in N3 language
+# not: N3 doc has hav maximum one '@forAll' and one '@forSome'. visit N3.g4 grammar (r  : g0 g1 g2 n3_statements_optional; ) where g1 is universal and g2 is existential.
+#  rules rules widthout @for are universally quantified.  
+# version 1.0
+# Date : Jan 2018
+# Author: Ismail Akbari
+#--------------------------------
+
+@base <https://dmcommunity.org/> .
+@prefix : <https://dmcommunity.org/challenge/challenge-march-2016#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#>.
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . 
+
+
+# Rule 2 : An unloaded ship may only enter a Dutch port if the ship complies with the requirements of the Inspection for unloaded ships.
+
+#@forAll :s .
+	{ :s :MayEnterDutchPortUnloaded log:Truth } <= { :s :CompliesInspectionRequirementsUnloaded log:Truth } .
+
+# Rule 3: A ship must comply with the requirements of the Inspection for unloaded ships if the ship complies with all of the following: 
+# a) the ship meets the safety requirements for unloaded ships; 
+# b) the ship has a certificate of registry that is valid.
+
+#@forAll :s .
+	{	:s :CompliesInspectionRequirementsUnloaded log:Truth } 	
+	<=
+ 	{ :s :HasValidCertificate log:Truth . :s :MeetsSafetyRequirementsUnloaded log:Truth . 	} .
+	
+	
+# Rule 10: A ship’s certificate of registry must be considered valid if the date up to which the registration is valid of the certificate of registry is after the current date.
+
+#@forAll :s, :d, :cd, :e .
+
+	{ :s :HasValidCertificate log:Truth}
+	 <=
+	{
+		:s rdf:Type :ship .
+		:s :registryExpirationDate :e .
+		:d time:currentDate :cd .
+		:e math:greaterThan :cd .
+	} .
+
+	
+#Rule 8: A ship only meets the safety requirements for small unloaded ships if the ship complies with all of the following: 
+#a) the ship is categorized as small; 
+#b) the hold of the ship is clean.
+#Rule 8 (includes disjunct of original Rule 6)
+
+
+#@forAll :s, :h .
+	{ :s :MeetsSafetyRequirementsUnloaded log:Truth . }
+	<=
+	{ 
+		:s rdf:Type :ship .
+		:s :size :small .
+		:s :hold :h.
+		:h rdf:Type :shipHold .
+		:h :status :clean.
+	}.
+	# this also can be used:
+	# :s :hold [ rdf:Type :shipHold ;  :status :clean] . 
+
+	
+#Rule 7: A ship only meets the safety requirements for large unloaded ships if the ship complies with all of the following:
+# a) the ship is categorized as large; 
+# b) the hold of the ship is clean;
+# c) the hold of the ship is double hulled.
+
+#Rule 7 (includes disjunct of original Rule 6)
+
+#@forAll :s .
+	{ :s :MeetsSafetyRequirementsUnloaded log:Truth }
+	<=
+	{
+		:s rdf:Type :ship.
+		:s :size :large .
+		:s :hold [ rdf:Type :shipHold ; :status :clean ; :hull :double ].
+	}.
+
+# rule 7 can also be written as following after Unnesting and Slotribution (see PSOA formalization of Port Clearance Rules)
+
+
+#@forAll :s, :h .
+	{ :s :MeetsSafetyRequirementsUnloaded log:Truth }
+	<=
+	{
+		:s rdf:Type :ship.
+		:s :size :large .
+		:s :hold :h .
+		:h rdf:Type :shipHold.
+		:h :status :clean.
+		:h :hull :double .
+	}.
+
+#Rule 9: A ship must be categorized as small if the total length of the ship is less than 80 meters.
+
+#@forAll :s :l .
+	{ :s :size :small }
+	<=
+	{
+		:s rdf:Type :ship.
+		:s :totalLength :l .
+		:l math:lessThan 80 .
+	}.
+
+#Rule 4: A ship must be categorized as large if the total length of the ship is at least 80 meters.
+
+#@forAll :s :l .
+	{ :s :size :large }
+	<=
+	{
+		:s rdf:Type :ship.
+		:s :totalLength :l .
+		:l math:greaterThan 80 .
+	}.
+
+
+# Rule 1&5 (combines Rule 1 and Rule 5)
+# Rule 1: The hold of a ship must be considered clean if the hold does not contain remainders of cargo.
+# Rule 5: A ship’s hold contains remainders of cargo if the residual cargo measurement is higher than 0.5 mg dry weight per cm2.
+# Negation is eliminated by propagation into Rule 5’s condition, where the negated math:greaterThan call is simplified to a math:lessEq call
+
+#@forAll :h :c.
+	{:h :status :clean	}
+	<=
+	{
+		:h rdf:Type :shipHold.
+		:h :residualCargoMeasurement :c .
+		:c math:LessEq 0.5 .
+	}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,88 @@
+Document(
+Group(
+	Forall ?s(
+		MayEnterDutchPortUnloaded( ?s) :- CompliesInspectionRequirementsUnloaded( ?s)
+	)
+	
+	Forall ?s(
+		CompliesInspectionRequirementsUnloaded( ?s) :- 
+	And(
+		HasValidCertificate( ?s)
+		MeetsSafetyRequirementsUnloaded( ?s)
+		)
+	)
+	
+Forall ?cd ?s ?e(
+HasValidCertificate( ?s) :- 
+And(
+	registryExpirationDate( ship(?s) ?e)
+	currentDate( ?cd)
+	greaterThanOrEqual( ?e ?cd)
+)
+)
+Forall ?s ?h(
+MeetsSafetyRequirementsUnloaded( ?s) :- 
+And(
+	size( ship(?s) "small")
+	hold( ship(?s) shipHold(?h))
+	status( shipHold(?h) "clean")
+)
+)
+Forall ?s ?h(
+MeetsSafetyRequirementsUnloaded( ?s) :- 
+And(
+	size( ship(?s) "large")
+	hold( ship(?s) shipHold(?h))
+	status( shipHold(?h) "clean")
+	hull( shipHold(?h) "double")
+)
+)
+Forall ?s ?l(
+size( ship(?s) "small") :- 
+And(
+	totalLength( ship(?s) ?l)
+	lessThan( ?l 80)
+)
+)
+Forall ?s ?l(
+size( ship(?s) "large") :- 
+And(
+	totalLength( ship(?s) ?l)
+	greaterThanOrEqual( ?l 80)
+)
+)
+Forall ?c ?h(
+status( shipHold(?h) "clean") :- 
+And(
+	residualCargoMeasurement( shipHold(?h) ?c)
+	LessEq( ?c 0.5)
+)
+)
+ship( ship2( registryExpirationDate -> "2020-01-01" totalLength -> 20 hold -> h2( residualCargoMeasurement -> 0.2 hull -> "single")))
+ShipHold( h2)
+ship( ship3( registryExpirationDate -> "2020-01-01" totalLength -> 70 hold -> h3( residualCargoMeasurement -> 0.6 hull -> "single")))
+ShipHold( h3)
+ship( ship4( registryExpirationDate -> "2020-01-01" totalLength -> 70 hold -> h4( residualCargoMeasurement -> 0.4 hull -> "single")))
+ShipHold( h4)
+ship( ship5( registryExpirationDate -> "2020-01-01" totalLength -> 90 hold -> h5( residualCargoMeasurement -> 0.6 hull -> "double")))
+ShipHold( h5)
+ship( ship6( registryExpirationDate -> "2020-01-01" totalLength -> 90 hold -> h6( residualCargoMeasurement -> 0.4 hull -> "single")))
+ShipHold( h6)
+ship( ship7( registryExpirationDate -> "2020-01-01" totalLength -> 90 hold -> h7( residualCargoMeasurement -> 0.4 hull -> "double")))
+ShipHold( h7)
+ship( ship8( registryExpirationDate -> "2017-01-01" totalLength -> 90 hold -> h8( residualCargoMeasurement -> 0.9 hull -> "single")))
+ShipHold( h8)
+ship( ship9( registryExpirationDate -> "2020-01-01" totalLength -> 90 hold -> h9( residualCargoMeasurement -> 0.9 hull -> "single")))
+ShipHold( h9)
+ship( ship10( registryExpirationDate -> "2017-01-01" totalLength -> 90 hold -> h10( residualCargoMeasurement -> 0.2 hull -> "single")))
+ShipHold( h10)
+ship( ship11( registryExpirationDate -> "2017-01-01" totalLength -> 90 hold -> h11( residualCargoMeasurement -> 0.9 hull -> "double")))
+ShipHold( h11)
+ship( ship12( registryExpirationDate -> "2020-01-01" totalLength -> 60 hold -> h12( residualCargoMeasurement -> 0.1 hull -> "double")))
+ShipHold( h12)
+ship( ship13( registryExpirationDate -> "2020-01-01" totalLength -> 120 hold -> h13( residualCargoMeasurement -> "0.2")))
+ShipHold( h13)
+ship( ship14( registryExpirationDate -> "2018-01-21" totalLength -> 80 hold -> h14( residualCargoMeasurement -> 0.5 hull -> "double")))
+ShipHold( h14)
+
+))

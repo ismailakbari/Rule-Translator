@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="http://www.w3.org/2007/rif#" xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<payload>
+<Group>
+<_rlab>ignored.</_rlab>
+<sentence>
+<Forall>
+<formula>
+<Implies>
+<if>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">CompliesInspectionRequirementsUnloaded</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">MayEnterDutchPortUnloaded</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</then>
+</Implies>
+</formula>
+</Forall>
+</sentence>
+<_rlab>ignored.</_rlab>
+<sentence>
+<Forall>
+<formula>
+<Implies>
+<if>
+<And>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">HasValidCertificate</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</formula>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">MeetsSafetyRequirementsUnloaded</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</formula>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">CompliesInspectionRequirementsUnloaded</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</then>
+</Implies>
+</formula>
+</Forall>
+</sentence>
+<_rlab>ignored.</_rlab>
+<sentence>
+<Forall>
+<declare>
+<Var>cd</Var>
+</declare>
+<declare>
+<Var>e</Var>
+</declare>
+<formula>
+<Implies>
+<if>
+<And>
+<formula>
+<formula>
+<Member>
+<class>
+<Const type="http://www.w3.org/2007/rif#iri">ship</Const>
+</class>
+<instance>
+<Var>s</Var>
+</instance>
+</Member>
+</formula>
+</formula>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Var>e</Var>
+</args>
+</Atom>
+</formula>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">currentDate</Const>
+</op>
+<args ordered="yes">
+<Var>cd</Var>
+</args>
+</Atom>
+</formula>
+<formula/>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">HasValidCertificate</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</then>
+</Implies>
+</formula>
+</Forall>
+</sentence>
+<_rlab>ignored.</_rlab>
+<sentence>
+<Forall>
+<formula>
+<Implies>
+<if>
+<And>
+<formula>
+<formula>
+<Member>
+<class>
+<Const type="http://www.w3.org/2007/rif#iri">ship</Const>
+</class>
+<instance>
+<Var>s</Var>
+</instance>
+</Member>
+</formula>
+</formula>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">size</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Const type="http://www.w3.org/2001/XMLSchema#string">small</Const>
+</args>
+</Atom>
+</formula>
+<formula>
+<formula>
+<Member>
+<class>
+<Const type="http://www.w3.org/2007/rif#iri">shipHold</Const>
+</class>
+<instance>
+<Var>h</Var>
+</instance>
+</Member>
+</formula>
+</formula>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Var>h</Var>
+</args>
+</Atom>
+</formula>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">status</Const>
+</op>
+<args ordered="yes">
+<Var>h</Var>
+<Const type="http://www.w3.org/2001/XMLSchema#string">clean</Const>
+</args>
+</Atom>
+</formula>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">MeetsSafetyRequirementsUnloaded</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</then>
+</Implies>
+</formula>
+</Forall>
+</sentence>
+<_rlab>ignored.</_rlab>
+<sentence>
+<Forall>
+<formula>
+<Implies>
+<if>
+<And>
+<formula>
+<formula>
+<Member>
+<class>
+<Const type="http://www.w3.org/2007/rif#iri">ship</Const>
+</class>
+<instance>
+<Var>s</Var>
+</instance>
+</Member>
+</formula>
+</formula>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">size</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Const type="http://www.w3.org/2001/XMLSchema#string">large</Const>
+</args>
+</Atom>
+</formula>
+<formula>
+<formula>
+<Member>
+<class>
+<Const type="http://www.w3.org/2007/rif#iri">shipHold</Const>
+</class>
+<instance>
+<Var>h</Var>
+</instance>
+</Member>
+</formula>
+</formula>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Var>h</Var>
+</args>
+</Atom>
+</formula>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">status</Const>
+</op>
+<args ordered="yes">
+<Var>h</Var>
+<Const type="http://www.w3.org/2001/XMLSchema#string">clean</Const>
+</args>
+</Atom>
+</formula>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+</op>
+<args ordered="yes">
+<Var>h</Var>
+<Const type="http://www.w3.org/2001/XMLSchema#string">double</Const>
+</args>
+</Atom>
+</formula>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">MeetsSafetyRequirementsUnloaded</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</then>
+</Implies>
+</formula>
+</Forall>
+</sentence>
+<_rlab>ignored.</_rlab>
+<sentence>
+<Forall>
+<formula>
+<Implies>
+<if>
+<And>
+<formula>
+<formula>
+<Member>
+<class>
+<Const type="http://www.w3.org/2007/rif#iri">ship</Const>
+</class>
+<instance>
+<Var>s</Var>
+</instance>
+</Member>
+</formula>
+</formula>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Var>l</Var>
+</args>
+</Atom>
+</formula>
+<formula/>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">size</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Const type="http://www.w3.org/2001/XMLSchema#string">small</Const>
+</args>
+</Atom>
+</then>
+</Implies>
+</formula>
+</Forall>
+</sentence>
+<_rlab>ignored.</_rlab>
+<sentence>
+<Forall>
+<declare>
+<Var>l</Var>
+</declare>
+<declare>
+<Var>s</Var>
+</declare>
+<formula>
+<Implies>
+<if>
+<And>
+<formula>
+<formula>
+<Member>
+<class>
+<Const type="http://www.w3.org/2007/rif#iri">ship</Const>
+</class>
+<instance>
+<Var>s</Var>
+</instance>
+</Member>
+</formula>
+</formula>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Var>l</Var>
+</args>
+</Atom>
+</formula>
+<formula/>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">size</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Const type="http://www.w3.org/2001/XMLSchema#string">large</Const>
+</args>
+</Atom>
+</then>
+</Implies>
+</formula>
+</Forall>
+</sentence>
+<_rlab>ignored.</_rlab>
+<sentence>
+<Forall>
+<declare>
+<Var>c</Var>
+</declare>
+<declare>
+<Var>h</Var>
+</declare>
+<formula>
+<Implies>
+<if>
+<And>
+<formula>
+<formula>
+<Member>
+<class>
+<Const type="http://www.w3.org/2007/rif#iri">shipHold</Const>
+</class>
+<instance>
+<Var>h</Var>
+</instance>
+</Member>
+</formula>
+</formula>
+<formula>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+</op>
+<args ordered="yes">
+<Var>h</Var>
+<Var>c</Var>
+</args>
+</Atom>
+</formula>
+<formula/>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">status</Const>
+</op>
+<args ordered="yes">
+<Var>h</Var>
+<Const type="http://www.w3.org/2001/XMLSchema#string">clean</Const>
+</args>
+</Atom>
+</then>
+</Implies>
+</formula>
+</Forall>
+</sentence>
+</Group>
+</payload>
+<Annotation>ignored.</Annotation>
+<VersionInfo>ignored.</VersionInfo>
+<DataPropertyValue>ignored.</DataPropertyValue>
+<Const type="http://www.w3.org/2007/rif#iri">ship1</Const>
+<Const type="http://www.w3.org/2007/rif#iri">ship2</Const>
+<Const type="http://www.w3.org/2007/rif#iri">ship3</Const>
+<Const type="http://www.w3.org/2007/rif#iri">ship4</Const>
+<Const type="http://www.w3.org/2007/rif#iri">ship5</Const>
+<Const type="http://www.w3.org/2007/rif#iri">ship6</Const>
+<Const type="http://www.w3.org/2007/rif#iri">ship7</Const>
+<Const type="http://www.w3.org/2007/rif#iri">ship8</Const>
+<Const type="http://www.w3.org/2007/rif#iri">ship9</Const>
+<Const type="http://www.w3.org/2007/rif#iri">ship10</Const>
+<Const type="http://www.w3.org/2007/rif#iri">ship11</Const>
+<Const type="http://www.w3.org/2007/rif#iri">ship12</Const>
+<Const type="http://www.w3.org/2007/rif#iri">ship13</Const>
+<Const type="http://www.w3.org/2007/rif#iri">ship14</Const>
+</Document>

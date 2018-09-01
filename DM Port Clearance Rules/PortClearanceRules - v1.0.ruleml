@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/bindatalog_relaxed.rnc"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/bindatalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<?xml-stylesheet type="text/xsl" href="UBDatalogRuleML2RIF_BLD.xsl"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/bindatalog.ruleml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+xmlns:dm="https://dmcommunity.org/challenge/challenge-march-2016#"
+xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/bindatalog.xsd" >
+
+<Assert mapClosure="universal">
+<!--<oid><Ind>test rulebase</Ind></oid>-->
+<Rulebase>
+
+<!--
+  Rule 2 : An unloaded ship may only enter a Dutch port if the ship complies with the requirements of the Inspection for unloaded ships. 
+  commentes show the rules in POSL languages.
+  MayEnterDutchPortUnloaded(?s)  :-  CompliesInspectionRequirementsUnloaded(?s)  .
+  -->
+  
+<Implies>
+  <then>
+     <Atom>
+      <op><Rel>MayEnterDutchPortUnloaded</Rel></op>      
+      <Var>s</Var>
+     </Atom>
+  </then>
+  <if>
+    <Atom>
+      <op><Rel>CompliesInspectionRequirementsUnloaded</Rel></op>
+      <Var>s</Var>
+    </Atom>
+  </if>
+</Implies>
+
+<!--
+% Rule 3: A ship must comply with the requirements of the Inspection for unloaded ships if the ship complies with all of the following: 
+% a) the ship meets the safety requirements for unloaded ships; 
+% b) the ship has a certificate of registry that is valid.
+CompliesInspectionRequirementsUnloaded(?s) 	:-
+ 	HasValidCertificate(?s) , MeetsSafetyRequirementsUnloaded(?s).
+
+-->
+<Implies>
+  <then>
+     <Atom>
+      <op><Rel>CompliesInspectionRequirementsUnloaded</Rel></op>      
+      <Var>s</Var>
+     </Atom>
+  </then>
+  <if>
+    <And>
+    <Atom>
+      <op><Rel>HasValidCertificate</Rel></op>
+      <Var>s</Var>
+    </Atom>
+	<Atom>
+      <op><Rel>MeetsSafetyRequirementsUnloaded</Rel></op>
+      <Var>s</Var>
+    </Atom>
+    </And>
+  </if>
+</Implies>
+
+
+
+<!--
+% Rule 10: A ship’s certificate of registry must be considered valid if the date up to which the registration is valid of the certificate of registry is after the current date.
+HasValidCertificate(?s)  :-		
+	registryExpirationDate(?s:ship, ?e) , 	currentDate(?cd) , 	greaterThan(?e, ?cd)  .
+
+-->
+
+<Implies>
+  <then>
+     <Atom>
+      <op><Rel>HasValidCertificate</Rel></op>      
+      <Var>s</Var>
+     </Atom>
+  </then>
+  <if>
+    <And>
+    <Atom>
+      <op><Rel>registryExpirationDate</Rel></op>
+      <Var type="dm:ship">s</Var>
+	   <Var type="xsd:dateTime">e</Var>
+    </Atom>
+	<Atom>
+      <op><Rel>currentDate</Rel></op>
+      <Var type="xsd:dateTime">cd</Var>
+    </Atom>
+	<Atom>
+      <op><Rel>greaterThan</Rel></op>
+      <Var type="xsd:dateTime">e</Var>
+	  <Var type="xsd:dateTime">cd</Var>
+    </Atom>
+    </And>
+  </if>
+</Implies>
+
+
+
+<!--
+%Rule 8: A ship only meets the safety requirements for small unloaded ships if the ship complies with all of the following: 
+%a) the ship is categorized as small; 
+%b) the hold of the ship is clean.
+%Rule 8 (includes disjunct of original Rule 6)
+MeetsSafetyRequirementsUnloaded(?s)	:-	 
+size(?s:ship , "small") , hold(?s:ship , ?h:shipHold) , status(?h:shipHold , "clean").
+
+-->
+
+
+<Implies>
+  <then>
+     <Atom>
+      <op><Rel>MeetsSafetyRequirementsUnloaded</Rel></op>      
+      <Var>s</Var>
+     </Atom>
+  </then>
+  <if>
+    <And>
+    <Atom>
+      <op><Rel>size</Rel></op>
+      <Var type="dm:ship">s</Var>
+	  <Ind type="xsd:string">small</Ind>
+    </Atom>
+	<Atom>
+      <op><Rel>hold</Rel></op>
+      <Var type="dm:ship">s</Var>
+	  <Var type="dm:shipHold">h</Var>
+    </Atom>
+	<Atom>
+      <op><Rel>status</Rel></op>
+      <Var type="dm:shipHold">h</Var>
+	  <Ind type="xsd:string">clean</Ind>
+    </Atom>
+    </And>
+  </if>
+</Implies>
+
+
+<!--
+%Rule 7: A ship only meets the safety requirements for large unloaded ships if the ship complies with all of the following:
+% a) the ship is categorized as large; 
+% b) the hold of the ship is clean;
+% c) the hold of the ship is double hulled.
+%Rule 7 (includes disjunct of original Rule 6)
+
+%MeetsSafetyRequirementsUnloaded(?s) :-
+%size(?s:ship , "large") , hold(?s , ?h:shipHold -> [status -> "clean" ; hull  -> "double" ]).
+
+% rule 7 can also be written as following after Unnesting and Slotribution (see PSOA formalization of Port Clearance Rules)
+MeetsSafetyRequirementsUnloaded(?s) :-
+size(?s:ship ,"large") , hold(?s:ship , ?h:shipHold) , status(?h:shipHold , "clean") , hull(?h:shipHold , "double") .
+
+-->
+
+<Implies>
+  <then>
+     <Atom>
+      <op><Rel>MeetsSafetyRequirementsUnloaded</Rel></op>      
+      <Var>s</Var>
+     </Atom>
+  </then>
+  <if>
+    <And>
+    <Atom>
+      <op><Rel>size</Rel></op>
+      <Var type="dm:ship">s</Var>
+	  <Ind type="xsd:string">large</Ind>
+    </Atom>
+	<Atom>
+      <op><Rel>hold</Rel></op>
+      <Var type="dm:ship">s</Var>
+	  <Var type="dm:shipHold">h</Var>
+    </Atom>
+	<Atom>
+      <op><Rel>status</Rel></op>
+      <Var type="dm:shipHold">h</Var>
+	  <Ind type="xsd:string">clean</Ind>
+    </Atom>
+	<Atom>
+      <op><Rel>hull</Rel></op>
+      <Var type="dm:shipHold">h</Var>
+	  <Ind type="xsd:string">double</Ind>
+    </Atom>
+    </And>
+  </if>
+</Implies>
+
+
+<!--
+
+%Rule 9: A ship must be categorized as small if the total length of the ship is less than 80 meters.
+size(?s:ship , "small")	:-	
+	totalLength(?s:ship , ?l) , lessThan(?l , 80) .
+
+-->
+
+<Implies>
+  <then>
+    <Atom>
+      <op><Rel>size</Rel></op>
+      <Var type="dm:ship">s</Var>
+	  <Ind type="xsd:string">small</Ind>
+    </Atom>
+  </then>
+  <if>
+    <And>
+    <Atom>
+      <op><Rel>totalLength</Rel></op>
+      <Var type="dm:ship">s</Var>
+	   <Var type="xsd:int">l</Var>
+    </Atom>	
+	<Atom>
+      <op><Rel>lessThan</Rel></op>
+      <Var type="xsd:int">l</Var>
+	  <Var type="xsd:int">80</Var>
+    </Atom>
+    </And>
+  </if>
+</Implies>
+
+
+<!--
+%Rule 4: A ship must be categorized as large if the total length of the ship is at least 80 meters.
+size(?s:ship , "large")	:-	
+	totalLength(?s:ship , ?l) , greaterThan(?l , 80) .
+-->
+
+
+<Implies>
+  <then>
+    <Atom>
+      <op><Rel>size</Rel></op>
+      <Var type="dm:ship">s</Var>
+	  <Ind type="xsd:string">large</Ind>
+    </Atom>
+  </then>
+  <if>
+    <And>
+    <Atom>
+      <op><Rel>totalLength</Rel></op>
+      <Var type="dm:ship">s</Var>
+	   <Var type="xsd:int">l</Var>
+    </Atom>	
+	<Atom>
+      <op><Rel>greaterThanOrEqual</Rel></op>
+      <Var type="xsd:int">l</Var>
+	  <Var type="xsd:int">80</Var>
+    </Atom>
+    </And>
+  </if>
+</Implies>
+
+
+<!--
+
+% Rule 1&5 (combines Rule 1 and Rule 5)
+% Rule 1: The hold of a ship must be considered clean if the hold does not contain remainders of cargo.
+% Rule 5: A ship’s hold contains remainders of cargo if the residual cargo measurement is higher than 0.5 mg dry weight per cm2.
+% Negation is eliminated by propagation into Rule 5’s condition, where the negated math:greaterThan call is simplified to a math:lessEq call
+ status(?h:shipHold , "clean") 	:-
+	residualCargoMeasurement(?h:shipHold , ?c) , LessEq(?c , 0.5 ) .
+
+-->
+
+<Implies>
+  <then>
+    <Atom>
+      <op><Rel>status</Rel></op>
+      <Var type="dm:shipHold">h</Var>
+	  <Ind type="xsd:string">clean</Ind>
+    </Atom>
+  </then>
+  <if>
+    <And>
+    <Atom>
+      <op><Rel>residualCargoMeasurement</Rel></op>
+      <Var type="dm:shipHold">h</Var>
+	   <Var type="xsd:double">c</Var>
+    </Atom>	
+	<Atom>
+      <op><Rel>lessThanOrEqual</Rel></op>
+      <Var type="xsd:double">c</Var>
+	  <Var type="xsd:double">0.5</Var>
+    </Atom>
+    </And>
+  </if>
+</Implies>
+
+<!-- ##############################facts#################################
+#Ship facts (No or Yes refer to answers for queries  with :ship1, :ship2, ... as arguments) -->
+
+<!--
+  :currentDate(phys:date(2017 5 6))   % Uncomment for fixed date (reproducibility)
+-->
+<Atom closure="universal">
+	<Rel>currentDate</Rel>	
+	<Data xsi:type="xs:dateTime">2018-01-21</Data>
+</Atom>
+
+<!--
+ % Facts covering all cases with qualitative slot-filler distinctions
+    % Explanatory comments for Yes answers focus on the most relevant slots
+    
+    % Distinction for :registryExpirationDate
+    
+    % Ship 1 - No, registry has expired
+    :ship1#:Ship(:registryExpirationDate->phys:date(2017 5 1) 
+                 :totalLength->20
+                 :hold->:h1#:ShipHold(:residualCargoMeasurement->0.2
+                                      :hull->:single))
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship1</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2017-01-01</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">20</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h1</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.2</Ind></slot>
+						<slot><Ind type="xsd:string">hull</Ind><Ind type="xsd:string">single</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+
+<!--
+   % Ship 2 - Yes, registry is valid
+    :ship2#:Ship(:registryExpirationDate->phys:date(2017 10 1)
+                 :totalLength->20
+                 :hold->:h2#:ShipHold(:residualCargoMeasurement->0.2 
+                                      :hull->:single))
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship2</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2020-01-01</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">20</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h2</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.2</Ind></slot>
+						<slot><Ind type="xsd:string">hull</Ind><Ind type="xsd:string">single</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+
+<!--
+  % Distinction for :residualCargoMeasurement
+
+    % Ship 3 - No, hold not clean
+    :ship3#:Ship(:registryExpirationDate->phys:date(2020 1 1)
+                 :totalLength->70                 
+                 :hold->:h3#:ShipHold(:residualCargoMeasurement->0.6 
+                                      :hull->:single))
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship3</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2020-01-01</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">70</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h3</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.6</Ind></slot>
+						<slot><Ind type="xsd:string">hull</Ind><Ind type="xsd:string">single</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+<!--
+    % Ship 4 - Yes, hold clean (qualitatively the same as for Ship 2)
+    :ship4#:Ship(:registryExpirationDate->phys:date(2020 1 1 )
+                 :totalLength->70
+                 :hold->:h4#:ShipHold(:residualCargoMeasurement->0.4
+                                      :hull->:single))
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship4</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2020-01-01</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">70</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h4</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.4</Ind></slot>
+						<slot><Ind type="xsd:string">hull</Ind><Ind type="xsd:string">single</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+<!--
+    % Distinctions for :residualCargoMeasurement and :hull
+
+    % Ship 5 - No, hold not clean
+    :ship5#:Ship(:registryExpirationDate->phys:date(2020 1 1)
+                 :totalLength->90
+                 :hold->:h5#:ShipHold(:residualCargoMeasurement->0.6 
+                                      :hull->:double))
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship5</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2020-01-01</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">90</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h5</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.6</Ind></slot>
+						<slot><Ind type="xsd:string">hull</Ind><Ind type="xsd:string">double</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+<!--
+  % Ship 6 - No, size large yet hold single-hulled
+    :ship6#:Ship(:registryExpirationDate->phys:date(2020 1 1)
+                 :totalLength->90 
+                 :hold->:h6#:ShipHold(:residualCargoMeasurement->0.4 
+                                      :hull->:single))
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship6</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2020-01-01</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">90</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h6</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.4</Ind></slot>
+						<slot><Ind type="xsd:string">hull</Ind><Ind type="xsd:string">single</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+<!--
+  % Ship 7 - Yes, hold clean and double-hulled
+    :ship7#:Ship(:registryExpirationDate->phys:date(2020 1 1)
+                 :totalLength->90 
+                 :hold->:h7#:ShipHold(:residualCargoMeasurement->0.4 
+                                      :hull->:double)
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship7</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2020-01-01</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">90</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h7</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.4</Ind></slot>
+						<slot><Ind type="xsd:string">hull</Ind><Ind type="xsd:string">double</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+<!--
+    % Facts with multiple reasons for No or Yes
+    
+    % Three reasons for No
+    
+    % Ship 8 - No, registry expired, hold not clean, and size large yet hold single-hulled
+    :ship8#:Ship(:registryExpirationDate->phys:date(2017 1 1)
+                 :totalLength->90 
+                 :hold->:h8#:ShipHold(:residualCargoMeasurement->0.9 
+                                      :hull->:single))
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship8</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2020-01-01</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">90</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h8</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.9</Ind></slot>
+						<slot><Ind type="xsd:string">hull</Ind><Ind type="xsd:string">single</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+<!--
+    % Two reasons for No
+    
+    % Ship 9 - No, hold not clean and size large yet hold single-hulled
+    :ship9#:Ship(:registryExpirationDate->phys:date(2018 1 1)
+                 :totalLength->90 
+                 :hold->:h9#:ShipHold(:residualCargoMeasurement->0.9 
+                                      :hull->:single))
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship9</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2020-01-01</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">90</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h9</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.9</Ind></slot>
+						<slot><Ind type="xsd:string">hull</Ind><Ind type="xsd:string">single</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+<!--
+    % Ship 10 - No, registry expired and size large yet hold single-hulled
+    :ship10#:Ship(:registryExpirationDate->phys:date(2017 1 1)
+                  :totalLength->90 
+                  :hold->:h10#:ShipHold(:residualCargoMeasurement->0.2 
+                                        :hull->:single))
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship10</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2017-01-01</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">90</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h10</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.2</Ind></slot>
+						<slot><Ind type="xsd:string">hull</Ind><Ind type="xsd:string">single</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+<!--
+    % Ship 11 - No, registry expired and hold not clean
+    :ship11#:Ship(:registryExpirationDate->phys:date(2017 1 1)
+                  :totalLength->90
+                  :hold->:h11#:ShipHold(:residualCargoMeasurement->0.9 
+                                        :hull->:double))
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship11</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2017-01-01</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">90</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h11</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.9</Ind></slot>
+						<slot><Ind type="xsd:string">hull</Ind><Ind type="xsd:string">double</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+<!--
+    % Two reasons for Yes
+
+    % Ship 12 - Yes, size small nevertheless hold double-hulled                   
+    :ship12#:Ship(:registryExpirationDate->phys:date(2020 1 1)
+                  :totalLength->60 
+                  :hold->:h12#:ShipHold(:residualCargoMeasurement->0.1 
+                                        :hull->:double))    
+    
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship12</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2020-01-01</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">60</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h12</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.1</Ind></slot>
+						<slot><Ind type="xsd:string">hull</Ind><Ind type="xsd:string">double</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+<!--
+    % Facts probing special cases
+
+    % Ship 13 - No, large ship must have some (a double) hull
+    :ship13#:Ship(:registryExpirationDate->phys:date(2020 1 1)
+                  :totalLength->120     
+                  :hold->:h13#:ShipHold(:residualCargoMeasurement->0.2))          
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship13</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2020-01-01</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">120</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h13</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.2</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+<!--
+    % Ship 14 - Yes, date, length, and measurement are at the threshold
+    :ship14#:Ship(:registryExpirationDate->phys:date(2017 5 7)
+                  :totalLength->80       
+                  :hold->:h14#:ShipHold(:residualCargoMeasurement->0.5 
+                                        :hull->:double))
+-->
+<Atom>
+	<op><Rel>Ship</Rel></op>		
+		<slot>
+			<Ind type="dm:ship">ship14</Ind>
+			<Plex>
+				<!--<slot><Ind type="xsd:string">registryExpirationDate</Ind><Data xsi:type="xs:dateTime">2017-01-01</Data></slot>-->
+				<slot><Ind type="xsd:string">registryExpirationDate</Ind><Ind type="xsd:dateTime">2018-01-21</Ind></slot>
+				<slot><Ind type="xsd:string">totalLength</Ind><Data xsi:type="xs:int">80</Data></slot>
+				<slot>
+					<Ind type="xsd:string">hold</Ind>
+					<Plex>
+						<Ind type="dm:shipHold">h14</Ind>
+						<slot><Ind type="xsd:string">residualCargoMeasurement</Ind><Ind type="xsd:double">0.5</Ind></slot>
+						<slot><Ind type="xsd:string">hull</Ind><Ind type="xsd:string">double</Ind></slot>
+					</Plex>
+				</slot>
+			</Plex>
+		</slot>
+</Atom>
+
+
+
+
+
+
+
+
+</Rulebase>
+</Assert>
+</RuleML>

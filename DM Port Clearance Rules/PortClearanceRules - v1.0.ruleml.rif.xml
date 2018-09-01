@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?><Document xmlns="http://www.w3.org/2007/rif#" xmlns:ruleml="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<payload>
+<Group>
+<sentence>
+<Group>
+<Implies>
+<if>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">CompliesInspectionRequirementsUnloaded</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">MayEnterDutchPortUnloaded</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</then>
+</Implies>
+<Implies>
+<if>
+<And>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">HasValidCertificate</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">MeetsSafetyRequirementsUnloaded</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">CompliesInspectionRequirementsUnloaded</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</then>
+</Implies>
+<Implies>
+<if>
+<And>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Var>e</Var>
+</args>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">currentDate</Const>
+</op>
+<args ordered="yes">
+<Var>cd</Var>
+</args>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">greaterThan</Const>
+</op>
+<args ordered="yes">
+<Var>e</Var>
+<Var>cd</Var>
+</args>
+</Atom>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">HasValidCertificate</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</then>
+</Implies>
+<Implies>
+<if>
+<And>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">size</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Const type="http://www.w3.org/2007/rif#iri">small</Const>
+</args>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Var>h</Var>
+</args>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">status</Const>
+</op>
+<args ordered="yes">
+<Var>h</Var>
+<Const type="http://www.w3.org/2007/rif#iri">clean</Const>
+</args>
+</Atom>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">MeetsSafetyRequirementsUnloaded</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</then>
+</Implies>
+<Implies>
+<if>
+<And>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">size</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Const type="http://www.w3.org/2007/rif#iri">large</Const>
+</args>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Var>h</Var>
+</args>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">status</Const>
+</op>
+<args ordered="yes">
+<Var>h</Var>
+<Const type="http://www.w3.org/2007/rif#iri">clean</Const>
+</args>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+</op>
+<args ordered="yes">
+<Var>h</Var>
+<Const type="http://www.w3.org/2007/rif#iri">double</Const>
+</args>
+</Atom>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">MeetsSafetyRequirementsUnloaded</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+</args>
+</Atom>
+</then>
+</Implies>
+<Implies>
+<if>
+<And>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Var>l</Var>
+</args>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">lessThan</Const>
+</op>
+<args ordered="yes">
+<Var>l</Var>
+<Var>80</Var>
+</args>
+</Atom>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">size</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Const type="http://www.w3.org/2007/rif#iri">small</Const>
+</args>
+</Atom>
+</then>
+</Implies>
+<Implies>
+<if>
+<And>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Var>l</Var>
+</args>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">greaterThanOrEqual</Const>
+</op>
+<args ordered="yes">
+<Var>l</Var>
+<Var>80</Var>
+</args>
+</Atom>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">size</Const>
+</op>
+<args ordered="yes">
+<Var>s</Var>
+<Const type="http://www.w3.org/2007/rif#iri">large</Const>
+</args>
+</Atom>
+</then>
+</Implies>
+<Implies>
+<if>
+<And>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+</op>
+<args ordered="yes">
+<Var>h</Var>
+<Var>c</Var>
+</args>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">lessThanOrEqual</Const>
+</op>
+<args ordered="yes">
+<Var>c</Var>
+<Var>0.5</Var>
+</args>
+</Atom>
+</And>
+</if>
+<then>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">status</Const>
+</op>
+<args ordered="yes">
+<Var>h</Var>
+<Const type="http://www.w3.org/2007/rif#iri">clean</Const>
+</args>
+</Atom>
+</then>
+</Implies>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">currentDate</Const>
+</op>
+<args ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">2018-01-21</Const>
+</args>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship1</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2017-01-01</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">20</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h1</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.2</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+<Const type="http://www.w3.org/2007/rif#iri">single</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship2</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2020-01-01</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">20</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h2</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.2</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+<Const type="http://www.w3.org/2007/rif#iri">single</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship3</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2020-01-01</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">70</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h3</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.6</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+<Const type="http://www.w3.org/2007/rif#iri">single</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship4</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2020-01-01</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">70</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h4</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.4</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+<Const type="http://www.w3.org/2007/rif#iri">single</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship5</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2020-01-01</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">90</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h5</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.6</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+<Const type="http://www.w3.org/2007/rif#iri">double</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship6</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2020-01-01</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">90</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h6</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.4</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+<Const type="http://www.w3.org/2007/rif#iri">single</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship7</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2020-01-01</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">90</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h7</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.4</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+<Const type="http://www.w3.org/2007/rif#iri">double</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship8</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2020-01-01</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">90</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h8</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.9</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+<Const type="http://www.w3.org/2007/rif#iri">single</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship9</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2020-01-01</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">90</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h9</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.9</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+<Const type="http://www.w3.org/2007/rif#iri">single</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship10</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2017-01-01</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">90</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h10</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.2</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+<Const type="http://www.w3.org/2007/rif#iri">single</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship11</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2017-01-01</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">90</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h11</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.9</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+<Const type="http://www.w3.org/2007/rif#iri">double</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship12</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2020-01-01</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">60</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h12</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.1</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+<Const type="http://www.w3.org/2007/rif#iri">double</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship13</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2020-01-01</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">120</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h13</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.2</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+<Atom>
+<op>
+<Const type="http://www.w3.org/2007/rif#iri">Ship</Const>
+</op>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">ship14</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">registryExpirationDate</Const>
+<Const type="http://www.w3.org/2007/rif#iri">2018-01-21</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">totalLength</Const>
+<Const type="http://www.w3.org/2007/rif#iri">80</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hold</Const>
+<Const type="http://www.w3.org/2007/rif#iri">h14</Const>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">residualCargoMeasurement</Const>
+<Const type="http://www.w3.org/2007/rif#iri">0.5</Const>
+</slot>
+<slot ordered="yes">
+<Const type="http://www.w3.org/2007/rif#iri">hull</Const>
+<Const type="http://www.w3.org/2007/rif#iri">double</Const>
+</slot>
+</slot>
+</slot>
+</Atom>
+</Group>
+</sentence>
+</Group>
+</payload>
+</Document>

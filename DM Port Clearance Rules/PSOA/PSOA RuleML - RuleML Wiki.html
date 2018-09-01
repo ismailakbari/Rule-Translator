@@ -1,0 +1,2262 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)http://wiki.ruleml.org/index.php/PSOA_RuleML#Serialization_Preview -->
+<html lang="en" dir="ltr" class="client-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>PSOA RuleML - RuleML Wiki</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"PSOA_RuleML","wgTitle":"PSOA RuleML","wgCurRevisionId":19522,"wgRevisionId":19522,"wgArticleId":57,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Pages with syntax highlighting errors","HomePage","RuleML","Presentation Syntax","RIF"],"wgBreakFrames":!1,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"PSOA_RuleML","wgRelevantArticleId":57,"wgIsProbablyEditable":!1,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":!0,
+"dialogs":!0,"preview":!0,"publish":!1}});mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","skins.vector.js"]);
+} );</script>
+<link rel="stylesheet" href="./PSOA RuleML - RuleML Wiki_files/load.php">
+<style>
+.mw-collapsible-toggle{float:right;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}  .mw-content-ltr .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr .mw-collapsible-toggle{float:right} .mw-content-rtl .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl .mw-collapsible-toggle{float:left}.mw-customtoggle,.mw-collapsible-toggle{cursor:pointer} caption .mw-collapsible-toggle,.mw-content-ltr caption .mw-collapsible-toggle,.mw-content-rtl caption .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr caption .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl caption .mw-collapsible-toggle{float:none} li .mw-collapsible-toggle,.mw-content-ltr li .mw-collapsible-toggle,.mw-content-rtl li .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr li .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left; overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.highlight{font-weight:bold}
+h1{padding:8px;background-color:#CCCCFF} .box{background-color:#ffdbb8} .noautonum .tocnumber{display:none} .xsd-error{background-color:yellow}.xsd-omission{background-color:aqua} .toclimit-2 .toclevel-1 ul,.toclimit-3 .toclevel-2 ul,.toclimit-4 .toclevel-3 ul,.toclimit-5 .toclevel-4 ul,.toclimit-6 .toclevel-5 ul,.toclimit-7 .toclevel-6 ul{display:none} .sem{display:block;margin:0 auto;padding:1em;background-color:#fef1fa;width:94%}#content .external{background-image:none;padding-right:0px}mw-body a.external{color:inherit}
+/* setting style for Table of Contents * #toc{border :2px solid #222244}
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABblBMVEUAAAD///////9PfTf///80aRdTgjn///9Feij///////////9Rfzf///////////9PfjZRgDh1o1xOfTb///////+bwYqLtnj///////9PfTa82K////9WhT6YxIL///9QgDdTgzr////////j7uDl7eLq8efi693k7OH///////9UhjuBr2rp9uRUhjr///9YljVKgir///9WiTlYjT3////9/v57vFlbkT5PjC9dlD/5/fhuq09stUTs9uhxuElctCpfnT1huDFloEZloUZmpENmvDZpvDxpvTxqvjxrvT5rvT9rwTxsqktswD5uwkBvuUdxw0NztFBztU9ztVBzwkp0tlJ1xkd2t1R3uVR4w1F4xk54x014yE15uVZ5v1R5xVB6v1R7yFJ8wVh9xVl9yFR9yVd9ylN+xVh+yFd/x1l/yFeAylmEx1+Ny2uY0Hqe04Wj1Ymv3Ze33qLD47TJ5L3O6cPU7Mrq9eb2+/Q4j37OAAAAQHRSTlMAAQIEBAUFBQwPFB4fJCUoKiosQEhJS01RUlZZXmdydXaChYuSlJSWmJmoq6uur8LExcvM19fg5ejt8fX2+Pr7SljgewAAAKpJREFUGBkFwQNCAwAAAMDLtl3LtrG4rWXbtvX77gAgZ6grFwC0bhwNVgKgdPZx8b0dgLi+s7Wn0VoAqpfOI9+BNADZI7fLrz2pSEwGHZuH+78lSK8ZLkLezF3ooyUG3VPXq2USei9WngeyoG195yBYWDF3E/2pAhl1e9Gr8bGT+bfOFCC2fnvh4X7rcqIAQNNu+HT6sxkAjceTL/2ZAIhv+PorBwBJxfkA//dFHSCBy/UTAAAAAElFTkSuQmCC);background-image:url(/resources/src/mediawiki.action/images/green-checkmark.png?9048a)!ie;background-position:left}.postedit-close{position:absolute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0 white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{color:black;text-decoration:none}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}.suggestions a.mw-searchSuggest-link .special-query{ overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}</style><meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="./PSOA RuleML - RuleML Wiki_files/load(1).php">
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}</style>
+<script async="" src="./PSOA RuleML - RuleML Wiki_files/load(2).php"></script>
+<meta name="generator" content="MediaWiki 1.26.2">
+<link rel="shortcut icon" href="http://wiki.ruleml.org/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://wiki.ruleml.org/opensearch_desc.php" title="RuleML Wiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://wiki.ruleml.org/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="RuleML Wiki Atom feed" href="http://wiki.ruleml.org/index.php?title=Special:RecentChanges&amp;feed=atom">
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/skins/Vector/csshover.min.htc")}</style><![endif]-->
+<script src="./PSOA RuleML - RuleML Wiki_files/load(3).php"></script></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-PSOA_RuleML skin-vector action-view">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">PSOA RuleML</h1>
+									<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From RuleML Wiki</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#mw-head">navigation</a>, 					<a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><big><big><b>Authors:</b></big></big> <big><a class="external text" href="http://ontolog.cim3.net/cgi-bin/wiki.pl?GenZou">Gen Zou</a>, 
+<a class="external text" href="http://www.cs.unb.ca/~boley/">Harold Boley</a></big>
+</p><p><br>
+</p><p>Positional-Slotted Object-Applicative RuleML (PSOA RuleML) permits an atom, i.e. a predicate application, to be [in an <i>oidless</i>/<i>oidful</i> dimension 1] <i>without</i> or <i>with</i> an <i>Object IDentifier (OID)</i> -- typed by the predicate (acting as a class) -- and the arguments of the predicate (acting as a relator) to be [in an orthogonal <i>descriptor</i> dimension 2] <i>tupled</i>, <i>slotted</i>, or <i>tupled+slotted</i>.
+Moreover, PSOA RuleML 1.0 permits an atom to be [in an orthogonal <i>perspectivity</i> dimension 3] <i>perspeneutral</i> (having only predicate-independent descriptors), <i>perspectival</i> (having only predicate-dependent descriptors), or <i>perspeneutral+perspectival</i>.
+The resulting positional-slotted object-applicative (psoa) atoms can be used as (oidless, tupled, perspectival) relationship facts without an OID and with a dependent (ordered) sequence of arguments,
+as (oidful, slotted, perspeneutral) frame facts with an OID and with an (unordered) multiset of independent slots (each being a pair of a name and a filler), as well as in various other ways.
+For illustrating this systematics, the <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Presentation_Preview">first section</a> will present variations of a preview example.
+Also, the slide <a class="external text" href="http://ruleml.org/talks/RichTAGlance.pdf">Data in Perspective: The Rich TA Example as Grailog Visualization and PSOA RuleML Facts</a> focuses on the perspectivity dimension.
+</p><p>Such psoa facts and rules over them were given a first-order model-theoretic foundation (original <a class="external text" href="http://www.cs.unb.ca/~boley/papers/SemanticsPsoaRules.pdf">paper</a> and <a class="external text" href="http://www.cs.unb.ca/~boley/talks/SemanticsPsoaRules-talk-UNB2011.pdf">slides</a>, revised <a class="external text" href="http://www.cs.unb.ca/~boley/papers/MinObjMaxUnnPSOARuleML.pdf">paper</a> and <a class="external text" href="http://www.cs.unb.ca/~boley/talks/MinObjMaxUnnPSOARuleML-talk.pdf">slides</a>, and further revised <a class="external text" href="https://arxiv.org/pdf/1712.02869">paper</a>), allowing to normalize any oidful atom of the systematics via a <i>describution</i> law (distributing the atom's OID over its descriptors). In order to support reasoning in PSOA RuleML, the <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#PSOATransRun" title="PSOA RuleML">PSOATransRun</a> system has been developed, including a combination of 1) a normalizing translator <a class="external text" href="http://www.cs.unb.ca/~boley/papers/PSOA2Prolog.pdf">PSOA2Prolog</a>, from PSOA RuleML to a subset of the logic programming language <a class="external text" href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=21413">ISO Prolog</a>, with 2) the well-known efficient <a class="external text" href="http://xsb.sourceforge.net/">XSB Prolog</a> engine. There is a <a href="http://wiki.ruleml.org/index.php/PSOARuleMLInvitedTutorialExamplesRW2015" title="PSOARuleMLInvitedTutorialExamplesRW2015">comprehensive collection</a> of PSOATransRun-executable examples of PSOA RuleML knowledge bases, queries, and answers. 
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Presentation_Preview"><span class="tocnumber">1</span> <span class="toctext">Presentation Preview</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Introduction"><span class="tocnumber">2</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Specification"><span class="tocnumber">3</span> <span class="toctext">Specification</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Syntax"><span class="tocnumber">3.1</span> <span class="toctext">Syntax</span></a>
+<ul>
+<li class="toclevel-3 tocsection-5"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Serialization_Preview"><span class="tocnumber">3.1.1</span> <span class="toctext">Serialization Preview</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Monolithic_Syntax"><span class="tocnumber">3.1.2</span> <span class="toctext">Monolithic Syntax</span></a>
+<ul>
+<li class="toclevel-4 tocsection-7"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Monolithic_EBNF_for_PSOA_RuleML_Presentation_Syntax"><span class="tocnumber">3.1.2.1</span> <span class="toctext">Monolithic EBNF for PSOA RuleML Presentation Syntax</span></a></li>
+<li class="toclevel-4 tocsection-8"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Monolithic_RNC_for_PSOA_RuleML_Serialization_Syntax"><span class="tocnumber">3.1.2.2</span> <span class="toctext">Monolithic RNC for PSOA RuleML Serialization Syntax</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3 tocsection-9"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Modular_Syntax"><span class="tocnumber">3.1.3</span> <span class="toctext">Modular Syntax</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-10"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Semantics"><span class="tocnumber">3.2</span> <span class="toctext">Semantics</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Implementation"><span class="tocnumber">4</span> <span class="toctext">Implementation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-12"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#PSOATransRun"><span class="tocnumber">4.1</span> <span class="toctext">PSOATransRun</span></a>
+<ul>
+<li class="toclevel-3 tocsection-13"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#TPTP_Instantiation"><span class="tocnumber">4.1.1</span> <span class="toctext">TPTP Instantiation</span></a>
+<ul>
+<li class="toclevel-4 tocsection-14"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#PSOA2TPTP"><span class="tocnumber">4.1.1.1</span> <span class="toctext">PSOA2TPTP</span></a></li>
+<li class="toclevel-4 tocsection-15"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#VampirePrime"><span class="tocnumber">4.1.1.2</span> <span class="toctext">VampirePrime</span></a></li>
+<li class="toclevel-4 tocsection-16"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Implemented_feature_list_and_restrictions"><span class="tocnumber">4.1.1.3</span> <span class="toctext">Implemented feature list and restrictions</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3 tocsection-17"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Prolog_Instantiation"><span class="tocnumber">4.1.2</span> <span class="toctext">Prolog Instantiation</span></a>
+<ul>
+<li class="toclevel-4 tocsection-18"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#PSOA2Prolog"><span class="tocnumber">4.1.2.1</span> <span class="toctext">PSOA2Prolog</span></a></li>
+<li class="toclevel-4 tocsection-19"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#XSB_Prolog"><span class="tocnumber">4.1.2.2</span> <span class="toctext">XSB Prolog</span></a></li>
+<li class="toclevel-4 tocsection-20"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Built-ins"><span class="tocnumber">4.1.2.3</span> <span class="toctext">Built-ins</span></a></li>
+<li class="toclevel-4 tocsection-21"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#PSOA_Libraries"><span class="tocnumber">4.1.2.4</span> <span class="toctext">PSOA Libraries</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-22"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Test_Cases"><span class="tocnumber">5</span> <span class="toctext">Test Cases</span></a>
+<ul>
+<li class="toclevel-2 tocsection-23"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Equality_Primitive_with_Psoa_Constants"><span class="tocnumber">5.1</span> <span class="toctext">Equality Primitive with Psoa Constants</span></a></li>
+<li class="toclevel-2 tocsection-24"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Equality_Primitive_with_Psoa_Constants_having_Prefixes"><span class="tocnumber">5.2</span> <span class="toctext">Equality Primitive with Psoa Constants having Prefixes</span></a></li>
+<li class="toclevel-2 tocsection-25"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Equality_Primitive_with_Psoa_Variables"><span class="tocnumber">5.3</span> <span class="toctext">Equality Primitive with Psoa Variables</span></a></li>
+<li class="toclevel-2 tocsection-26"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Equality_Primitive_with_Psoa_Functions"><span class="tocnumber">5.4</span> <span class="toctext">Equality Primitive with Psoa Functions</span></a></li>
+<li class="toclevel-2 tocsection-27"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#External_Primitive_for_Predicate_Arithmetic_Built-Ins"><span class="tocnumber">5.5</span> <span class="toctext">External Primitive for Predicate Arithmetic Built-Ins</span></a></li>
+<li class="toclevel-2 tocsection-28"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Equality_Primitive_with_External_Primitive_for_Functional_Arithmetic_Built-Ins"><span class="tocnumber">5.6</span> <span class="toctext">Equality Primitive with External Primitive for Functional Arithmetic Built-Ins</span></a></li>
+<li class="toclevel-2 tocsection-29"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Purchase_Facts"><span class="tocnumber">5.7</span> <span class="toctext">Purchase Facts</span></a></li>
+<li class="toclevel-2 tocsection-30"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Purchase-Conditioned_Ground_Rules"><span class="tocnumber">5.8</span> <span class="toctext">Purchase-Conditioned Ground Rules</span></a></li>
+<li class="toclevel-2 tocsection-31"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Purchase-Conditioned_Non-Ground_Rules"><span class="tocnumber">5.9</span> <span class="toctext">Purchase-Conditioned Non-Ground Rules</span></a></li>
+<li class="toclevel-2 tocsection-32"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Single-Tuple_Psoa_Term"><span class="tocnumber">5.10</span> <span class="toctext">Single-Tuple Psoa Term</span></a></li>
+<li class="toclevel-2 tocsection-33"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Multi-Slot_Psoa_Term"><span class="tocnumber">5.11</span> <span class="toctext">Multi-Slot Psoa Term</span></a></li>
+<li class="toclevel-2 tocsection-34"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Multi-Valued_Slot"><span class="tocnumber">5.12</span> <span class="toctext">Multi-Valued Slot</span></a></li>
+<li class="toclevel-2 tocsection-35"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Psoa_Terms_with_Slots_and_Tuples"><span class="tocnumber">5.13</span> <span class="toctext">Psoa Terms with Slots and Tuples</span></a></li>
+<li class="toclevel-2 tocsection-36"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Class_Membership"><span class="tocnumber">5.14</span> <span class="toctext">Class Membership</span></a></li>
+<li class="toclevel-2 tocsection-37"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Family_1"><span class="tocnumber">5.15</span> <span class="toctext">Family 1</span></a></li>
+<li class="toclevel-2 tocsection-38"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Family_2"><span class="tocnumber">5.16</span> <span class="toctext">Family 2</span></a></li>
+<li class="toclevel-2 tocsection-39"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Family_2.27"><span class="tocnumber">5.17</span> <span class="toctext">Family 2'</span></a></li>
+<li class="toclevel-2 tocsection-40"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Startup_A"><span class="tocnumber">5.18</span> <span class="toctext">Startup A</span></a></li>
+<li class="toclevel-2 tocsection-41"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Startup_B"><span class="tocnumber">5.19</span> <span class="toctext">Startup B</span></a></li>
+<li class="toclevel-2 tocsection-42"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Rules_over_Ground_and_Non-Ground_Psoa_Terms"><span class="tocnumber">5.20</span> <span class="toctext">Rules over Ground and Non-Ground Psoa Terms</span></a></li>
+<li class="toclevel-2 tocsection-43"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Rules_over_Non-Ground_Psoa_Terms"><span class="tocnumber">5.21</span> <span class="toctext">Rules over Non-Ground Psoa Terms</span></a></li>
+<li class="toclevel-2 tocsection-44"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Conjunctive_Query_of_Non-Ground_Fact"><span class="tocnumber">5.22</span> <span class="toctext">Conjunctive Query of Non-Ground Fact</span></a></li>
+<li class="toclevel-2 tocsection-45"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Multiple_Entailment"><span class="tocnumber">5.23</span> <span class="toctext">Multiple Entailment</span></a></li>
+<li class="toclevel-2 tocsection-46"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Objectification_of_Relational_Psoa_Terms"><span class="tocnumber">5.24</span> <span class="toctext">Objectification of Relational Psoa Terms</span></a></li>
+<li class="toclevel-2 tocsection-47"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Recursion"><span class="tocnumber">5.25</span> <span class="toctext">Recursion</span></a></li>
+<li class="toclevel-2 tocsection-48"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Subclass_1"><span class="tocnumber">5.26</span> <span class="toctext">Subclass 1</span></a></li>
+<li class="toclevel-2 tocsection-49"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Subclass_2"><span class="tocnumber">5.27</span> <span class="toctext">Subclass 2</span></a></li>
+<li class="toclevel-2 tocsection-50"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Factorial_with_Relational_Arithmetic_Tables"><span class="tocnumber">5.28</span> <span class="toctext">Factorial with Relational Arithmetic Tables</span></a></li>
+<li class="toclevel-2 tocsection-51"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Factorial_with_Eq-Functional_Arithmetic_Tables"><span class="tocnumber">5.29</span> <span class="toctext">Factorial with Eq-Functional Arithmetic Tables</span></a></li>
+<li class="toclevel-2 tocsection-52"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Factorial_3"><span class="tocnumber">5.30</span> <span class="toctext">Factorial 3</span></a></li>
+<li class="toclevel-2 tocsection-53"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Concatenation"><span class="tocnumber">5.31</span> <span class="toctext">Concatenation</span></a></li>
+<li class="toclevel-2 tocsection-54"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Music_Album"><span class="tocnumber">5.32</span> <span class="toctext">Music Album</span></a></li>
+<li class="toclevel-2 tocsection-55"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Slotribution_1"><span class="tocnumber">5.33</span> <span class="toctext">Slotribution 1</span></a></li>
+<li class="toclevel-2 tocsection-56"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Slotribution_2"><span class="tocnumber">5.34</span> <span class="toctext">Slotribution 2</span></a></li>
+<li class="toclevel-2 tocsection-57"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Mixed_Use_of_Psoa_Terms_with_and_without_OIDs"><span class="tocnumber">5.35</span> <span class="toctext">Mixed Use of Psoa Terms with and without OIDs</span></a></li>
+<li class="toclevel-2 tocsection-58"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Subclass_Axiomatization"><span class="tocnumber">5.36</span> <span class="toctext">Subclass Axiomatization</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-59"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Use_Cases"><span class="tocnumber">6</span> <span class="toctext">Use Cases</span></a>
+<ul>
+<li class="toclevel-2 tocsection-60"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Port_Clearance_Rules"><span class="tocnumber">6.1</span> <span class="toctext">Port Clearance Rules</span></a></li>
+<li class="toclevel-2 tocsection-61"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Geospatial_Rules"><span class="tocnumber">6.2</span> <span class="toctext">Geospatial Rules</span></a></li>
+<li class="toclevel-2 tocsection-62"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#OfficeProspector"><span class="tocnumber">6.3</span> <span class="toctext">OfficeProspector</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-63"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Changes"><span class="tocnumber">7</span> <span class="toctext">Changes</span></a></li>
+<li class="toclevel-1 tocsection-64"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#PSOA_RuleML_vs._RIF_RuleML"><span class="tocnumber">8</span> <span class="toctext">PSOA RuleML vs. RIF RuleML</span></a></li>
+<li class="toclevel-1 tocsection-65"><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#References"><span class="tocnumber">9</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Presentation_Preview"><span class="mw-headline-number">1</span> Presentation Preview</span></h2>
+<p>In PSOA RuleML's presentation syntax, a simple <tt>_purchase</tt> predicate with three arguments, <tt>_John</tt>, <tt>_Mary</tt>, and <tt>_Fido</tt>, can be represented as a relationship fact (the underscore prefix, "<tt>_</tt>", indicates <i>local</i> symbols, and argument order is significant):
+</p>
+<pre>_purchase(_John _Mary _Fido)
+</pre>
+<p>This is the abridged version of the following unabridged form, where the "<tt>+</tt>"-prefixed square-bracket construct <tt>+[</tt>...<tt>]</tt> makes explicit that there is a single dependent ("<tt>+</tt>") tuple:
+</p>
+<pre>_purchase(+[_John _Mary _Fido])
+</pre>
+<p>Alternatively, a <tt>_purchase</tt> predicate can be represented as a frame fact, adding an OID, <tt>_transaction200</tt>, and slot names, <tt>_buyer</tt>, <tt>_seller</tt>, and <tt>_item</tt> (the hash infix, "<tt>#</tt>", separates an OID from its predicate, thus indicating membership, and the arrow infix, "<tt>-&gt;</tt>", separates a slot name from its filler, where slot order is insignificant):
+</p>
+<pre>_transaction200#_purchase(_buyer-&gt;_John _seller-&gt;_Mary _item-&gt;_Fido)
+</pre>
+<p>Here, the "<tt>-</tt>"-shafted arrow constructs ...<tt>-&gt;</tt>... make explicit that there are multiple independent ("<tt>-</tt>") slots.
+</p><p>In the above relationship, with no OID, the predicate <tt>_purchase</tt> acts only as a relator (between the three positional arguments).
+In the membership <tt>_transaction200#_purchase</tt>, a special kind of frame with no arguments, it acts only as a class (of the OID).
+In the above frame, it acts both as a relator (between the three slotted arguments) and as a class (of the OID).
+</p><p>For refined versions of these <tt>_purchase</tt> facts, along with characteristic queries, see the <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Purchase_Facts">Purchase Facts Section</a>; for their XML serialization see the <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Syntax">Syntax Section</a>.
+</p><p>PSOA RuleML permits to create rules over such atoms. The main parts of a rule are its condition, typically an atom or a conjunction of atoms, and its conclusion, typically an atom.
+</p><p>For example, a ground (variableless) rule can make the above <tt>_purchase</tt> relationship the condition of a <tt>_liability</tt> relationship as the conclusion, formalizing the English sentence "John is liable for Fido if John purchases Fido from Mary" (the colon-dash infix, "<tt>:-</tt>", indicates the "if", i.e. "is-implied by"):
+</p>
+<pre>_liability(_John _Fido)&nbsp;:-
+  _purchase(_John _Mary _Fido)
+</pre>
+<p>Similarly, the above <tt>_purchase</tt> frame can be used as the condition of a ground rule whose <tt>_liability</tt>-frame conclusion adds another OID, <tt>_registration800</tt>, and slot names, <tt>_citizen</tt> and <tt>_item</tt> (again allowing the two slots to appear in any order):
+</p>
+<pre>_registration800#_liability(_citizen-&gt;_John _item-&gt;_Fido)&nbsp;:-
+  _transaction200#_purchase(_buyer-&gt;_John _seller-&gt;_Mary _item-&gt;_Fido)
+</pre>
+<p>A corresponding non-ground (variableful) relationship<tt>:-</tt>relationship rule can universally (<tt>Forall</tt>) abstract
+the constant <tt>_John</tt> to the variable <tt>?c</tt>, <tt>_Mary</tt> to <tt>?s</tt>, and <tt>_Fido</tt> to <tt>?i</tt> (the question-mark prefix, "<tt>?</tt>", indicates variables):
+</p>
+<pre>Forall&nbsp;?c&nbsp;?s&nbsp;?i (
+ _liability(?c&nbsp;?i)&nbsp;:-
+   _purchase(?c&nbsp;?s&nbsp;?i)
+)
+</pre>
+<p>Likewise, a corresponding non-ground frame<tt>:-</tt>frame rule can additionally abstract
+the OID constant <tt>_transaction200</tt> to the OID variable <tt>?t</tt> and replace the OID constant <tt>_registration800</tt> with the OID-(constructor-)function application <tt>_liabilityID(?t)</tt> (indicating OID dependency on <tt>?t</tt>):
+</p>
+<pre>Forall&nbsp;?c&nbsp;?s&nbsp;?i&nbsp;?t (
+ _liabilityID(?t)#_liability(_citizen-&gt;?c _item-&gt;?i)&nbsp;:-
+  &nbsp;?t#_purchase(_buyer-&gt;?c _seller-&gt;?s _item-&gt;?i)
+)
+</pre>
+<p>For refined versions of these <tt>_purchase</tt>-conditioned rules, along with characteristic queries, see the <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Purchase-Conditioned_Ground_Rules">Purchase-Conditioned Ground Rules Section</a> and <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Purchase-Conditioned_Non-Ground_Rules">Purchase-Conditioned Non-Ground Rules Section</a>; for their XML serialization see the <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Syntax">Syntax Section</a>.
+</p>
+<h2><span class="mw-headline" id="Introduction"><span class="mw-headline-number">2</span> Introduction</span></h2>
+<p>In AI, the Semantic Web, and IT at large, <b>data</b> can be modeled in the contrasting paradigms of <i>relationships</i> having a relation applied to an ordered tuple of positional arguments (e.g., in relational databases and Datalog) or <i>frames</i> having a globally unique Object IDentifier (OID), usually typed by a class, and an unordered multiset of
+slotted arguments (e.g., in graph databases and RDF).
+On top of such data atoms, <b>rules</b> may use just <i>relationship</i> atoms (e.g., SQL views -- i.e., Datalog rules -- and Prolog rules -- i.e., Horn rules) or just <i>frame</i> atoms (e.g., SPARQL/SPIN and N3 rules).
+In PSOA RuleML, rules may also blend both relationship atoms and frame atoms within their -- atom-conjoining -- conditions as well as across their conditions and conclusions (e.g., PSOA rules translating between relational and graph atoms for interoperation purposes).
+</p><p>Further blending the paradigms of relationships (oidless, tupled, perspectival) and frames (oidful, slotted, perspeneutral), the orthogonal dimensions characterizing PSOA RuleML atoms also allow for the complementary <i>pairship</i> atoms (oidless, slotted, perspectival), <i>shelf</i> atoms (oidful, tupled, perspeneutral), as well as oidless/oidful atoms having both tupled and slotted arguments, as summarized in the perspeneutral and perspectival "psoa tables" (simplifying the metamodel of Ref. 15 by omitting the perspeneutral+perspectival table and leaving some boxes blank instead of showing their systematic names, while only showing the common names for other boxes such as "shelves"):
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th scope="col"> <b>perspeneutral</b>
+</th>
+<th scope="col"> oidless
+</th>
+<th scope="col"> oidful
+</th></tr>
+<tr>
+<th scope="row"> tupled
+</th>
+<td>
+</td>
+<td> <big>shelves</big>
+</td></tr>
+<tr>
+<th scope="row"> slotted
+</th>
+<td>
+</td>
+<td> <big><b>frames</b></big>
+</td></tr>
+<tr>
+<th scope="row"> tupled+slotted
+</th>
+<td>
+</td>
+<td> shelframes
+</td></tr></tbody></table>
+<table class="wikitable">
+
+<tbody><tr>
+<th scope="col"> <b>perspectival</b>
+</th>
+<th scope="col"> oidless
+</th>
+<th scope="col"> oidful
+</th></tr>
+<tr>
+<th scope="row"> tupled
+</th>
+<td> <big><b>relationships</b></big>
+</td>
+<td>
+</td></tr>
+<tr>
+<th scope="row"> slotted
+</th>
+<td> <big>pairships</big>
+</td>
+<td>
+</td></tr>
+<tr>
+<th scope="row"> tupled+slotted
+</th>
+<td> relpairships
+</td>
+<td>
+</td></tr></tbody></table>
+<p>As a final extension of atoms, more than a single tuple of positional arguments is allowed, leading to multi-tuple psoa atoms.
+</p><p>The oidful atoms in the second columns of the psoa tables describe an OID, often visualized as a node in a graph, with
+</p>
+<ul><li> slots (first table, second row: frames), visualized as directed labeled arcs, each having a name/label and leading to a filler/node,</li>
+<li> tuples (first table, first row: shelves), visualized as directed unlabeled hyperarcs, each connecting a sequence of nodes,</li>
+<li> or a combination of both (first table, third row: shelframes).</li></ul>
+<p>(For various such visualizations see the Rich TA Example in Refs. 14 and 15, the <a class="external text" href="http://www.cs.unb.ca/~boley/talks/PSOAObjRelDataRules-talk.pdf">PSOA tutorial data model</a>, the <a class="external text" href="http://www.cs.unb.ca/~boley/papers/MusicAlbumKB.txt">Music Album knowledge base</a>, and the <a href="http://wiki.ruleml.org/index.php/Grailog#Family_Example" title="Grailog">Grailog family example</a>.)
+Hence, the graph formalism underlying frames is directed labeled graphs (DLGs) while the graph formalism underlying shelves is directed unlabeled hypergraphs (DUHs). When atoms of the psoa tables are stored as facts, their querying by corresponding non-ground atoms may fix only the OID (for atoms in the second column), realizing 'location-addressable' retrieval; alternatively, their querying may leave the OID open (for atoms in the second column) or not have an OID at all (for atoms in the first column), realizing 'content-addressable' retrieval. The latter alternative leads to a content-addressable memory, as often proposed for AI and cognitive architectures. Here, the general case of 'content addressing' is formalized by arbitrary-length shelves (DUHs as in the <a class="external text" href="http://www.cs.unb.ca/~boley/talks/PSOAObjRelDataRules-talk.pdf">PSOA tutorial</a>, slide 25) or relationships (DUHs as in the <a class="external text" href="http://www.cs.unb.ca/~boley/talks/PSOAObjRelDataRules-talk.pdf">PSOA tutorial</a>, slide 23); the special case of 'associative addressing' is formalized by frames (DLGs as in the <a class="external text" href="http://www.cs.unb.ca/~boley/talks/PSOAObjRelDataRules-talk.pdf">PSOA tutorial</a>, slide 31), which can be regarded as length-2 shelves (by encoding slot names / arc labels as first components of length-2 tuples / hyperarcs). This widely known special case leads to an associative memory (albeit based on labeled instead of unlabeled arcs), which might itself be implemented, e.g., by an artificial neural network.
+There are also overlaps between PSOA RuleML and <a href="http://wiki.ruleml.org/index.php/RuleML_in_JSON" title="RuleML in JSON">JSON</a>, <a class="external text" href="https://en.wikipedia.org/wiki/Key-value_database">key-value stores</a>, and <a class="external text" href="https://en.wikipedia.org/wiki/Multi-model_database">multi-model databases</a>. In particular, PSOA RuleML generalizes the representation language of key-value stores in several ways, e.g. from <code>Top</code>-predicate (untyped) pairships to arbitrary psoa atoms.
+</p><p>Proceeding from fact retrieval to rule-based inference, any combination of these atoms may be used in rule conditions (as queries) and conclusions (possibly stored as new facts).
+</p><p>The PSOA RuleML language thus introduces the integrated notion of a positional-slotted object-applicative (psoa) term as a generalization of: (1) the positional-slotted term in POSL and (2) the frame term and the class membership term in RIF-BLD. In PSOA RuleML Presentation Syntax (PSOA/PS), a psoa term <font size="4">s</font> can thus have the following right-slot normal form (for the most general form see Ref. 15):
+<font size="4">
+</font></p><font size="4">
+<pre>   o#f(+[t<sub>1,1</sub> ... t<sub>1,n<sub>1</sub></sub>] . . . +[t<sub>m,1</sub> ... t<sub>m,n<sub>m</sub></sub>] p<sub>1</sub>-&gt;v<sub>1</sub> . . . p<sub>k</sub>-&gt;v<sub>k</sub>)
+</pre>
+</font><p><font size="4"></font>
+Here, o is the object identifier (OID) described by three kinds of information:
+(1) The membership o # f makes o an instance of predicate f;
+(2) each dependent tupled argument +[t<sub>i,1</sub> ... t<sub>i,n<sub>i</sub></sub>] represents a sequence of terms associated with o;
+(3) each independent slotted argument p<sub>i</sub> -&gt; v<sub>i</sub> represents a pair of an attribute p<sub>i</sub> and its value v<sub>i</sub> associated with o.
+</p><p>An atomic formula having the form of a psoa term is called a <i>psoa atom</i>. Psoa atoms can be asserted as <b>psoa facts</b> and retrieved by <b>look-up psoa queries</b>. Such atoms can also be combined into more complex formulas using constructs from the Horn-like subset of first-order logic: conjunction, disjunction in negative positions, as well as existential and universal quantifiers in certain positions. Implication (written 'backward' as a ":-" infix) can be used for rules, e.g. of this conjunctive-condition form, where each <font size="4">s<sub>i</sub></font> is a psoa atom:
+<font size="4">
+</font></p><font size="4">
+<pre>   Forall ... ( s<sub>0</sub>&nbsp;:- And(s<sub>1</sub> . . . s<sub>z</sub>) )
+</pre>
+</font><p><font size="4"></font>
+Generally, <b>psoa rules</b> can be used to derive psoa atoms on demand, through <b>inferential psoa queries</b>.
+</p><p>The page for the <a class="external text" href="http://wiki.ruleml.org/index.php?title=PSOATransRunInvitedDemoRuleML2012">PSOATransRun Demo</a> gives introductory examples while the page <a href="http://wiki.ruleml.org/index.php/PSOARuleMLInvitedTutorialExamplesRW2015" title="PSOARuleMLInvitedTutorialExamplesRW2015">PSOARuleMLInvitedTutorialExamplesRW2015</a> proceeds to advanced examples. The papers and slides in the <a class="external text" href="http://wiki.ruleml.org/index.php?title=PSOA_RuleML#References">References</a> provide details. These include the two award-winning Refs. 1. and 3. as well as the invited tutorial Ref. 7., the challenge Ref. 13. (also presented as part of an invited tutorial), and the arXiv-maintained Ref. 15.
+</p><p>Since PSOA RuleML allows for both object-centered and relational knowledge/data modeling, it can support the specification of all kinds of object-relational transformations between the global and local schemas in Ontology/Rule-Based Data Access (<a href="http://wiki.ruleml.org/index.php/Rule-Based_Data_Access" title="Rule-Based Data Access">OBDA/RBDA</a>).
+Similarly, SQL-PSOA-SPARQL interoperation is discussed in Ref. 7., Section 5, which is also focused in <a class="external text" href="http://www.cs.unb.ca/~boley/talks/PSOAObjRelDataRules-AWoSS2015-talk.pdf">PSOAObjRelDataRules-AWoSS2015</a>.
+</p><p>A visualization for PSOA RuleML has been developed in <a href="http://wiki.ruleml.org/index.php/Grailog" title="Grailog">Grailog</a>, permitting integrated object-relational knowledge (<a class="external text" href="http://www.cs.unb.ca/~boley/talks/InteropGraphRel-AWoSS2014-talk.pdf">InteropGraphRel</a> and <a class="external text" href="http://www.cs.unb.ca/~boley/talks/PSOAObjRelDataRules-talk.pdf">PSOAObjRelDataRules</a>).
+</p>
+<h2><span class="mw-headline" id="Specification"><span class="mw-headline-number">3</span> Specification</span></h2>
+<p>The original specification of the PSOA RuleML presentation syntax and semantics is given in Ref. 1. An explanation of the PSOA RuleML serialization syntax in XML, mapped from the presentation syntax, and of the semantics are given in Ref. 7. The semantics is revised to directly accommodate oidless psoa terms in Ref. 12. The syntax and semantics are further revised for the perspectivity dimension in Ref. 15. The following subsections are set up to elaborate the specification.
+</p>
+<h3><span class="mw-headline" id="Syntax"><span class="mw-headline-number">3.1</span> Syntax</span></h3>
+<p>The PSOA RuleML presentation syntax modifies and extends the one of RIF-BLD. The PSOA RuleML/XML serialization syntax extends the one of Hornlog RuleML/XML.
+For illustrating the XML representation, the <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Serialization_Preview">first subsection</a> will serialize variations of the <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Presentation_Preview">preview example</a>.
+</p><p>For (multi-)tupled and/or (multi-)slotted psoa terms having only dependent tuples and/or independent slots, (multiple occurrences of) <tt>&lt;tupdep&gt;&lt;Tuple&gt;</tt> edge-node element pairs and/or (multiple) <tt>&lt;slot&gt;</tt> edge elements are allowed (for the most general psoa terms see Ref. 15).
+Such a psoa term used as an atomic formula has the following <b>pure PSOA</b> right-slot normal form. Here, the primed meta-variables t'<sub>i,j</sub> etc. indicate recursive XML serializations of their above presentation-syntax versions (the <tt>style</tt> attribute uses the value <tt>"<a class="external free" href="http://ruleml.org/1.02/profiles/HornPSOA-Tarski">http://ruleml.org/1.02/profiles/HornPSOA-Tarski</a>"</tt> to specify PSOA semantics with built-in slotribution and tupribution):
+<font size="3">
+</font></p><font size="3">
+<pre>   &lt;Atom style="<a class="external free" href="http://ruleml.org/1.02/profiles/HornPSOA-Tarski">http://ruleml.org/1.02/profiles/HornPSOA-Tarski</a>"&gt;
+     &lt;oid&gt;&lt;Ind&gt;o&lt;/Ind&gt;&lt;/oid&gt;&lt;op&gt;&lt;Rel&gt;f&lt;/Rel&gt;&lt;/op&gt;
+     &lt;tupdep&gt;&lt;Tuple&gt;t'<sub>1,1</sub> ... t'<sub>1,n<sub>1</sub></sub>&lt;/Tuple&gt; . . . &lt;Tuple&gt;t'<sub>m,1</sub> ... t'<sub>m,n<sub>m</sub></sub>&lt;/Tuple&gt;&lt;/tupdep&gt;
+     &lt;slot&gt;p'<sub>1</sub> v'<sub>1</sub>&lt;/slot&gt; . . . &lt;slot&gt;p'<sub>k</sub> v'<sub>k</sub>&lt;/slot&gt;
+   &lt;/Atom&gt;
+</pre>
+</font><p><font size="3"></font>
+</p><p>For an <b>extended PSOA</b> version see the RW 2015 tutorial on PSOA RuleML (Ref. 7, Section 6), where the right-slot normal form is replaced with a left-slot normal form.
+</p><p>A complete XML Schema for PSOA RuleML, the PSOA RuleML API, and their use for generating PSOA RuleML presentation syntax from the PSOA RuleML/XML serialization are described in <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML_API" title="PSOA RuleML API">PSOA RuleML API</a>.
+</p><p>The mapping between the PSOA RuleML presentation syntax and the PSOA RuleML/XML serialization syntax is given in Ref. 7, Section 6.
+</p><p>In the subsections following the serialization preview, the current PSOA presentation and serialization syntaxes are developed.
+</p>
+<h4><span class="mw-headline" id="Serialization_Preview"><span class="mw-headline-number">3.1.1</span> Serialization Preview</span></h4>
+<p>In PSOA RuleML's serialization syntax, the presentation-syntax examples from the <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Presentation_Preview">Presentation Preview</a> can be represented as follows.
+</p><p><b>Implicit-dependent-Tuple relationship fact:</b>
+</p>
+<table>
+<tbody><tr>
+<th style="text-align:left;"> (Fully striped) normal form
+</th>
+<th style="text-align:left;"> (Stripe-skipped) compact form
+</th></tr>
+<tr>
+<td><div class="mw-highlight mw-content-ltr" dir="ltr"><pre>&lt;Atom&gt;
+  &lt;op&gt;&lt;Rel&gt;purchase&lt;/Rel&gt;&lt;/op&gt;
+  &lt;arg&gt;&lt;Ind&gt;John&lt;/Ind&gt;&lt;/arg&gt;
+  &lt;arg&gt;&lt;Ind&gt;Mary&lt;/Ind&gt;&lt;/arg&gt;
+  &lt;arg&gt;&lt;Ind&gt;Fido&lt;/Ind&gt;&lt;/arg&gt;
+&lt;/Atom&gt;
+</pre></div>
+</td>
+<td><div class="mw-highlight mw-content-ltr" dir="ltr"><pre>&lt;Atom&gt;
+  &lt;Rel&gt;purchase&lt;/Rel&gt;
+  &lt;Ind&gt;John&lt;/Ind&gt;
+  &lt;Ind&gt;Mary&lt;/Ind&gt;
+  &lt;Ind&gt;Fido&lt;/Ind&gt;
+&lt;/Atom&gt;
+</pre></div>
+</td></tr></tbody></table>
+<p><b>Explicit-dependent-Tuple relationship fact in (fully striped) normal form:</b>
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>&lt;Atom&gt;
+  &lt;op&gt;&lt;Rel&gt;purchase&lt;/Rel&gt;&lt;/op&gt;
+  &lt;tupdep&gt;
+    &lt;Tuple&gt;
+      &lt;arg&gt;&lt;Ind&gt;John&lt;/Ind&gt;&lt;/arg&gt;
+      &lt;arg&gt;&lt;Ind&gt;Mary&lt;/Ind&gt;&lt;/arg&gt;
+      &lt;arg&gt;&lt;Ind&gt;Fido&lt;/Ind&gt;&lt;/arg&gt;
+    &lt;/Tuple&gt;
+  &lt;/tupdep&gt;
+&lt;/Atom&gt;
+</pre></div>
+<p><b>Frame fact in (fully striped) normal form:</b>
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>&lt;Atom&gt;
+  &lt;oid&gt;&lt;Ind&gt;transaction200&lt;/Ind&gt;&lt;/oid&gt;
+  &lt;op&gt;&lt;Rel&gt;purchase&lt;/Rel&gt;&lt;/op&gt;
+  &lt;slot&gt;&lt;Ind&gt;buyer&lt;/Ind&gt;&lt;Ind&gt;John&lt;/Ind&gt;&lt;/slot&gt;
+  &lt;slot&gt;&lt;Ind&gt;seller&lt;/Ind&gt;&lt;Ind&gt;Mary&lt;/Ind&gt;&lt;/slot&gt;
+  &lt;slot&gt;&lt;Ind&gt;item&lt;/Ind&gt;&lt;Ind&gt;Fido&lt;/Ind&gt;&lt;/slot&gt;
+&lt;/Atom&gt;
+</pre></div>
+<p><b>Implicit-dependent-Tuple ground relationship rule in (fully striped) normal form:</b>
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>&lt;Implies&gt;
+  &lt;then&gt;    &lt;!-- _liability(_John _Fido) --&gt;
+    &lt;Atom&gt;
+      &lt;op&gt;&lt;Rel&gt;liability&lt;/Rel&gt;&lt;/op&gt;
+      &lt;arg&gt;&lt;Ind&gt;John&lt;/Ind&gt;&lt;/arg&gt;
+      &lt;arg&gt;&lt;Ind&gt;Fido&lt;/Ind&gt;&lt;/arg&gt;
+    &lt;/Atom&gt;
+  &lt;/then&gt;
+  &lt;if&gt;      &lt;!-- _purchase(_John _Mary _Fido) --&gt;
+    &lt;Atom&gt;
+      &lt;op&gt;&lt;Rel&gt;purchase&lt;/Rel&gt;&lt;/op&gt;
+      &lt;arg&gt;&lt;Ind&gt;John&lt;/Ind&gt;&lt;/arg&gt;
+      &lt;arg&gt;&lt;Ind&gt;Mary&lt;/Ind&gt;&lt;/arg&gt;
+      &lt;arg&gt;&lt;Ind&gt;Fido&lt;/Ind&gt;&lt;/arg&gt;
+    &lt;/Atom&gt;
+  &lt;/if&gt;     
+&lt;/Implies&gt;
+</pre></div>
+<p><b>Ground frame rule in (fully striped) normal form:</b>
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>&lt;Implies&gt;
+  &lt;then&gt;    &lt;!-- _registration800#_liability(_citizen-&gt;_John _item-&gt;_Fido) --&gt;
+    &lt;Atom&gt;
+      &lt;oid&gt;&lt;Ind&gt;registration800&lt;/Ind&gt;&lt;/oid&gt;
+      &lt;op&gt;&lt;Rel&gt;liability&lt;/Rel&gt;&lt;/op&gt;
+      &lt;slot&gt;&lt;Ind&gt;citizen&lt;/Ind&gt;&lt;Ind&gt;John&lt;/Ind&gt;&lt;/slot&gt;
+      &lt;slot&gt;&lt;Ind&gt;item&lt;/Ind&gt;&lt;Ind&gt;Fido&lt;/Ind&gt;&lt;/slot&gt;
+    &lt;/Atom&gt;
+  &lt;/then&gt;
+  &lt;if&gt;      &lt;!-- _transaction200#_purchase(_buyer-&gt;_John _seller-&gt;_Mary _item-&gt;_Fido) --&gt;
+    &lt;Atom&gt;
+      &lt;oid&gt;&lt;Ind&gt;transaction200&lt;/Ind&gt;&lt;/oid&gt;
+      &lt;op&gt;&lt;Rel&gt;purchase&lt;/Rel&gt;&lt;/op&gt;
+      &lt;slot&gt;&lt;Ind&gt;buyer&lt;/Ind&gt;&lt;Ind&gt;John&lt;/Ind&gt;&lt;/slot&gt;
+      &lt;slot&gt;&lt;Ind&gt;seller&lt;/Ind&gt;&lt;Ind&gt;Mary&lt;/Ind&gt;&lt;/slot&gt;
+      &lt;slot&gt;&lt;Ind&gt;item&lt;/Ind&gt;&lt;Ind&gt;Fido&lt;/Ind&gt;&lt;/slot&gt;
+    &lt;/Atom&gt;
+  &lt;/if&gt;     
+&lt;/Implies&gt;
+</pre></div>
+<p><b>Implicit-dependent-Tuple non-ground relationship rule in (fully striped) normal form:</b>
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>&lt;Implies&gt;
+  &lt;then&gt;    &lt;!-- _liability(?c ?i) --&gt;
+    &lt;Atom&gt;
+      &lt;op&gt;&lt;Rel&gt;liability&lt;/Rel&gt;&lt;/op&gt;
+      &lt;arg&gt;&lt;Var&gt;c&lt;/Var&gt;&lt;/arg&gt;
+      &lt;arg&gt;&lt;Var&gt;i&lt;/Var&gt;&lt;/arg&gt;
+    &lt;/Atom&gt;
+  &lt;/then&gt;
+  &lt;if&gt;      &lt;!-- _purchase(?c ?s ?i) --&gt;
+    &lt;Atom&gt;
+      &lt;op&gt;&lt;Rel&gt;purchase&lt;/Rel&gt;&lt;/op&gt;
+      &lt;arg&gt;&lt;Var&gt;c&lt;/Var&gt;&lt;/arg&gt;
+      &lt;arg&gt;&lt;Var&gt;s&lt;/Var&gt;&lt;/arg&gt;
+      &lt;arg&gt;&lt;Var&gt;i&lt;/Var&gt;&lt;/arg&gt;
+    &lt;/Atom&gt;
+  &lt;/if&gt;     
+&lt;/Implies&gt;
+</pre></div>
+<p><b>Non-ground frame rule in (fully striped) normal form:</b>
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>&lt;Implies&gt;
+  &lt;then&gt;    &lt;!-- _liabilityID(?t)#_liability(_citizen-&gt;?c _item-&gt;?i) --&gt;
+    &lt;Atom&gt;
+      &lt;oid&gt;
+        &lt;Expr&gt;
+          &lt;op&gt;&lt;Fun&gt;liabilityID&lt;/Fun&gt;&lt;/op&gt;
+          &lt;arg&gt;&lt;Var&gt;t&lt;/Var&gt;&lt;/arg&gt;
+        &lt;/Expr&gt;
+      &lt;/oid&gt;
+      &lt;op&gt;&lt;Rel&gt;liability&lt;/Rel&gt;&lt;/op&gt;
+      &lt;slot&gt;&lt;Ind&gt;citizen&lt;/Ind&gt;&lt;Var&gt;c&lt;/Var&gt;&lt;/slot&gt;
+      &lt;slot&gt;&lt;Ind&gt;item&lt;/Ind&gt;&lt;Var&gt;i&lt;/Var&gt;&lt;/slot&gt;
+    &lt;/Atom&gt;
+  &lt;/then&gt;
+  &lt;if&gt;      &lt;!-- ?t#_purchase(_buyer-&gt;?c _seller-&gt;?s _item-&gt;?i) --&gt;
+    &lt;Atom&gt;
+      &lt;oid&gt;&lt;Var&gt;t&lt;/Var&gt;&lt;/oid&gt;
+      &lt;op&gt;&lt;Rel&gt;purchase&lt;/Rel&gt;&lt;/op&gt;
+      &lt;slot&gt;&lt;Ind&gt;buyer&lt;/Ind&gt;&lt;Var&gt;c&lt;/Var&gt;&lt;/slot&gt;
+      &lt;slot&gt;&lt;Ind&gt;seller&lt;/Ind&gt;&lt;Var&gt;s&lt;/Var&gt;&lt;/slot&gt;
+      &lt;slot&gt;&lt;Ind&gt;item&lt;/Ind&gt;&lt;Var&gt;i&lt;/Var&gt;&lt;/slot&gt;
+    &lt;/Atom&gt;
+  &lt;/if&gt;     
+&lt;/Implies&gt;
+</pre></div>
+<h4><span class="mw-headline" id="Monolithic_Syntax"><span class="mw-headline-number">3.1.2</span> Monolithic Syntax</span></h4>
+<p>Like in <a class="external text" href="https://www.w3.org/TR/rif-bld/#EBNF_Grammar_for_the_Presentation_Syntax_of_RIF-BLD_.28Informative.29">RIF-BLD</a>,
+the Condition Language represents <tt>FORMULA</tt>s (e.g., an <tt>Atom</tt> or an <tt>And</tt> of <tt>Atom</tt>s) that can be used as queries or as premises of PSOA RuleML rules, while
+the Rule Language represents entire <tt>RuleML</tt> documents including <tt>Implies</tt> <tt>CLAUSE</tt>s whose premises are such Condition <tt>FORMULA</tt>s.
+This convenient top-level Condition/Rule bi-partitioning does not prevent the syntax from being monolithic (the grammar's productions could be united or could be partitioned differently) and does not constitute the starting point of PSOA RuleML's multi-partitioned modularization.
+</p>
+<h5><span class="mw-headline" id="Monolithic_EBNF_for_PSOA_RuleML_Presentation_Syntax"><span class="mw-headline-number">3.1.2.1</span> Monolithic EBNF for PSOA RuleML Presentation Syntax</span></h5>
+<p><b>Rule Language:</b>
+</p>
+<pre>RuleML&nbsp;::= 'RuleML' '(' Base? Prefix* Import* (Assert | Query)* ')'
+Base&nbsp;::= 'Base' '(' ANGLEBRACKIRI ')'
+Prefix&nbsp;::= 'Prefix' '(' Name ANGLEBRACKIRI ')'
+Import&nbsp;::= 'Import' '(' ANGLEBRACKIRI PROFILE? ')'
+Assert&nbsp;::= 'Assert' '(' (RULE | Assert)* ')'
+Query&nbsp;::= 'Query' '(' FORMULA ')'
+RULE&nbsp;::= ('Forall' Var+ '(' CLAUSE ')') | CLAUSE
+CLAUSE&nbsp;::= Implies | HEAD
+Implies&nbsp;::= HEAD ':-' FORMULA
+HEAD&nbsp;::= ATOMIC | 'Exists' Var+ '(' HEAD ')' | 'And' '(' HEAD* ')'
+PROFILE&nbsp;::= ANGLEBRACKIRI
+</pre>
+<p><b>Condition Language:</b>
+</p>
+<pre>FORMULA&nbsp;::= 'And' '(' FORMULA* ')' |   &nbsp;% Main start symbol: formulas
+            'Or' '(' FORMULA* ')' |
+            'Exists' Var+ '(' FORMULA ')' |
+            ATOMIC |
+            'External' '(' Atom ')'
+ATOMIC&nbsp;::= Atom | Equal | Subclass
+Atom&nbsp;::= ATOMOIDLESS | ATOMOIDFUL &nbsp;% Atoms can be oidless or oidful
+ATOMOIDLESS&nbsp;::= PSOAOIDLESS       &nbsp;% Oidless atoms are oidless psoa terms
+ATOMOIDFUL&nbsp;::= PSOAOIDFUL         &nbsp;% Oidful atoms are oidful psoa terms
+Equal&nbsp;::= TERM '=' TERM
+Subclass&nbsp;::= TERM '##' TERM &nbsp;% Subclass is pars pro toto for Subpredicate
+PSOA&nbsp;::= PSOAOIDLESS | PSOAOIDFUL      &nbsp;% Extra start symbol: psoa terms
+PSOAOIDLESS&nbsp;::= TERM '(' (TERM* | TUPLEDI*) SLOTDI* ')'
+PSOAOIDFUL&nbsp;::= TERM '#' PSOAOIDLESS
+TUPLEDI&nbsp;::= ('+' | '-') '[' TERM* ']'
+SLOTDI&nbsp;::= TERM ('+&gt;' | '-&gt;') TERM
+TERM&nbsp;::= Const | Var | ATOMOIDFUL | Expr | 'External' '(' Expr ')'
+Expr&nbsp;::= PSOAOIDLESS              &nbsp;% Exprs are oidless psoa terms
+Const&nbsp;::= '"' UNICODESTRING '"^^' SYMSPACE | CONSTSHORT
+Var&nbsp;::= '?' PN_LOCAL?
+SYMSPACE&nbsp;::= ANGLEBRACKIRI | CURIE
+CONSTSHORT&nbsp;::= ANGLEBRACKIRI | CURIE | '"' UNICODESTRING '"'
+                                         | NumericLiteral | '_' PN_LOCAL?
+</pre>
+<h5><span class="mw-headline" id="Monolithic_RNC_for_PSOA_RuleML_Serialization_Syntax"><span class="mw-headline-number">3.1.2.2</span> Monolithic RNC for PSOA RuleML Serialization Syntax</span></h5>
+<p>This Relax NG schema has been developed in RNC from a further simplified version (e.g., omitting all XML attributes) of the <a href="http://wiki.ruleml.org/index.php/Specification_of_Deliberation_RuleML_1.02#Appendix_2:_Simplified_Relax_NG_for_Deliberation_RuleML" title="Specification of Deliberation RuleML 1.02">simplified monolithic RNC for Deliberation RuleML</a>.
+</p><p><b>Rule Language:</b>
+</p>
+<div style="max-height:600px; width:100%; padding-right:0px; overflow: auto; font-size:1.0em;" class="mw-highlight mw-content-ltr" dir="ltr"><pre>start =
+  RuleML
+# | ...
+  | Atom
+# | ...
+  | Implies
+# | ...
+RuleML =                   # Document
+  element RuleML {
+    act*
+  }
+act =
+  element act {
+    (Assert
+#    | ...
+    )
+  }
+Assert =
+  element Assert {
+    formula*
+  }
+formula =
+  element formula {
+#     ...  Full version has "&amp; (..." instead of "," NEWLINE "(..."
+      (Atom
+       | Uniterm
+       | Equal
+#      | ...
+       | Implies
+#      | ...
+       | Forall
+       | Exists
+#      | ...
+       | Rulebase)
+  }
+# Base = ...
+# Prefix = ...
+# Import = ...
+Rulebase =                 # Group
+  element Rulebase {
+    formula_7*
+  }
+formula_7 =                # Only (omitted) attributes differ across formula_i
+  element formula {
+#     ...  Full version has "&amp; (..." instead of "," NEWLINE "(..."
+      (Atom
+       | Uniterm
+       | Equal
+#      | ...
+       | Implies
+#      | ...
+       | Forall
+       | Exists)
+  }
+Implies =
+  element Implies {
+    if,
+    then
+  }
+Forall =
+  element Forall {
+    declare+,
+    formula_5
+  }
+formula_5 =                # Only (omitted) attributes differ across formula_i
+  element formula {
+#     ...  Full version has "&amp; (..." instead of "," NEWLINE "(..."
+      (Atom
+       | Uniterm
+       | Equal
+#      | ...
+       | Implies
+#      | ...
+       | Forall
+       | Exists)
+  }
+Exists =
+  element Exists {
+    declare+,
+    formula_6
+  }
+formula_6 =                # Only (omitted) attributes differ across formula_i
+  element formula {
+#     ...  Full version has "&amp; (..." instead of "," NEWLINE "(..."
+      (Atom
+       | Uniterm
+       | Equal
+#      | ...
+       | Implies
+#      | ...
+       | Forall
+       | Exists)
+  }
+</pre></div>
+<p><b>Condition Language:</b>
+</p>
+<div style="max-height:600px; width:100%; padding-right:0px; overflow: auto; font-size:1.0em;" class="mw-highlight mw-content-ltr" dir="ltr"><pre>And =
+  element And {
+    formula_3*
+  }
+formula_3 =                # Only (omitted) attributes differ across formula_i
+  element formula {
+#     ...  Full version has "&amp; (..." instead of "," NEWLINE "(..."
+      (Atom
+       | Uniterm
+       | Equal
+#      | ...
+       | Implies
+#      | ...
+       | Forall
+       | Exists)
+  }
+Atom =
+  element Atom {
+    oid?,
+#   ...
+    op,
+    ((arg*, repo?) | arg_2*),  # Added arg_2* for PSOA RuleML's multi-&lt;Tuple&gt; psoa atoms, with  EITHER...
+    slot*,                     # ...arg*, repo?: 1 implicit tuple having &gt;= 0 args and optional repo...OR...
+    resl?                      # ...arg_2*:      &gt;= 0 explicit &lt;Tuple&gt;s each containing &gt;= 0 args and optional repo
+  }
+Uniterm =
+  element Uniterm {
+    oid?,
+#   ...
+    op,
+    arg*,
+    repo?,
+    slot*,
+    resl?
+  }
+Equal =
+  element Equal {
+    left,
+    right
+  }
+left =
+  element left {
+#     ...  Full version has "&amp; (..." instead of "," NEWLINE "(..."
+      (# ...
+         Const
+       | Ind
+       | Data
+       | Var
+       | Expr
+       | Uniterm_2
+       | Plex)
+  }
+right =
+  element right {
+#     ...  Full version has "&amp; (..." instead of "," NEWLINE "(..."
+      (# ...
+         Const
+       | Ind
+       | Data
+       | Var
+       | Expr
+       | Uniterm_2
+       | Plex)
+  }
+Uniterm_2 =
+  element Uniterm {
+    oid?,
+    op_2,
+    arg*,
+    repo?,
+    slot*,
+    resl?
+  }
+arg_2 =
+  element arg {
+    Tuple                      # Tuple led into (from Atom) by an &lt;arg&gt; edge
+  }
+Tuple =                        # Tuple added for PSOA RuleML's multi-tuple psoa terms
+  element Tuple {
+    arg*,                      # Normal form (fully striped Tuple) contains &lt;arg&gt; edges
+    repo?                      # RW 2015 tutorial on PSOA RuleML also allows &lt;repo&gt; edge
+  }
+op =
+  element op {
+    &amp; (Rel
+#      | ...
+       | Var
+       | Expr
+       | Uniterm_2
+       | Plex)
+  }
+Rel =
+  element Rel {
+    xsd:token
+  }
+Var =
+  element Var {
+    xsd:token
+  }
+Expr =
+  element Expr {
+    op_2,
+    ((arg*, repo?) | arg_2),  # Added arg_2 for PSOA RuleML's single-&lt;Tuple&gt; psoa exprs, with  EITHER...
+    slot*,                    # ...arg*, repo?: 1 implicit tuple having &gt;= 0 args and optional repo ...OR...
+    resl?                     # ...arg_2:       1 explicit &lt;Tuple&gt; containing &gt;= 0 args and optional repo
+  }
+op_2 =
+  element op {
+    &amp; (Fun
+#      | ...
+       | Var
+       | Expr
+       | Uniterm_2
+       | Plex)
+  }
+Fun =
+  element Fun {
+    xsd:token
+  }
+repo =
+  element repo {
+    &amp; (Var | Plex_3)
+  }
+Plex_3 =
+  element Plex {
+    arg*,
+    repo?
+  }
+resl =
+  element resl {
+    &amp; (Var | Plex_2)
+  }
+Plex_2 =
+  element Plex {
+    slot*,
+    resl?
+  }
+oid =
+  element oid {
+#     ...  Full version has "&amp; (..." instead of "," NEWLINE "(..."
+      (# ...
+         Const   # EBNF has
+       | Ind     # only one
+       | Data
+       | Var
+       | Expr
+       | Uniterm_2
+       | Plex)
+  }
+arg =
+  element arg {
+#   ...  Full version has "&amp; (..." instead of "," NEWLINE "(..."
+    (# ...
+       Const   # EBNF has
+     | Ind     # only one
+     | Data
+     | Var
+     | Expr
+     | Uniterm_2
+     | Plex)
+  }
+slot =
+  element slot {
+#   ...  Full version has "&amp; (..." instead of "," NEWLINE "(..."
+    (Const | Ind | Data | Expr | Uniterm_2 | Plex),
+    (# ...
+       Const   # EBNF has
+     | Ind     # only one
+     | Data
+     | Var
+     | Expr
+     | Uniterm_2
+     | Plex)
+  }
+</pre></div>
+<h4><span class="mw-headline" id="Modular_Syntax"><span class="mw-headline-number">3.1.3</span> Modular Syntax</span></h4>
+<p>The modular RNC for the PSOA RuleML serialization syntax is being developed from the monolithic RNC above and from the    <a class="external text" href="http://deliberation.ruleml.org/1.02/relaxng/">modular RNC for Deliberation RuleML</a>.
+</p>
+<h3><span class="mw-headline" id="Semantics"><span class="mw-headline-number">3.2</span> Semantics</span></h3>
+<p>The original specification of the PSOA RuleML semantics is given in Ref. 1, Section 3.
+This semantics is explained, also in comparison to RIF-BLD, in Ref. 7, Section 7.
+A revised specification is introduced for object virtualization in Ref. 12, Section 3.
+A further revised specification is provided for perspectivity (in/dependent-tuple, in/dependent-slot psoa terms) in Ref. 15, Section 5.
+</p>
+<h2><span class="mw-headline" id="Implementation"><span class="mw-headline-number">4</span> Implementation</span></h2>
+<h3><span class="mw-headline" id="PSOATransRun"><span class="mw-headline-number">4.1</span> PSOATransRun</span></h3>
+<p>In order to support reasoning in PSOA RuleML, we have implemented the PSOATransRun system, which composes two parts. The first, PSOA2<i>i</i>, for translation from PSOA presentation syntax to an intermediate language <i>i</i>. The second, <i>r</i>, for some runtime engine executing the language <i>i</i>. The system can have multiple instantiations using different intermediate languages, where different combinations of a translator PSOA2<i>i</i> and a runtime engine <i>r</i> are employed. Two PSOATransRun[PSOA2<i>i</i>,<i>r</i>] instantiations are available: the initial PSOATransRun[PSOA2TPTP,VampirePrime], for online use, and the current PSOATransRun[PSOA2Prolog,XSBProlog], for local use.
+</p>
+<pre>Initial Release (Web-based service): <a class="external free" href="http://psoa-ruleml.rhcloud.com/">http://psoa-ruleml.rhcloud.com/</a>
+
+<b>Current Release (downloadable executable)</b>: <a class="external free" href="http://psoa.ruleml.org/transrun/1.3/local/">http://psoa.ruleml.org/transrun/1.3/local/</a>
+</pre>
+<p>Project Repository (sources): <a class="external free" href="https://github.com/RuleML/PSOATransRunComponents">https://github.com/RuleML/PSOATransRunComponents</a>
+</p><p>The directory "local" for the current release indicates that the release can be executed on a local machine (in contrast to the Web-based release).
+In our project repository, the "PSOATransRun" project includes both (1) the sources for combining the translator and the runtime engine and (2) the sources of the command line interface for the downloadable executable. 
+The "PSOATransRunWebService" project is a wrapper of "PSOATransRun" for the Web-based service.
+</p><p>Examples:
+</p>
+<ul><li> Invited Demo Examples for RuleML 2012 (<a href="http://wiki.ruleml.org/index.php/PSOATransRunInvitedDemoRuleML2012" title="PSOATransRunInvitedDemoRuleML2012">PSOATransRunInvitedDemoRuleML2012</a>)</li>
+<li> PSOA RuleML Invited Tutorial Examples RW 2015 (<a href="http://wiki.ruleml.org/index.php/PSOARuleMLInvitedTutorialExamplesRW2015" title="PSOARuleMLInvitedTutorialExamplesRW2015">PSOARuleMLInvitedTutorialExamplesRW2015</a>): The tutorial <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#References" title="PSOA RuleML">Ref. 7</a> develops a multitude of didactic examples, which can be executed with PSOATransRun after some transcription done here, since the tutorial's presentation syntax is slightly simplified (mainly omitting the "_" prefix for constants) and employs the "left-slot normal form" while the current PSOATransRun only supports the "right-slot normal form" of <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#References" title="PSOA RuleML">Ref. 1</a></li>
+<li> Copy&amp;paste-ready <a class="external text" href="http://psoa.ruleml.org/usecases/PortClearance/PortClearance.psoa">Port Clearance Knowledge Base</a> examples with queries provided in Ref. 13</li>
+<li> Perspectivity-related examples, including (in/dependent tuple/slot) Chain variations, in Ref. 15</li>
+<li> Many further examples for exploring PSOATransRun are in the <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Test_Cases" title="PSOA RuleML">Test Cases</a> section</li></ul>
+<p><br>
+</p>
+<h4><span class="mw-headline" id="TPTP_Instantiation"><span class="mw-headline-number">4.1.1</span> TPTP Instantiation</span></h4>
+<p>The TPTP instantiation employs the popular TPTP format, supported by many first-order logic reasoners, as the intermediate language.
+This PSOATransRun[PSOA2TPTP,VampirePrime] composes PSOA2TPTP and VampirePrime into a RESTful API.
+</p><p>Semantic Web Techniques Course Project (Fall 2011) Version: <a class="external free" href="http://scaryponens.github.io/PSOA-to-TPTP/build/html/index.html">http://scaryponens.github.io/PSOA-to-TPTP/build/html/index.html</a>
+</p><p>Workflow of using PSOATransRun (sample KBs &amp; queries can be obtained from the <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Test_Cases" title="PSOA RuleML">Test Case</a> section):
+</p><p>1) load the <a class="external text" href="http://psoa-ruleml.rhcloud.com/">PSOATransRun</a> page;
+</p><p>2) enter a KB into the rulebase textbox (ignore this step if you use the sample KB provided by the system);
+</p><p>3) click "Translate Rulebase" (takes you to the "TPTP Rulebase" pane and the translated KB in the TPTP format is shown);
+</p><p>4) enter a query into the query textbox (for example, _k1#_kid(_Sue _Pete));
+</p><p>5) click "Translate Query" (leaves you on the "TPTP Rulebase" pane, and the translated query in the TPTP format is appended to the end of the translated KB);
+</p><p>6) click "Execute" (takes you to the "VampirePrime Reasoner" pane and the result is shown. If the query is successful, the proof procedure for each answer will be shown in the TPTP format).
+</p>
+<h5><span class="mw-headline" id="PSOA2TPTP"><span class="mw-headline-number">4.1.1.1</span> PSOA2TPTP</span></h5>
+<p>PSOA2TPTP is our reference translator mapping knowledge bases and queries in the PSOA RuleML presentation syntax to TPTP. The translator, currently composed of a lexer, a parser, and tree walkers, is generated by the <a class="external text" href="http://www.antlr3.org/">ANTLR v3</a> parser generator tool from the grammars we developed. Details can be found in Ref. 3.
+</p>
+<h5><span class="mw-headline" id="VampirePrime"><span class="mw-headline-number">4.1.1.2</span> VampirePrime</span></h5>
+<p>VampirePrime is Alexandre Riazanov's first-order logic reasoner. Since VampirePrime is written in C++, linking some libraries that are not on current Linux distributions, a compiled version, called vkernel, had to be used. For maintenance and portability, once compatible versions of the C++ libraries are identified, the VampirePrime C++ sources from the <a class="external text" href="http://riazanov.webs.com/software.htm">Software by Alexandre Riazanov</a>, "VampirePrime reasoner", need to be recompiled.
+</p>
+<h5><span class="mw-headline" id="Implemented_feature_list_and_restrictions"><span class="mw-headline-number">4.1.1.3</span> Implemented feature list and restrictions</span></h5>
+<ul><li> Terms
+<ul><li> Constants
+<ul><li> Local constants: constant names that has only digits with a prefix '_', such as _1, _21, are disallowed since they are reserved for objectification</li>
+<li> Integers</li></ul></li>
+<li> Variables: variable name&nbsp;?obj is disallowed since it is reserved for objectification</li>
+<li> Psoa terms: any form of psoa terms acting as atomic formulas are supported while psoa terms acting as function applications are not
+<ul><li> Syntactic sugar supported: (1) omission of '[' and ']' for single tuple psoa terms; (2) omission of '(' and ')' for psoa term with only type information</li>
+<li> Objectification for OID-less psoa terms are supported </li></ul></li></ul></li>
+<li> Formulas
+<ul><li> Conjunction</li>
+<li> Existential quantification</li>
+<li> Universal quantification</li></ul></li></ul>
+<h4><span class="mw-headline" id="Prolog_Instantiation"><span class="mw-headline-number">4.1.2</span> Prolog Instantiation</span></h4>
+<p>The Prolog instantiation employs the widely used logic programming language Prolog as the intermediate language, supported by many engines.
+This PSOATransRun[PSOA2Prolog,XSBProlog] composes PSOA2Prolog and XSB Prolog.
+</p><p>Releases:
+</p><p><a class="external free" href="http://psoa.ruleml.org/transrun/0.7/local/">http://psoa.ruleml.org/transrun/0.7/local/</a>
+</p><p><a class="external free" href="http://psoa.ruleml.org/transrun/0.8/local/">http://psoa.ruleml.org/transrun/0.8/local/</a>
+</p><p><a class="external free" href="http://psoa.ruleml.org/transrun/1.0/local/">http://psoa.ruleml.org/transrun/1.0/local/</a>
+</p><p><a class="external free" href="http://psoa.ruleml.org/transrun/1.1/local/">http://psoa.ruleml.org/transrun/1.1/local/</a>
+</p><p><a class="external free" href="http://psoa.ruleml.org/transrun/1.2/local/">http://psoa.ruleml.org/transrun/1.2/local/</a>
+</p><p><a class="external free" href="http://psoa.ruleml.org/transrun/1.3/local/">http://psoa.ruleml.org/transrun/1.3/local/</a>
+</p><p><br>
+</p>
+<h5><span class="mw-headline" id="PSOA2Prolog"><span class="mw-headline-number">4.1.2.1</span> PSOA2Prolog</span></h5>
+<p>PSOA2Prolog is a translator mapping knowledge bases and queries in the PSOA RuleML presentation syntax to Prolog. The translator, currently composed of a lexer, a parser, and tree walkers, is generated by the <a class="external text" href="http://www.antlr3.org/">ANTLR v3</a> parser generator tool from the grammars we developed. The tree walkers first normalize the input knowledge base or query within PSOA RuleML and then do a syntactic transformation from PSOA RuleML to Prolog.
+</p>
+<h5><span class="mw-headline" id="XSB_Prolog"><span class="mw-headline-number">4.1.2.2</span> XSB Prolog</span></h5>
+<p><a class="external text" href="http://xsb.sourceforge.net/">XSB Prolog</a> is a Prolog engine that allows tabling of facts to improve reasoning efficiency and avoid certain infinite loops of the traditional 
+top-down Prolog execution model.
+</p>
+<h5><span class="mw-headline" id="Built-ins"><span class="mw-headline-number">4.1.2.3</span> Built-ins</span></h5>
+<p>The Prolog instantiation of PSOATransRun provides built-in mathematical predicates and functions. To use the compact IRI form of a built-in in a KB, its prefix needs to be declared at the beginning of the KB, e.g.
+</p>
+<pre>Prefix(isopl: &lt;<a class="external free" href="http://www.deransart.fr/prolog/bips.html#">http://www.deransart.fr/prolog/bips.html#</a>&gt;)
+</pre>
+<p>Built-ins are regarded as externally defined terms and need to be called using an <code class="mw-highlight" dir="ltr">External()</code> wrapper. Built-in predicates are called directly, e.g.
+</p>
+<pre>External(isopl:eq(42 42))
+</pre>
+<p>Built-in functions are called using an equality, e.g.
+</p>
+<pre>?X = External(isopl:add(41 1))
+</pre>
+<p>The list of all supported built-ins is shown in the following.
+</p>
+<ul><li> Built-ins from <a class="external text" href="https://www.w3.org/TR/2008/WD-rif-dtb-20080730/">W3C RIF</a></li></ul>
+<p>Predicates
+</p><p>RIF predicates uses the <code class="mw-highlight" dir="ltr">pred:</code> prefix, declared as
+</p>
+<pre>Prefix(pred: &lt;<a class="external free" href="http://www.w3.org/2007/rif-builtin-predicate#">http://www.w3.org/2007/rif-builtin-predicate#</a>&gt;)
+</pre>
+<dl><dt> numeric-equal&nbsp;</dt>
+<dd> pred:numeric-equal(num1 num2) yields true iff both arguments, num1 and num2, are numerically equal.</dd>
+<dt> numeric-not-equal&nbsp;</dt>
+<dd> pred:numeric-not-equal(num1 num2) yields true iff both arguments, num1 and num2, are not numerically equal.</dd>
+<dt> numeric-greater-than&nbsp;</dt>
+<dd> pred:numeric-greater-than(num1 num2) yields true iff num1 is numerically greater but not equal to num2.</dd>
+<dt> numeric-greater-than-or-equal&nbsp;</dt>
+<dd> pred:numeric-greater-than-or-equal(num1 num2) yields true iff num1 is numerically greater or equal to num2.</dd>
+<dt> numeric-less-than&nbsp;</dt>
+<dd> pred:numeric-less-than(num1 num2) yields true iff num1 is numerically less than but not equal to num2.</dd>
+<dt> numeric-less-than-or-equal&nbsp;</dt>
+<dd> pred:numeric-less-than-or-equal(num1 num2) yields true iff num1 is numerically less then or equal to num2.</dd>
+<dt> is-literal-double&nbsp;</dt>
+<dd> pred:is-literal-double(num) yields true iff the argument num is of form double.</dd>
+<dt> is-literal-integer&nbsp;</dt>
+<dd> pred:is-literal-integer(num) yields true iff the argument num is of form integer.</dd></dl>
+<p>Functions
+</p><p>RIF functions uses the <code class="mw-highlight" dir="ltr">func:</code> prefix, declared as
+</p>
+<pre>Prefix(func: &lt;<a class="external free" href="http://www.w3.org/2007/rif-builtin-function#">http://www.w3.org/2007/rif-builtin-function#</a>&gt;)
+</pre>
+<dl><dt> numeric-add&nbsp;</dt>
+<dd> func:numeric-add(num1 num2) yields the sum of the 2 arguments, num1 and num2, passed to the function.</dd>
+<dt> numeric-subtract&nbsp;</dt>
+<dd> func:numeric-subtract(num1 num2) yields the remainder of the 2 arguments, num1 and num2, passed to the function. </dd>
+<dt> numeric-multiply&nbsp;</dt>
+<dd> func:numeric-multiply(num1 num2) yields the product of the 2 arguments num1 and num2.</dd>
+<dt> numeric-divide&nbsp;</dt>
+<dd> func:numeric-divide(num1 num2) yields the quotient of 2 arguments, num1 and num2, num1 being divided by num2.</dd>
+<dt> numeric-integer-divide&nbsp;</dt>
+<dd> func:numeric-integer-divide(num1 num2) yields the quotient of the integer-division of 2 integer arguments, num1 and num2, the first argument num1 being the dividend and the second argument num2 being the divisor.</dd>
+<dt> numeric-mod&nbsp;</dt>
+<dd> func:numeric-mod(num1 num2) yields the remainder of num1 divided by num2. The sign of the result is the same as num1.</dd></dl>
+<p><br>
+</p>
+<ul><li> Built-ins from <a class="external text" href="http://www.deransart.fr/prolog/bips.html">ISO Prolog</a></li></ul>
+<p>ISO Prolog predicates and functions use the <code class="mw-highlight" dir="ltr">isopl:</code> prefix, declared as
+</p>
+<pre>Prefix(isopl: &lt;<a class="external free" href="http://www.deransart.fr/prolog/bips.html#">http://www.deransart.fr/prolog/bips.html#</a>&gt;)
+</pre>
+<p>Predicates
+</p>
+<dl><dt> integer&nbsp;</dt>
+<dd> isopl:integer(num) yields true iff the argument num is of form integer.</dd>
+<dt> float&nbsp;</dt>
+<dd> isopl:float(num) yields true iff the argument num is a float number.</dd>
+<dt> number&nbsp;</dt>
+<dd> isopl:number(num) yields true iff the argument num is a number of any form.</dd>
+<dt> eq&nbsp;</dt>
+<dd> isopl:eq(num1 num2) yields true iff both numeric arguments, num1 and num2, are numerically equal.</dd>
+<dt> not_eq&nbsp;</dt>
+<dd> isopl:not_eq(num1 num2) yields true iff both arguments, num1 and num2, are not numerically equal.</dd>
+<dt> greater_than&nbsp;</dt>
+<dd> isopl:greater_than(num1 num2) yields true iff num1 is numerically greater but not equal to num2.</dd>
+<dt> greater_than_or_eq&nbsp;</dt>
+<dd> isopl:greater_than_or_eq(num1 num2) yields true iff num1 is numerically greater or equal to num2.</dd>
+<dt> less_than&nbsp;</dt>
+<dd> isopl:less_than(num1 num2) yields true iff num1 is numerically less than but not equal to num2.</dd>
+<dt> less_than_or_eq&nbsp;</dt>
+<dd> isopl:less_than_or_eq(num1 num2) yields true iff num1 is numerically less then or equal to num2.</dd></dl>
+<p>Functions
+</p>
+<dl><dt> add&nbsp;</dt>
+<dd> isopl:add(num1 num2) yields the sum of the 2 arguments, num1 and num2, passed to the function.</dd>
+<dt> sub&nbsp;</dt>
+<dd> isopl:sub(num1 num2) yields the remainder of the 2 arguments, num1 and num2, passed to the function.</dd>
+<dt> mul&nbsp;</dt>
+<dd> isopl:mul(num1 num2) yields the product of the 2 arguments, num1 and num2.</dd>
+<dt> int-div&nbsp;</dt>
+<dd> isopl:int-div(num1 num2) yields the quotient of the integer-division of 2 integer arguments, the first argument num1 being the dividend and the second argument num2 being the divisor.</dd>
+<dt> div&nbsp;</dt>
+<dd> isopl:div(num1 num2) yields the quotient of 2 numeric arguments, num1 being divided by num2.</dd>
+<dt> abs&nbsp;</dt>
+<dd> isopl:abs(num) yields the absolute value of a single numeric argument num.</dd>
+<dt> rem&nbsp;</dt>
+<dd> isopl:rem(num1 num2) yields the remainder of num1 divided by num2. The sign of the result is the same as num1.</dd>
+<dt> mod&nbsp;</dt>
+<dd> isopl:mod(num1 num2) yields the remainder of num1 divided by num2. The sign of the result is the same as num2.</dd>
+<dt> sign&nbsp;</dt>
+<dd> isopl:sign(num) yields -1, 0 or 1 for negative numbers, zero or positive numbers respectively based on the sign of the single numeric argument num.</dd>
+<dt> float&nbsp;</dt>
+<dd> isopl:float(num) yields the single argument num in form of a float number. If the argument num is already a float number, it is not changed.</dd>
+<dt> truncate&nbsp;</dt>
+<dd> isopl:truncate(num) yields the integer part of the single float number argument num, yields the argument if it is of form integer.</dd>
+<dt> round&nbsp;</dt>
+<dd> isopl:round(num) yields the result of rounding the single numeric argument num.</dd>
+<dt> floor&nbsp;</dt>
+<dd> isopl:floor(num) yields the result of rounding down the single numeric argument num.</dd>
+<dt> ceiling&nbsp;</dt>
+<dd> isopl:ceiling(num) yields the result of rounding up the single numeric argument num.</dd>
+<dt> power&nbsp;</dt>
+<dd> isopl:power(num1 num2) yields the result of the first numeric argument num1 raised to the power of the second numeric argument num2.</dd>
+<dt> sin&nbsp;</dt>
+<dd> isopl:sin(num) yields the sine of the single numeric argument num in radians, where the argument is also expressed in radians.</dd>
+<dt> cos&nbsp;</dt>
+<dd> isopl:cos(num) yields the cosine of the single numeric argument num in radians, where the argument is also expressed in radians.</dd>
+<dt> atan&nbsp;</dt>
+<dd> isopl:atan(num) yields the arc tangent of the single numeric argument num in radians, where the argument is also expressed in radians.</dd>
+<dt> sqrt&nbsp;</dt>
+<dd> isopl:sqrt(num) yields the square root of the single numeric argument num.</dd>
+<dt> exp&nbsp;</dt>
+<dd> isopl:exp(num) yields the result of the exponential function 'e^x' with x being the single numeric argument num.</dd>
+<dt> log&nbsp;</dt>
+<dd> isopl:log(num) yields the result of the natural logarithm 'ln(x) with x being the single numeric argument num.</dd></dl>
+<h5><span class="mw-headline" id="PSOA_Libraries"><span class="mw-headline-number">4.1.2.4</span> PSOA Libraries</span></h5>
+<p>Besides built-ins, we have developed libraries in PSOA RuleML containing predicates that can be reused by other PSOA KB developers, which can be found at <a class="external free" href="http://psoa.ruleml.org/lib/">http://psoa.ruleml.org/lib/</a>. To use a library, we need to import the specific library file, e.g. phys.psoa, using, e.g., the following statement
+</p>
+<pre>Import(&lt;<a class="external free" href="http://psoa.ruleml.org/lib/phys.psoa">http://psoa.ruleml.org/lib/phys.psoa</a>&gt;)
+</pre>
+<p>To use the compact IRI form of a predicate in a library, a prefix declaration need to be added, e.g.
+</p>
+<pre>Prefix(phys: &lt;<a class="external free" href="http://psoa.ruleml.org/lib/phys#">http://psoa.ruleml.org/lib/phys#</a>&gt;)
+</pre>
+<p>Unlike built-ins, predicates from the libraries are directly called without using an <code class="mw-highlight" dir="ltr">External()</code> wrapper.
+</p>
+<pre>phys:tryDate(phys:date(2017 12 31))
+</pre>
+<p>Currently, PSOA RuleML offers 2 libraries: 'math' and 'physics'.
+</p>
+<ul><li> Math library</li></ul>
+<p>Math library predicates use the <code class="mw-highlight" dir="ltr">math:</code> prefix, declared as
+</p>
+<pre>Prefix(math: &lt;<a class="external free" href="http://psoa.ruleml.org/lib/math.psoa#">http://psoa.ruleml.org/lib/math.psoa#</a>&gt;)
+</pre>
+<dl><dt> lessThan&nbsp;</dt>
+<dd> math:lessThan(num1 num2) yields true iff num1 is numerically less than but not equal to num2.</dd>
+<dt> greaterThan&nbsp;</dt>
+<dd> math:greaterThan(num1 num2) yields true iff num1 is numerically greater but not equal to num2.</dd>
+<dt> atMost&nbsp;</dt>
+<dd> math:atMost(num1 num2) yields true iff num1 is numerically less then or equal to num2.</dd>
+<dt> atLeast&nbsp;</dt>
+<dd> math:atLeast(num1 num2) yields true iff num1 is numerically greater or equal to num2.</dd></dl>
+<ul><li> Physics library</li></ul>
+<p>Physics library predicates and functions use the <code class="mw-highlight" dir="ltr">phys:</code> prefix, declared as
+</p>
+<pre>Prefix(phys: &lt;<a class="external free" href="http://psoa.ruleml.org/lib/phys.psoa#">http://psoa.ruleml.org/lib/phys.psoa#</a>&gt;)
+</pre>
+<p>Date and time testing predicates
+</p>
+<dl><dt> tryDate&nbsp;</dt>
+<dd> phys:tryDate(d) yields true if argument d is of form phys:date(year month day) where the year, month and day are integers. Yields an error if the argument d is not of the right format.</dd>
+<dt> tryTime&nbsp;</dt>
+<dd> phys:tryTime(t) yields true if argument t is of form phys:time(hour minute second) where the hour, minute and second are integers. Yields an error if the argument t is not of the right format.</dd>
+<dt> tryDatetime&nbsp;</dt>
+<dd> phys:tryDatetime(dt) yields true if argument dt is of form phys:datetime(year month day hour minute second) yields true for the date and time part of the argument. Yields an error if the argument d is not of the right format.</dd></dl>
+<p>Date comparison predicates
+</p>
+<dl><dt> lessThanDate&nbsp;</dt>
+<dd> phys:lessThanDate(d1 d2) yields true if both phys:date arguments evaluate true for phys:tryDate(d), and d1 is less than d2.</dd>
+<dt> lessEqDate&nbsp;</dt>
+<dd> phys:lessEqDate (d1 d2) yields true if both phys:date arguments evaluate true for phys:tryDate(d), and d1 is less than or equal to d2.</dd>
+<dt> greaterThanDate&nbsp;</dt>
+<dd> phys:greaterThanDate(d1 d2) yields true if both phys:date arguments evaluate true for phys:tryDate(d), and d1 is greater than d2.</dd>
+<dt> greaterEqDate&nbsp;</dt>
+<dd> phys:greaterEqDate(d1 d2) yields true if both phys:date arguments evaluate true for phys:tryDate(d), and d1 is greater than or equal to d2.</dd>
+<dt> eqDate&nbsp;</dt>
+<dd> phys:eqDate(d1 d2) yields true if both phys:date arguments evaluate true for phys:tryDate(d), and d1 is equal to d2.</dd></dl>
+<p>Time comparison predicates
+</p>
+<dl><dt> lessThanTime&nbsp;</dt>
+<dd> phys:lessThanTime(t1 t2) yields true if both phys:time arguments evaluate true for phys:tryTime(t), and t1 is less than t2.</dd>
+<dt> lessEqTime&nbsp;</dt>
+<dd> phys:lessEqTime(t1 t2) yields true if both phys:time arguments evaluate true for phys:tryTime(t), and t1 is less than or equal to t2.</dd>
+<dt> greaterThanTime&nbsp;</dt>
+<dd> phys:greaterThanTime(t1 t2) yields true if both phys:time arguments evaluate true for phys:tryTime(t), and t1 is greater than or equal to t2.</dd>
+<dt> greaterEqTime&nbsp;</dt>
+<dd> phys:greaterEqTime(t1 t2) yields true if both phys:time arguments evaluate true for phys:tryTime(t), and t1 is greater than or equal to t2.</dd>
+<dt> eqTime&nbsp;</dt>
+<dd> phys:eqTime(t1 t2) yields true if both phys:time arguments evaluate true for phys:tryTime(t), and t1 is equal to t2.</dd></dl>
+<p>Datetime comparison predicates
+</p>
+<dl><dt> lessThanDatetime&nbsp;</dt>
+<dd> phys:lessThanDatetime(dt1 dt2) yields true if both phys:datetime arguments evaluate true for phys:tryDatetime(dt), and dt1 is less than dt2.</dd>
+<dt> lessEqDatetime&nbsp;</dt>
+<dd> phys:lessEqDatetime(dt1 dt2) yields true if both phys:datetime arguments evaluate true for phys:tryDatetime(dt), and dt1 is less than or equal to dt2.</dd>
+<dt> greaterThanDatetime&nbsp;</dt>
+<dd> phys:greaterThanDatetime(dt1 dt2) yields true if both phys:datetime arguments evaluate true for phys:tryDatetime(dt), and dt1 is greater than dt2.</dd>
+<dt> greaterEqDatetime&nbsp;</dt>
+<dd> phys:greaterEqDatetime(dt1 dt2) yields true if both phys:datetime arguments evaluate true for phys:tryDatetime(dt), and dt1 is greater than or equal to dt2.</dd>
+<dt> eqDatetime&nbsp;</dt>
+<dd> phys:eqDatetime(dt1 dt2) yields true if both phys:datetime arguments evaluate true for phys:tryDatetime(dt), and dt1 is equal to dt2.</dd></dl>
+<p>Date yielding predicates
+</p>
+<dl><dt> currentDatetime&nbsp;</dt>
+<dd> phys:currentDatetime(dt) yields the current date-and-time value dt on the local system in the form of phys:datetime(year month day hour minute second).</dd>
+<dt> currentDatetimeUTC&nbsp;</dt>
+<dd> phys:currentDatetimeUTC(dt) yields the current date-and-time value dt for the current UTC date in the form of phys:datetime(year month day hour minute second).</dd>
+<dt> currentDate&nbsp;</dt>
+<dd> phys:currentDate(d) yields the current date value d on the local system in the form of phys:date(year month day).</dd>
+<dt> currentDateUTC&nbsp;</dt>
+<dd> phys:currentDateUTC(d) yields the current date value d for the current UTC date in the form of phys:date(year month day).</dd>
+<dt> currentTime&nbsp;</dt>
+<dd> phys:currentTime(t) yields the current time value t on the local system in the form of phys:time(hour minute second).</dd>
+<dt> currentTimeUTC&nbsp;</dt>
+<dd> phys:currentTimeUTC(t) yields the current time value t for the current UTC date in the form of phys:time(hour minute second).</dd></dl>
+<h2><span class="mw-headline" id="Test_Cases"><span class="mw-headline-number">5</span> Test Cases</span></h2>
+<p>The following examples serve to test different instantiations of the PSOATransRun implementation.
+A comment is given for each copy&amp;paste-ready query line that fails or successfully returns variable bindings. A ground query without any comment is also assumed to succeed.
+More test cases can be found at <a class="external free" href="https://github.com/RuleML/PSOATransRunComponents/tree/master/PSOATransRun">https://github.com/RuleML/PSOATransRunComponents/tree/master/PSOATransRun</a>.
+</p>
+<h3><span class="mw-headline" id="Equality_Primitive_with_Psoa_Constants"><span class="mw-headline-number">5.1</span> Equality Primitive with Psoa Constants</span></h3>
+<ul><li> Knowledge Base (Empty Document)</li></ul>
+<pre>Document ()
+</pre>
+<ul><li> Queries</li></ul>
+<pre>42 = 42
+57 = 42           &nbsp;% Fail
+-42 = -42
+-57 = -42         &nbsp;% Fail
+3.1 = 3.1
+2.7 = 3.1         &nbsp;% Fail
+_art = _art
+_abc = _art       &nbsp;% Fail
+"art" = "art"
+"abc" = "art"     &nbsp;% Fail
+"a r t" = "a r t"
+"art" = "a r t"   &nbsp;% Fail
+"a b c" = "a r t" &nbsp;% Fail
+"a b c" = "a b c"
+"a r t a b c" = "a r t a b c"
+&lt;http://example.org&gt; = &lt;http://example.org&gt;
+&lt;http://example.org&gt; = &lt;http://example.com&gt; &nbsp;% Fail
+</pre>
+<h3><span class="mw-headline" id="Equality_Primitive_with_Psoa_Constants_having_Prefixes"><span class="mw-headline-number">5.2</span> Equality Primitive with Psoa Constants having Prefixes</span></h3>
+<ul><li> Knowledge Base (Groupless Document)</li></ul>
+<pre>Document (
+  Prefix(: &lt;http://psoa.ruleml.org/test#&gt;) &nbsp;% Empty prefix
+  Prefix(ex: &lt;http://example.org/example#&gt;)
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>:art =&nbsp;:art
+:abc =&nbsp;:art       &nbsp;% Fail
+ex:try = ex:try
+ex:tst = ex:try   &nbsp;% Fail
+</pre>
+<h3><span class="mw-headline" id="Equality_Primitive_with_Psoa_Variables"><span class="mw-headline-number">5.3</span> Equality Primitive with Psoa Variables</span></h3>
+<ul><li> Knowledge Base (Empty Document)</li></ul>
+<pre>Document ()
+</pre>
+<ul><li> Queries</li></ul>
+<pre>?x = 42
+?x = 57
+And(?x = 42&nbsp;?x = 57)&nbsp;% Fail
+And(?x = 42&nbsp;?x = 42)
+And(?x = 57&nbsp;?x = 57)
+And(?x = 42&nbsp;?y = 57)
+</pre>
+<p><br>
+</p>
+<h3><span class="mw-headline" id="Equality_Primitive_with_Psoa_Functions"><span class="mw-headline-number">5.4</span> Equality Primitive with Psoa Functions</span></h3>
+<ul><li> Knowledge Base (Empty Document)</li></ul>
+<pre>Document ()
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_f(42) = _f(42)
+_f(57) = _f(42)        &nbsp;% Fail
+_f(?x) = _f(42)        &nbsp;%&nbsp;?x=42
+_g(42 57) = _g(42 57)
+_g(42 42) = _g(42 57)  &nbsp;% Fail
+_g(42&nbsp;?y) = _g(42 57)  &nbsp;%&nbsp;?y=57
+_g(?x&nbsp;?y) = _g(42 57)  &nbsp;%&nbsp;?x=42&nbsp;?y=57
+_g(?x&nbsp;?x) = _g(42 57)  &nbsp;% Fail
+_g(_f(42) 57) = _g(_f(42) 57)
+_g(_f(?x)&nbsp;?x) = _g(_f(42) 42) &nbsp;%&nbsp;?x=42
+_g(_f(?x)&nbsp;?x) = _g(_f(42) 57) &nbsp;% Fail
+And(_g(_f(?x)&nbsp;?x) = _g(_f(42) 42) _h(?x _f(?x)) = _h(42 _f(42))) &nbsp;%&nbsp;?x=42
+</pre>
+<h3><span class="mw-headline" id="External_Primitive_for_Predicate_Arithmetic_Built-Ins"><span class="mw-headline-number">5.5</span> External Primitive for Predicate Arithmetic Built-Ins</span></h3>
+<ul><li> Knowledge Base (Groupless Document)</li></ul>
+<pre>Document (
+  Prefix(pred: &lt;<a class="external free" href="http://www.w3.org/2007/rif-builtin-predicate#">http://www.w3.org/2007/rif-builtin-predicate#</a>&gt;)
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>External(pred:numeric-equal(42 42))
+External(pred:numeric-equal(42 +42))
+External(pred:numeric-equal(+42 42))
+External(pred:numeric-equal(+42 +42))
+External(pred:numeric-not-equal(42 57))
+External(pred:numeric-less-than(42 57))
+External(pred:numeric-greater-than(42 57))           &nbsp;% Fail
+External(pred:numeric-less-than-or-equal(42 42))
+External(pred:numeric-less-than-or-equal(42 57))
+External(pred:numeric-greater-than-or-equal(42 42))
+External(pred:numeric-greater-than-or-equal(42 57))  &nbsp;% Fail
+</pre>
+<h3><span class="mw-headline" id="Equality_Primitive_with_External_Primitive_for_Functional_Arithmetic_Built-Ins"><span class="mw-headline-number">5.6</span> Equality Primitive with External Primitive for Functional Arithmetic Built-Ins</span></h3>
+<ul><li> Knowledge Base (Groupless Document)</li></ul>
+<pre>Document (
+  Prefix(func: &lt;<a class="external free" href="http://www.w3.org/2007/rif-builtin-function#">http://www.w3.org/2007/rif-builtin-function#</a>&gt;)
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>42 = External(func:numeric-add(26 16))
+57 = External(func:numeric-add(26 16))              &nbsp;% Fail
+?x = External(func:numeric-add(26 16))              &nbsp;%&nbsp;?x=42
+?x = External(func:numeric-subtract(57 15))         &nbsp;%&nbsp;?x=42
+?x = External(func:numeric-multiply(21 2))          &nbsp;%&nbsp;?x=42
+?x = External(func:numeric-integer-divide(126 3))   &nbsp;%&nbsp;?x=42
+?x = External(func:numeric-integer-divide(128 3))   &nbsp;%&nbsp;?x=42
+?x = External(func:numeric-divide(126 3))           &nbsp;%&nbsp;?x=42.0
+?x = External(func:numeric-divide(126.8 4))         &nbsp;%&nbsp;?x=31.7
+?x = External(func:numeric-divide(127 4))           &nbsp;%&nbsp;?x=31.75
+?x = External(func:numeric-divide(-126 4))          &nbsp;%&nbsp;?x=-31.5
+?x = External(func:numeric-mod(128 3))              &nbsp;%&nbsp;?x=2
+?x = External(func:numeric-mod(-128 3))             &nbsp;%&nbsp;?x=-2
+</pre>
+<h3><span class="mw-headline" id="Purchase_Facts"><span class="mw-headline-number">5.7</span> Purchase Facts</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>Document (
+  Group (
+                    _purchase1a(_John _Mary _Fido)                          % oidless
+    _transaction100#_purchase1b(_John _Mary _Fido)                          % oidful
+    
+                    _purchase2a(_buyer-&gt;_John _seller-&gt;_Mary _item-&gt;_Fido)  % oidless
+    _transaction200#_purchase2b(_buyer-&gt;_John _seller-&gt;_Mary _item-&gt;_Fido)  % oidful
+    
+                    _purchase3a(_John _Mary _item-&gt;_Fido)                   % oidless
+    _transaction300#_purchase3b(_John _Mary _item-&gt;_Fido)                   % oidful
+  )
+)
+</pre></div>
+<ul><li> Queries</li></ul>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>   _purchase1a(?b ?s ?i)          % ?b=_John ?s=_Mary ?i=_Fido
+?o#_purchase1a(?b ?s ?i)          % Extra binding: ?o=_oidcons(_purchase1a _John _Mary _Fido)  (Implementation-specific fresh name)
+   _purchase1b(?b ?s ?i)          % ?b=_John ?s=_Mary ?i=_Fido   
+?o#_purchase1b(?b ?s ?i)          % Extra binding: ?o=_transaction100
+   _purchase2a(_buyer-&gt;?b _seller-&gt;?s _item-&gt;?i)  % ?b=_John ?s=_Mary ?i=_Fido
+?o#_purchase2a(_buyer-&gt;?b _seller-&gt;?s _item-&gt;?i)  % Extra binding: ?o=_1  (Implementation-specific fresh name)
+   _purchase2b(_buyer-&gt;?b _seller-&gt;?s _item-&gt;?i)  % ?b=_John ?s=_Mary ?i=_Fido
+?o#_purchase2b(_buyer-&gt;?b _seller-&gt;?s _item-&gt;?i)  % Extra binding: ?o=_transaction200  (Implementation-specific fresh name)
+   _purchase2a(_buyer-&gt;?b _item-&gt;?i _seller-&gt;?s)  % ?b=_John ?s=_Mary ?i=_Fido
+?o#_purchase2a(_buyer-&gt;?b _item-&gt;?i _seller-&gt;?s)  % Extra binding: ?o=_1  (Implementation-specific fresh name)
+   _purchase2b(_buyer-&gt;?b _item-&gt;?i _seller-&gt;?s)  % ?b=_John ?s=_Mary ?i=_Fido
+?o#_purchase2b(_buyer-&gt;?b _item-&gt;?i _seller-&gt;?s)  % Extra binding: ?o=_transaction200  (Implementation-specific fresh name)
+   _purchase2a(_buyer-&gt;?b)         % ?b=_John
+?o#_purchase2a(_buyer-&gt;?b)         % Extra binding: ?o=_1    (Implementation-specific fresh name)
+   _purchase2b(_buyer-&gt;?b)         % ?b=_John
+?o#_purchase2b(_buyer-&gt;?b)         % Extra binding: ?o=_transaction200
+   _purchase3a(?b ?s _item-&gt;?i)    % ?b=_John ?s=_Mary ?i=_Fido
+?o#_purchase3a(?b ?s _item-&gt;?i)    % Extra binding: ?o=_2    (Implementation-specific fresh name)
+   _purchase3b(?b ?s _item-&gt;?i)    % ?b=_John ?s=_Mary ?i=_Fido
+?o#_purchase3b(?b ?s _item-&gt;?i)    % Extra binding: ?o=_transaction300
+   _purchase3a(?b ?s)              % ?b=_John ?s=_Mary
+?o#_purchase3a(?b ?s)              % Extra binding: ?o=_2    (Implementation-specific fresh name)
+   _purchase3b(?b ?s)              % ?b=_John ?s=_Mary
+?o#_purchase3b(?b ?s)              % Extra binding: ?o=_transaction300
+</pre></div>
+<h3><span class="mw-headline" id="Purchase-Conditioned_Ground_Rules"><span class="mw-headline-number">5.8</span> Purchase-Conditioned Ground Rules</span></h3>
+<ul><li> KB</li></ul>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>Document(
+  Group(
+    _purchase1(_John  _Mary  _Fido)
+    _transaction200#_purchase2(_buyer-&gt;_John _seller-&gt;_Mary _item-&gt;_Fido)
+
+    _liability1(_John _Fido) :-
+      _purchase1(_John  _Mary  _Fido)
+    _registration800#_liability2(_citizen-&gt;_John _item-&gt;_Fido) :-
+      _transaction200#_purchase2(_buyer-&gt;_John _seller-&gt;_Mary _item-&gt;_Fido)
+  )
+)</pre></div>
+<ul><li> Queries</li></ul>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>   _liability1(?c ?i)                   %  ?c=_John ?i=_Fido
+?o#_liability1(?c ?i)                   %  Extra binding: ?o=_oidcons(_liability1 _John _Fido)  (Implementation-specific fresh name)
+   _liability2(_citizen-&gt;?c _item-&gt;?i)  %  ?c=_John ?i=_Fido
+?o#_liability2(_citizen-&gt;?c _item-&gt;?i)  %  Extra binding: ?o=_registration800</pre></div>
+<h3><span class="mw-headline" id="Purchase-Conditioned_Non-Ground_Rules"><span class="mw-headline-number">5.9</span> Purchase-Conditioned Non-Ground Rules</span></h3>
+<ul><li> KB</li></ul>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>Document(
+  Group(
+    _purchase1(_John  _Mary  _Fido)
+    _transaction200#_purchase2(_buyer-&gt;_John _seller-&gt;_Mary _item-&gt;_Fido)
+
+    Forall ?c ?s ?i (
+      _liability1(?c ?i) :-
+        _purchase1(?c ?s ?i)
+    )
+    Forall ?c ?s ?i ?t (
+      _liability2ID(?t)#_liability2(_citizen-&gt;?c _item-&gt;?i) :-
+        ?t#_purchase2(_buyer-&gt;?c _seller-&gt;?s _item-&gt;?i)
+    )
+  )
+)</pre></div>
+<ul><li> Queries</li></ul>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>   _liability1(?c ?i)                   %  ?c=_John ?i=_Fido
+?o#_liability1(?c ?i)                   %  Extra binding: ?o=_oidcons(_liability1 _John _Fido)  (Implementation-specific fresh name)
+   _liability2(_citizen-&gt;?c _item-&gt;?i)  %  ?c=_John ?i=_Fido
+?o#_liability2(_citizen-&gt;?c _item-&gt;?i)  %  Extra binding: ?o=_liability2ID(_transaction200)</pre></div>
+<h3><span class="mw-headline" id="Single-Tuple_Psoa_Term"><span class="mw-headline-number">5.10</span> Single-Tuple Psoa Term</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    _o1#_p(_a1 _a2)
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_o1#_p(?x _a2)       &nbsp;%&nbsp;?x=_a1
+_o1#_p(?1 _a2)       &nbsp;%&nbsp;?1=_a1 (variable-name portion of&nbsp;?1 happens to be an integer)
+</pre>
+<h3><span class="mw-headline" id="Multi-Slot_Psoa_Term"><span class="mw-headline-number">5.11</span> Multi-Slot Psoa Term</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    _o1#_p(_a-&gt;1 _b-&gt;2)
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_o1#_p(_a-&gt;1)
+_o1#_p(_a-&gt;?x)       &nbsp;%&nbsp;?x=1  (slot-filler query)
+_o1#_p(?1-&gt;1)        &nbsp;%&nbsp;?1=_a (slot-name query)
+_o1#_p(?2-&gt;?3)       &nbsp;%&nbsp;?2=_a&nbsp;?3=1;&nbsp;?2=_b&nbsp;?3=2
+</pre>
+<h3><span class="mw-headline" id="Multi-Valued_Slot"><span class="mw-headline-number">5.12</span> Multi-Valued Slot</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    _Adam#_Person(_father-&gt;_John)
+    _Jack#_Person(_father-&gt;_John)
+    _Tom#_Person(_father-&gt;_John)
+
+    Forall&nbsp;?Ch&nbsp;?M
+    (
+      &nbsp;?M#_Male(_child-&gt;?Ch)&nbsp;:-&nbsp;?Ch#_Person(_father-&gt;?M)
+    )
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_John#_Male(_child-&gt;?c1) &nbsp;%&nbsp;?c1=_Adam;&nbsp;?c1=_Jack;&nbsp;?c1=_Tom
+_John#_Male(_child-&gt;?c1 _child-&gt;?c2) &nbsp;% {_Adam, _Jack, _Tom} × {_Adam, _Jack, _Tom}
+_John#_Male(_child-&gt;?c1 _child-&gt;?c2 _child-&gt;?c3)  &nbsp;% {_Adam, _Jack, _Tom} × {_Adam, _Jack, _Tom} × {_Adam, _Jack, _Tom}
+</pre>
+<h3><span class="mw-headline" id="Psoa_Terms_with_Slots_and_Tuples"><span class="mw-headline-number">5.13</span> Psoa Terms with Slots and Tuples</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    _f1#_family(_John _Mary _child-&gt;_Tom)
+    _f2#_family([_Tom _Jane] _income-&gt;100000)
+    _f3#_family([_Mike _Jessie] [1951] _child-&gt;_Fred _child-&gt;_Jane)
+    _Jane#_Person([_female] [_bcs _mcs _phd] _job-&gt;_engineer)
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_f1#Top(_John _Mary)
+_f2#_family(?1-&gt;?2)                    &nbsp;%&nbsp;?1=_income&nbsp;?2=100000
+_f3#_family(_Mike _Jessie _child-&gt;?c)  &nbsp;%&nbsp;?c=_Fred;&nbsp;?c=_Jane
+_Jane#_Person([_bcs _mcs _phd] _job-&gt;_engineer)
+</pre>
+<h3><span class="mw-headline" id="Class_Membership"><span class="mw-headline-number">5.14</span> Class Membership</span></h3>
+<p>From <a class="external free" href="http://www.w3.org/2005/rules/wiki/Class_Membership">http://www.w3.org/2005/rules/wiki/Class_Membership</a>
+</p>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Prefix(fam: &lt;http://example.org/family#&gt;)
+
+  Group ( 
+    Forall&nbsp;?X&nbsp;?Y ( 
+      fam:isFatherOf(?Y&nbsp;?X)&nbsp;:- And(fam:isChildOf(?X&nbsp;?Y)&nbsp;?Y#fam:Male  )
+    )
+
+    fam:isChildOf(fam:Adrian fam:Uwe)
+    fam:Adrian#fam:Male
+    fam:Uwe#fam:Male 
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>fam:isFatherOf(fam:Uwe fam:Adrian)
+</pre>
+<h3><span class="mw-headline" id="Family_1"><span class="mw-headline-number">5.15</span> Family 1</span></h3>
+<ul><li> Knowledge Base (Non-objectified source)</li></ul>
+<pre>Document (
+  Group (
+    Forall&nbsp;?Hu&nbsp;?Wi&nbsp;?Ch (
+      _family(_husb-&gt;?Hu _wife-&gt;?Wi _child-&gt;?Ch)&nbsp;:-
+        And(_married(?Hu&nbsp;?Wi) _kid(?Hu&nbsp;?Ch))
+    )
+    Forall&nbsp;?Hu&nbsp;?Wi&nbsp;?Ch (
+      _family(_husb-&gt;?Hu _wife-&gt;?Wi _child-&gt;?Ch)&nbsp;:-
+        And(_married(?Hu&nbsp;?Wi) _kid(?Wi&nbsp;?Ch))
+    )
+    _married(_Joe _Sue)
+    _kid(_Sue _Pete)
+  )
+)
+</pre>
+<ul><li> Knowledge Base (Objectified source)</li></ul>
+<pre>Document (
+  Group (
+    Forall&nbsp;?Hu&nbsp;?Wi&nbsp;?Ch (
+      Exists&nbsp;?obj1 (?obj1#_family(_husb-&gt;?Hu _wife-&gt;?Wi _child-&gt;?Ch))&nbsp;:-
+        And(Exists&nbsp;?obj2 (?obj2#_married(?Hu&nbsp;?Wi))
+            Exists&nbsp;?obj3 (?obj3#_kid(?Hu&nbsp;?Ch)) )
+    )
+    Forall&nbsp;?Hu&nbsp;?Wi&nbsp;?Ch (
+      Exists&nbsp;?obj1 (?obj1#_family(_husb-&gt;?Hu _wife-&gt;?Wi _child-&gt;?Ch))&nbsp;:-
+        And(Exists&nbsp;?obj2 (?obj2#_married(?Hu&nbsp;?Wi))
+            Exists&nbsp;?obj3 (?obj3#_kid(?Wi&nbsp;?Ch)) )
+    )
+    _1#_married(_Joe _Sue)
+    _2#_kid(_Sue _Pete)
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_married(_Joe _Sue)
+_family(_husb-&gt;_Joe _wife-&gt;_Sue _child-&gt;?Ch)  &nbsp;%&nbsp;?Ch=_Pete
+</pre>
+<h3><span class="mw-headline" id="Family_2"><span class="mw-headline-number">5.16</span> Family 2</span></h3>
+<ul><li> Knowledge Base (With both oidless and oidful atoms)</li></ul>
+<pre>Document (
+  Group (
+    Forall&nbsp;?Hu&nbsp;?Wi (
+      _family(_husb-&gt;?Hu _wife-&gt;?Wi)&nbsp;:-
+              _married(?Hu&nbsp;?Wi)
+    )
+    Forall&nbsp;?Hu&nbsp;?Ch&nbsp;?o (           &nbsp;% Accommodates single-parent families ('husb'-only)
+     &nbsp;?o#_family(_child-&gt;?Ch)&nbsp;:-
+        And(?o#_family(_husb-&gt;?Hu)
+            _kid(?Hu&nbsp;?Ch))
+    )
+    Forall&nbsp;?Wi&nbsp;?Ch&nbsp;?o (           &nbsp;% Accommodates single-parent families ('wife'-only)
+     &nbsp;?o#_family(_child-&gt;?Ch)&nbsp;:-
+        And(?o#_family(_wife-&gt;?Wi)
+            _kid(?Wi&nbsp;?Ch))
+    )
+    _married(_Joe _Sue)
+    _kid(_Sue _Pete)
+    _kid(_Joe _Tom)
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_family(?p-&gt;?v)   &nbsp;%&nbsp;?p=_husb&nbsp;?v=_Joe;&nbsp;?p=_wife&nbsp;?v=_Sue;&nbsp;?p=_child&nbsp;?v=_Pete;&nbsp;?p=_child&nbsp;?v=_Tom
+_family(_husb-&gt;_Joe _child-&gt;?Ch)   &nbsp;%&nbsp;?Ch=_Pete;&nbsp;?Ch=_Tom
+_family(_husb-&gt;?Hu _wife-&gt;?Wi _child-&gt;?Ch)   &nbsp;%&nbsp;?Hu=_Joe&nbsp;?Wi=_Sue&nbsp;?Ch=_Tom;&nbsp;?Hu=_Joe&nbsp;?Wi=_Sue&nbsp;?Ch=_Pete
+And(_family(_husb-&gt;_Joe _wife-&gt;_Sue _child-&gt;?Who) _kid(_Sue&nbsp;?Who))   &nbsp;%&nbsp;?Who=_Pete
+Exists&nbsp;?1 (?1#_family(?p-&gt;?v))   &nbsp;%&nbsp;?p=_husb&nbsp;?v=_Joe;&nbsp;?p=_wife&nbsp;?v=_Sue;&nbsp;?p=_child&nbsp;?v=_Pete;&nbsp;?p=_child&nbsp;?v=_Tom
+Exists&nbsp;?1 (?1#_family(_husb-&gt;_Joe _child-&gt;?Ch))   &nbsp;%&nbsp;?Ch=_Pete;&nbsp;?Ch=_Tom
+Exists&nbsp;?1 (?1#_family(_husb-&gt;?Hu _wife-&gt;?Wi _child-&gt;?Ch))   &nbsp;%&nbsp;?Hu=_Joe&nbsp;?Wi=_Sue&nbsp;?Ch=_Tom;&nbsp;?Hu=_Joe&nbsp;?Wi=_Sue&nbsp;?Ch=_Pete
+And(Exists&nbsp;?1 (?1#_family(_husb-&gt;_Joe _wife-&gt;_Sue _child-&gt;?Who)) _kid(_Sue&nbsp;?Who))   &nbsp;%&nbsp;?Who=_Pete
+?1#_family()   &nbsp;%&nbsp;?1=_skolem1(_Joe _Sue)   (Implementation-specific fresh name)
+</pre>
+<h3><span class="mw-headline" id="Family_2.27"><span class="mw-headline-number">5.17</span> Family 2'</span></h3>
+<ul><li> Knowledge Base (With only oidful atoms)</li></ul>
+<pre>Document (
+  Group (
+    Forall&nbsp;?Hu&nbsp;?Wi (
+      Exists&nbsp;?obj1 (?obj1#_family(_husb-&gt;?Hu _wife-&gt;?Wi))&nbsp;:-
+             Exists&nbsp;?obj2 (?obj2#_married(?Hu&nbsp;?Wi))
+    )
+    Forall&nbsp;?Hu&nbsp;?Wi&nbsp;?Ch&nbsp;?o (
+     &nbsp;?o#_family(_child-&gt;?Ch)&nbsp;:-
+        And(?o#_family(_husb-&gt;?Hu _wife-&gt;?Wi)
+            Exists&nbsp;?obj3 (?obj3#_kid(?Hu&nbsp;?Ch)) )
+    )
+    Forall&nbsp;?Hu&nbsp;?Wi&nbsp;?Ch&nbsp;?o (
+     &nbsp;?o#_family(_child-&gt;?Ch)&nbsp;:-
+        And(?o#_family(_husb-&gt;?Hu _wife-&gt;?Wi)
+            Exists&nbsp;?obj4 (?obj4#_kid(?Wi&nbsp;?Ch)) )
+    )
+    _m1#_married(_Joe _Sue)
+    _k1#_kid(_Sue _Pete)
+    _k2#_kid(_Joe _Tom)
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_family(?p-&gt;?v)   &nbsp;%&nbsp;?p=_husb&nbsp;?v=_Joe;&nbsp;?p=_wife&nbsp;?v=_Sue;&nbsp;?p=_child&nbsp;?v=_Pete;&nbsp;?p=_child&nbsp;?v=_Tom
+_family(_husb-&gt;_Joe _child-&gt;?Ch)   &nbsp;%&nbsp;?Ch=_Pete;&nbsp;?Ch=_Tom
+_family(_husb-&gt;?Hu _wife-&gt;?Wi _child-&gt;?Ch)   &nbsp;%&nbsp;?Hu=_Joe&nbsp;?Wi=_Sue&nbsp;?Ch=_Tom;&nbsp;?Hu=_Joe&nbsp;?Wi=_Sue&nbsp;?Ch=_Pete
+And(_family(_husb-&gt;_Joe _wife-&gt;_Sue _child-&gt;?Who) _kid(_Sue&nbsp;?Who))   &nbsp;%&nbsp;?Who=_Pete
+Exists&nbsp;?1 (?1#_family(?p-&gt;?v))   &nbsp;%&nbsp;?p=_husb&nbsp;?v=_Joe;&nbsp;?p=_wife&nbsp;?v=_Sue;&nbsp;?p=_child&nbsp;?v=_Pete;&nbsp;?p=_child&nbsp;?v=_Tom
+Exists&nbsp;?1 (?1#_family(_husb-&gt;_Joe _child-&gt;?Ch))   &nbsp;%&nbsp;?Ch=_Pete;&nbsp;?Ch=_Tom
+Exists&nbsp;?1 (?1#_family(_husb-&gt;?Hu _wife-&gt;?Wi _child-&gt;?Ch))   &nbsp;%&nbsp;?Hu=_Joe&nbsp;?Wi=_Sue&nbsp;?Ch=_Tom;&nbsp;?Hu=_Joe&nbsp;?Wi=_Sue&nbsp;?Ch=_Pete
+And(Exists&nbsp;?1 (?1#_family(_husb-&gt;_Joe _wife-&gt;_Sue _child-&gt;?Who)) _kid(_Sue&nbsp;?Who))   &nbsp;%&nbsp;?Who=_Pete
+?1#_family()   &nbsp;%&nbsp;?1=_skolem1(_Joe _Sue)   (Implementation-specific fresh name)
+</pre>
+<h3><span class="mw-headline" id="Startup_A"><span class="mw-headline-number">5.18</span> Startup A</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>Document (
+  Group (
+    Forall ?CEO ?CTO ?E (
+      _startup1(_ceo-&gt;?CEO _cto-&gt;?CTO _employee-&gt;?E) :- 
+          And(_cofounders(?CEO ?CTO) _hire(?CEO ?E))
+    )
+   
+    Forall ?CEO ?CTO ?E (
+      _startup2ID(?CEO ?CTO ?E)#_startup2(_ceo-&gt;?CEO _cto-&gt;?CTO _employee-&gt;?E) :- 
+          And(_cofounders(?CEO ?CTO) _hire(?CEO ?E))
+    )
+    
+    Forall ?CEO ?CTO ?E (
+      _startup3ID(?CEO ?CTO)#_startup3(_ceo-&gt;?CEO _cto-&gt;?CTO _employee-&gt;?E) :- 
+          And(_cofounders(?CEO ?CTO) _hire(?CEO ?E))
+    )
+    
+    Forall ?CEO ?CTO ?E (
+      _startup4(?CEO ?CTO _employee-&gt;?E) :- 
+          And(_cofounders(?CEO ?CTO) _hire(?CEO ?E))
+    )
+   
+    Forall ?CEO ?CTO ?E (
+      _startup5ID(?CEO ?CTO ?E)#_startup5(?CEO ?CTO _employee-&gt;?E) :- 
+          And(_cofounders(?CEO ?CTO) _hire(?CEO ?E))
+    )
+    
+    Forall ?CEO ?CTO ?E (
+      _startup6ID(?CEO ?CTO)#_startup6(?CEO ?CTO _employee-&gt;?E) :- 
+          And(_cofounders(?CEO ?CTO) _hire(?CEO ?E))
+    )
+    
+    _cofounders(_Ernie _Tony)
+    _hire(_Ernie _Kate)
+    _hire(_Ernie _Fred)
+  )
+)
+</pre></div>
+<ul><li> Queries</li></ul>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>_startup1(_ceo-&gt;?X _cto-&gt;?Y _employee-&gt;?Z)     % ?X=_Ernie ?Y=_Tony ?Z=_Fred; ?X=_Ernie ?Y=_Tony ?Z=_Kate
+?O#_startup1(_ceo-&gt;?X _cto-&gt;?Y _employee-&gt;?Z)  % Extra bindings: ?O=_skolem1(_Ernie _Tony _Fred); ?O=_skolem1(_Ernie _Tony _Kate) (Implementation-specific fresh names)
+_startup2(_ceo-&gt;?X _cto-&gt;?Y _employee-&gt;?Z)     % ?X=_Ernie ?Y=_Tony ?Z=_Fred; ?X=_Ernie ?Y=_Tony ?Z=_Kate
+?O#_startup2(_ceo-&gt;?X _cto-&gt;?Y _employee-&gt;?Z)  % Extra bindings: ?O=_startup2ID(_Ernie _Tony _Fred); ?O=_startup2ID(_Ernie _Tony _Kate)
+_startup3(_ceo-&gt;?X _cto-&gt;?Y _employee-&gt;?Z)     % ?X=_Ernie ?Y=_Tony ?Z=_Fred; ?X=_Ernie ?Y=_Tony ?Z=_Kate
+?O#_startup3(_ceo-&gt;?X _cto-&gt;?Y _employee-&gt;?Z)  % Extra bindings (same object): ?O=_startup3ID(_Ernie _Tony); ?O=_startup3ID(_Ernie _Tony)
+_startup4(?X ?Y _employee-&gt;?Z)     % ?X=_Ernie ?Y=_Tony ?Z=_Fred; ?X=_Ernie ?Y=_Tony ?Z=_Kate
+?O#_startup4(?X ?Y _employee-&gt;?Z)  % Extra bindings: ?O=_skolem1(_Ernie _Tony _Fred); ?O=_skolem1(_Ernie _Tony _Kate) (Implementation-specific fresh names)
+_startup5(?X ?Y _employee-&gt;?Z)     % ?X=_Ernie ?Y=_Tony ?Z=_Fred; ?X=_Ernie ?Y=_Tony ?Z=_Kate
+?O#_startup5(?X ?Y _employee-&gt;?Z)  % Extra bindings: ?O=_startup5ID(_Ernie _Tony _Fred); ?O=_startup5ID(_Ernie _Tony _Kate)
+_startup6(?X ?Y _employee-&gt;?Z)     % ?X=_Ernie ?Y=_Tony ?Z=_Fred; ?X=_Ernie ?Y=_Tony ?Z=_Kate
+?O#_startup6(?X ?Y _employee-&gt;?Z)  % Extra bindings (same object): ?O=_startup6ID(_Ernie _Tony); ?O=_startup6ID(_Ernie _Tony)
+?O#_startup6(?X ?Y _employee-&gt;?Z1 _employee-&gt;?Z2)  % Four answers for same _startup6ID(_Ernie _Tony), including ?Z1=_Fred ?Z2=_Kate
+</pre></div>
+<h3><span class="mw-headline" id="Startup_B"><span class="mw-headline-number">5.19</span> Startup B</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>Document (
+  Group (
+    Forall ?CEO ?CTO (
+       _startup(?CEO ?CTO) :- 
+           _cofounders(?CEO ?CTO)
+    )
+     
+    Forall ?O ?CEO ?CTO ?E (
+       ?O#Top(_employee-&gt;?E) :-
+           And(?O#_startup(?CEO ?CTO)
+               _hire(?CEO ?E))
+    )
+    
+    _cofounders(_Ernie _Tony)
+    _hire(_Ernie _Kate)
+    _hire(_Ernie _Fred)
+  )
+)
+</pre></div>
+<ul><li> Queries</li></ul>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre>?O#_startup(?X ?Y)                   % ?O=_skolem1(_Ernie _Tony) ?X=_Ernie ?Y=_Tony  (Implementation-specific fresh name _skolem1(...))
+?O#_startup(_employee-&gt;?Z)           % ?O=_skolem1(_Ernie _Tony) ?Z=_Fred; ?O=_skolem1(_Ernie _Tony) ?Z=_Kate  (Implementation-specific fresh name _skolem1(...))
+?O#_startup(?X ?Y _employee-&gt;?Z)     % Extra bindings: ?X=_Ernie ?Y=_Tony; ?X=_Ernie ?Y=_Tony
+</pre></div>
+<h3><span class="mw-headline" id="Rules_over_Ground_and_Non-Ground_Psoa_Terms"><span class="mw-headline-number">5.20</span> Rules over Ground and Non-Ground Psoa Terms</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    _a#_C(_o _b _p3-&gt;_v3)&nbsp;:- _o#_R4(_a _b)
+    _o#_R4(_a _b)&nbsp;:- _o#_R3(_a _b _p1-&gt;_v1)
+    Forall&nbsp;?X&nbsp;?1 (
+     &nbsp;?1#Top(_p1-&gt;_v1)&nbsp;:- And(?1#_R3(?X _b)&nbsp;?1#_R2())
+    )
+    _o#_R3()&nbsp;:- And(_o#_R2() _o#_R1(_p2-&gt;_v2))
+
+    _o#_R2(_a _b _p2-&gt;_v2)
+    _o#_R1()
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_a#_C(_o _b)
+_o#?r(_a _b)     &nbsp;%&nbsp;?r=_R1;&nbsp;?r=_R2;&nbsp;?r=_R3;&nbsp;?r=_R4
+_o#Top(?p-&gt;?v)   &nbsp;%&nbsp;?p=_p2,&nbsp;?v=_v2;&nbsp;?p=_p1,&nbsp;?v=_v1
+</pre>
+<h3><span class="mw-headline" id="Rules_over_Non-Ground_Psoa_Terms"><span class="mw-headline-number">5.21</span> Rules over Non-Ground Psoa Terms</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    Forall&nbsp;?X&nbsp;?Y&nbsp;?1 (
+     &nbsp;?1#_R4(?X&nbsp;?Y)&nbsp;:-&nbsp;?1#_R3(?X&nbsp;?Y _p2-&gt;_v2)
+    )
+    Forall&nbsp;?X&nbsp;?Y&nbsp;?1 (
+     &nbsp;?1#_R3(?X&nbsp;?Y)&nbsp;:- And(?X#_C2(_p3-&gt;_v3)&nbsp;?1#_R2(?X&nbsp;?Y))
+    )
+    Forall&nbsp;?1&nbsp;?X&nbsp;?Y (
+     &nbsp;?1#_R2(?X&nbsp;?Y _p1-&gt;_v1 _p2-&gt;_v2)&nbsp;:-&nbsp;?1#_R1(?X&nbsp;?Y)
+    )
+    Forall&nbsp;?1 (
+     &nbsp;?1#_C2()&nbsp;:-&nbsp;?1#_C1()
+    )
+
+    _a1#_C1()
+    _o1#_R1(_a1 _b1)
+    _a2#_C1(_p3-&gt;_v3 _p4-&gt;_v4)
+    _o2#_R1(_a2 _b2)
+    _a3#_C1()
+    _o3#_R1(_a3 _b3 _c3)
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_a1#_C2()
+_o1#_R1(_p1-&gt;_v1)
+_o2#_R3(_a2 _b2)
+_o2#_R4(_a2 _b2 _p1-&gt;_v1 _p2-&gt;_v2)
+?1#_R3(_a2&nbsp;?Y)          &nbsp;%&nbsp;?1=_o2&nbsp;?Y=_b2
+?2#_R4(?X&nbsp;?Y)           &nbsp;%&nbsp;?2=_o2&nbsp;?X=_a2&nbsp;?Y=_b2
+_o2#_R1(_a2 _b2&nbsp;?p-&gt;?v) &nbsp;%&nbsp;?p=_p1&nbsp;?v=_v1;&nbsp;?p=_p2&nbsp;?v=_v2
+?3#_R4(?X&nbsp;?Y&nbsp;?p-&gt;?v)    &nbsp;%&nbsp;?3=_o2&nbsp;?X=_a2&nbsp;?Y=_b2&nbsp;?p=_p1&nbsp;?v=_v1;&nbsp;?3=_o2&nbsp;?X=_a2&nbsp;?Y=_b2&nbsp;?p=_p2&nbsp;?v=_v2
+_o2#?r(_a2 _b2)         &nbsp;%&nbsp;?r=_R1;&nbsp;?r=_R2;&nbsp;?r=_R3;&nbsp;?r=_R4
+_o3#_R1(_p1-&gt;_v1)       &nbsp;% Fail
+</pre>
+<h3><span class="mw-headline" id="Conjunctive_Query_of_Non-Ground_Fact"><span class="mw-headline-number">5.22</span> Conjunctive Query of Non-Ground Fact</span></h3>
+<p>From <a class="external free" href="http://www.w3.org/2005/rules/wiki/EntailEverything">http://www.w3.org/2005/rules/wiki/EntailEverything</a>
+</p>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Prefix(ex: &lt;http://example.org/example#&gt;)
+
+  Group (
+    Forall&nbsp;?x ( ex:A(?x) )
+  ) 
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>And(
+  ex:A(2)
+  ex:A("any string")
+  ex:A(&lt;http://some.example.org&gt;)
+)
+</pre>
+<h3><span class="mw-headline" id="Multiple_Entailment"><span class="mw-headline-number">5.23</span> Multiple Entailment</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    Forall&nbsp;?x (_o1#_p(_a&nbsp;?x))
+    Forall&nbsp;?x (_o1#_p(?x _b))
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_o1#_p(_a _b)
+_o1#_p(_b _a)   &nbsp;% Fail
+</pre>
+<p><br>
+</p>
+<h3><span class="mw-headline" id="Objectification_of_Relational_Psoa_Terms"><span class="mw-headline-number">5.24</span> Objectification of Relational Psoa Terms</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    Forall&nbsp;?x&nbsp;?y (
+      _g(?y&nbsp;?x)&nbsp;:- _f(?x&nbsp;?y)
+    )
+    _f(_a _b)
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_g(_b _a)
+And(_f(_a _b) _g(_b _a))
+</pre>
+<p><br>
+</p>
+<h3><span class="mw-headline" id="Recursion"><span class="mw-headline-number">5.25</span> Recursion</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    Forall&nbsp;?anc&nbsp;?par&nbsp;?des (
+      _isDescendentOf(?des&nbsp;?anc)&nbsp;:- And(_isChildOf(?des&nbsp;?par) _isDescendentOf(?par&nbsp;?anc))
+    )
+    Forall&nbsp;?par&nbsp;?ch (
+      _isDescendentOf(?ch&nbsp;?par)&nbsp;:- _isChildOf(?ch&nbsp;?par)
+    )
+    _isChildOf(_Pete _Sue)
+    _isChildOf(_Sue _John)
+    _isChildOf(_John _Tom)
+    _Pete#_Person(_sex-&gt;_Male _age-&gt;24)
+    _Sue#_Person(_sex-&gt;_Female _age-&gt;47)
+    _John#_Person(_sex-&gt;_Male _age-&gt;77)
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_isDescendentOf(_Sue _Tom)
+And(_isDescendentOf(?Who _Tom)&nbsp;?Who#_Person(_sex-&gt;_Male _age-&gt;?Age)) &nbsp;%&nbsp;?Who=_Pete&nbsp;?Age=24;&nbsp;?Who=_John&nbsp;?Age=77
+</pre>
+<h3><span class="mw-headline" id="Subclass_1"><span class="mw-headline-number">5.26</span> Subclass 1</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    _o1#_c1(_a1 _a2)
+    _o2#_c1(_p-&gt;_v)
+    _c1##_c2
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_o1#_c2(_a1 _a2)
+_o2#_c2(_p-&gt;_v)
+?1#_c2(_a1&nbsp;?2)  &nbsp;%&nbsp;?1=_o1&nbsp;?2=_a2
+?1#_c2(_p-&gt;?2)  &nbsp;%&nbsp;?1=_o2&nbsp;?2=_v
+</pre>
+<h3><span class="mw-headline" id="Subclass_2"><span class="mw-headline-number">5.27</span> Subclass 2</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    _o1#_c1(_p-&gt;_v1)
+    _o2#_c3(_p-&gt;_v2)
+    _o3#_c5(_p-&gt;_v3 _q-&gt;_w0)
+    _c1##_c2
+    _c1##_c3
+    _c2##_c4
+    _c3##_c4
+    _c4##_c6
+    _c5##_c6
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_o1#?c                &nbsp;%&nbsp;?c=_c1;&nbsp;?c=_c2;&nbsp;?c=_c3;&nbsp;?c=_c4;&nbsp;?c=_c6
+?o#_c4                &nbsp;%&nbsp;?o=_o1;&nbsp;?o=_o2
+?o#_c6(_p-&gt;?v)        &nbsp;%&nbsp;?o=_o1&nbsp;?v=_v1;&nbsp;?o=_o2&nbsp;?v=_v2;&nbsp;?o=_o3&nbsp;?v=_v3
+?o#_c6(_p-&gt;?v _q-&gt;?w) &nbsp;%&nbsp;?o=_o3&nbsp;?v=_v3&nbsp;?w=_w0
+</pre>
+<p><br>
+</p>
+<h3><span class="mw-headline" id="Factorial_with_Relational_Arithmetic_Tables"><span class="mw-headline-number">5.28</span> Factorial with Relational Arithmetic Tables</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    Forall&nbsp;?x&nbsp;?y&nbsp;?fx&nbsp;?fy (
+      _factorial(?y&nbsp;?fy)&nbsp;:- 
+         And(_factorial(?x&nbsp;?fx) _multiply(?fx&nbsp;?y&nbsp;?fy) _sum(?x 1&nbsp;?y))
+    )
+    _factorial(0 1)
+
+    _sum(0 1 1)
+    _sum(1 1 2)
+    _sum(2 1 3)
+    _sum(3 1 4)
+
+    _multiply(1 1 1)
+    _multiply(1 2 2)
+    _multiply(2 3 6)
+    _multiply(6 4 24)
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_factorial(4 24)
+_factorial(?x&nbsp;?fx)  &nbsp;%&nbsp;?x=0&nbsp;?fx=1;&nbsp;?x=1&nbsp;?fx=1;&nbsp;?x=2&nbsp;?fx=2;&nbsp;?x=3&nbsp;?fx=6;&nbsp;?x=4&nbsp;?fx=24
+</pre>
+<h3><span class="mw-headline" id="Factorial_with_Eq-Functional_Arithmetic_Tables"><span class="mw-headline-number">5.29</span> Factorial with Eq-Functional Arithmetic Tables</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    Forall&nbsp;?x&nbsp;?y&nbsp;?fx&nbsp;?fy (
+      _eq(?fy _factorial(?y))&nbsp;:- 
+         And(_eq(?fx _factorial(?x)) _eq(?fy _multiply(?fx&nbsp;?y)) _eq(?y _sum(?x 1)))
+    )
+    _eq(1 _factorial(0))
+
+    _eq(1 _sum(0 1))
+    _eq(2 _sum(1 1))
+    _eq(3 _sum(2 1))
+    _eq(4 _sum(3 1))
+
+    _eq(1 _multiply(1 1))
+    _eq(2 _multiply(1 2))
+    _eq(6 _multiply(2 3))
+    _eq(24 _multiply(6 4))
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_eq(24 _factorial(4))
+_eq(?fx _factorial(?x))  &nbsp;%&nbsp;?x=0&nbsp;?fx=1;&nbsp;?x=1&nbsp;?fx=1;&nbsp;?x=2&nbsp;?fx=2;&nbsp;?x=3&nbsp;?fx=6;&nbsp;?x=4&nbsp;?fx=24
+</pre>
+<h3><span class="mw-headline" id="Factorial_3"><span class="mw-headline-number">5.30</span> Factorial 3</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Prefix(pred: &lt;<a class="external free" href="http://www.w3.org/2007/rif-builtin-predicate#">http://www.w3.org/2007/rif-builtin-predicate#</a>&gt;)
+  Prefix(func: &lt;<a class="external free" href="http://www.w3.org/2007/rif-builtin-function#">http://www.w3.org/2007/rif-builtin-function#</a>&gt;)
+ 
+  Group (
+    Forall&nbsp;?N&nbsp;?F&nbsp;?N1&nbsp;?F1 (
+      _factorial(?N&nbsp;?F)&nbsp;:-  
+         And(External(pred:numeric-greater-than(?N 0)) 
+            &nbsp;?N1 = External(func:numeric-subtract(?N 1)) 
+             _factorial(?N1&nbsp;?F1) 
+            &nbsp;?F = External(func:numeric-multiply(?N&nbsp;?F1)) )
+    )
+    _factorial(0 1)
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_factorial(5 120)
+_factorial(5&nbsp;?X)   &nbsp;%&nbsp;?X=120
+</pre>
+<p><br>
+</p>
+<h3><span class="mw-headline" id="Concatenation"><span class="mw-headline-number">5.31</span> Concatenation</span></h3>
+<ul><li> Knowledge Base (Source)</li></ul>
+<pre>Document (
+  Group (
+    Forall&nbsp;?first&nbsp;?rest&nbsp;?x&nbsp;?y (
+      _concat(_cns(?first&nbsp;?rest)&nbsp;?x _cns(?first&nbsp;?y))&nbsp;:- _concat(?rest&nbsp;?x&nbsp;?y)
+    )
+    Forall&nbsp;?x ( _concat(_nil&nbsp;?x&nbsp;?x) )
+  )
+)
+</pre>
+<ul><li> Knowledge Base (Objectified)</li></ul>
+<pre>Document (
+  Group (
+    Forall&nbsp;?first&nbsp;?rest&nbsp;?x&nbsp;?y&nbsp;?2 (
+      Exists&nbsp;?1 (?1#_concat(_cns(?first&nbsp;?rest)&nbsp;?x _cns(?first&nbsp;?y)))
+       &nbsp;:-&nbsp;?2#_concat(?rest&nbsp;?x&nbsp;?y)
+    )
+    Forall&nbsp;?x ( Exists&nbsp;?1 (?1#_concat(_nil&nbsp;?x&nbsp;?x)) )
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_concat(_cns(1 _cns(3 _nil)) _cns(1 _nil)&nbsp;?x)                   &nbsp;%&nbsp;?x=_cns(1 _cns(3 _cns(1 _nil)))
+_concat(_cns(1 _cns(3 _nil))&nbsp;?x _cns(1 _cns(3 _cns(2 _nil))))   &nbsp;%&nbsp;?x=_cns(2 _nil)
+</pre>
+<h3><span class="mw-headline" id="Music_Album"><span class="mw-headline-number">5.32</span> Music Album</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<p>A fragment of <a class="external free" href="http://www.cs.unb.ca/~boley/papers/MusicAlbumKB.txt">http://www.cs.unb.ca/~boley/papers/MusicAlbumKB.txt</a> (Executable <a class="external free" href="http://www.cs.unb.ca/~boley/papers/MusicAlbumKB.psoa">http://www.cs.unb.ca/~boley/papers/MusicAlbumKB.psoa</a>)
+</p>
+<pre>Document (
+  Prefix (: &lt;http://psoa.ruleml.org/example/music_album#&gt;)
+  
+  Group (
+   &nbsp;:o1#:albsplitObj(&nbsp;:artist-&gt;"Van Morrison"  &nbsp;:title-&gt;"Astral Weeks"             &nbsp;:favorite-&gt;"Madame George"     )
+   &nbsp;:o2#:albsplitObj(&nbsp;:artist-&gt;"Beatles"       &nbsp;:title-&gt;"Sgt. Pepper's"            &nbsp;:favorite-&gt;"A Day in the Life" )
+   &nbsp;:o3#:albsplitObj(&nbsp;:artist-&gt;"Beatles"       &nbsp;:title-&gt;"Abbey Road"               &nbsp;:favorite-&gt;"Something"         )
+   &nbsp;:o4#:albsplitObj(&nbsp;:artist-&gt;"Rolling Stones"&nbsp;:title-&gt;"Sticky Fingers"           &nbsp;:favorite-&gt;"Brown Sugar"       )
+   &nbsp;:o5#:albmergeObj(&nbsp;:artist-&gt;"Eagles"               &nbsp;:tivorite-&gt;"Hotel California"                               )
+   &nbsp;:o6#:albmergeObj(&nbsp;:artist-&gt;"Elton John"           &nbsp;:tivorite-&gt;"Goodbye Yellow Brick Road"                      )
+   &nbsp;:albmergeObj##:albsplitObj
+    Forall&nbsp;?OID&nbsp;?Tivorite
+    (
+     &nbsp;?OID#:albsplitObj(:title-&gt;?Tivorite&nbsp;:favorite-&gt;?Tivorite) &nbsp;:- &nbsp;?OID#:albmergeObj(:tivorite-&gt;?Tivorite)
+    )
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>?OID#:albsplitObj(:artist-&gt;?Artist&nbsp;:title-&gt;?Title) &nbsp;% OIDs {:o1, ...,&nbsp;:o6} and corresponding artist and title slot fillers are returned
+?OID#:albsplitObj(:title-&gt;?Title&nbsp;:artist-&gt;?Artist) &nbsp;% Same as above
+?OID#:albsplitObj(:favorite-&gt;?Favorite)            &nbsp;% OIDs {:o1, ...,&nbsp;:o6} and corresponding favorite slot fillers are returned
+?OID#:albsplitObj(:artist-&gt;?Artist&nbsp;:title-&gt;?Title&nbsp;:favorite-&gt;?Favorite) &nbsp;% OIDs {:o1, ...,&nbsp;:o6} and corresponding slot fillers are returned
+?OID#:albmergeObj(:artist-&gt;"Elton John"&nbsp;:favorite-&gt;?Favorite)  &nbsp;%&nbsp;?OID=&lt;http://psoa.ruleml.org/example/music_album#o6&gt;&nbsp;?Favorite="Goodbye Yellow Brick Road"
+:o6#:albsplitObj(:artist-&gt;"Elton John"&nbsp;:favorite-&gt;?Favorite)   &nbsp;%&nbsp;?Favorite="Goodbye Yellow Brick Road"
+</pre>
+<h3><span class="mw-headline" id="Slotribution_1"><span class="mw-headline-number">5.33</span> Slotribution 1</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Group (
+    Forall&nbsp;?X (&nbsp;?X#_block(_color-&gt;_blue _size-&gt;_big) )
+    _b1#_book
+    _b2#_book(_title-&gt;"Java Programming")
+    _o#_albmergeObj( _artist-&gt;"Elton John" _tivorite-&gt;"Goodbye Yellow Brick Road" )
+    Forall&nbsp;?OID&nbsp;?Tivorite
+    (
+     &nbsp;?OID#_albsplitObj(_title-&gt;?Tivorite _favorite-&gt;?Tivorite)&nbsp;:-&nbsp;?OID#_albmergeObj(_tivorite-&gt;?Tivorite)
+    )
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>_a#_block(_color-&gt;_blue)
+_b1#_block(_color-&gt;_blue)
+?B#_book(_title-&gt;?T)  &nbsp;%&nbsp;?B=_b2&nbsp;?T="Java Programming"
+</pre>
+<h3><span class="mw-headline" id="Slotribution_2"><span class="mw-headline-number">5.34</span> Slotribution 2</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Prefix(: &lt;http://psoa.ruleml.org/test#&gt;)
+  Prefix(func: &lt;<a class="external free" href="http://www.w3.org/2007/rif-builtin-function#">http://www.w3.org/2007/rif-builtin-function#</a>&gt;)
+ 
+  Group (
+   &nbsp;%  The meaning of the&nbsp;:captial slot varies when it is used with the&nbsp;:Country and&nbsp;:Startup predicates.
+   &nbsp;%  This does not lead to problems since the set of OIDs of&nbsp;:Country and&nbsp;:Startup are disjoint. 
+   &nbsp;%  However, generally, such predicate-dependent slots should be handled with care.
+
+    Forall&nbsp;?C&nbsp;?X (
+     &nbsp;?C#:Country(:capital-&gt;?X)&nbsp;:-
+                 &nbsp;:geo-in(:government(?C)&nbsp;?X)
+    )
+
+    Forall&nbsp;?S&nbsp;?X&nbsp;?F&nbsp;?V (
+     &nbsp;?S#:Startup(:capital-&gt;?X)&nbsp;:-
+                  And(:founder-capital(?S&nbsp;?F)
+                     &nbsp;:venture-capital(?S&nbsp;?V)
+                     &nbsp;?X = External(func:numeric-add(?F&nbsp;?V)))
+    )
+   
+   &nbsp;:geo-in(:government(:Canada)&nbsp;:Ottawa)
+   &nbsp;:founder-capital("XYZ Inc." 100000)
+   &nbsp;:venture-capital("XYZ Inc." 200000)
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>?C#:Country(:capital-&gt;?X) &nbsp;%&nbsp;?C=&lt;http://psoa.ruleml.org/test#Canada&gt;&nbsp;?X=&lt;http://psoa.ruleml.org/test#Ottawa&gt;
+?S#:Startup(:capital-&gt;?X) &nbsp;%&nbsp;?S="XYZ Inc."&nbsp;?X=300000
+</pre>
+<h3><span class="mw-headline" id="Mixed_Use_of_Psoa_Terms_with_and_without_OIDs"><span class="mw-headline-number">5.35</span> Mixed Use of Psoa Terms with and without OIDs</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Prefix (: &lt;http://psoa.ruleml.org/test#&gt;)
+  
+  Group (
+    Forall&nbsp;?X&nbsp;?Y ( 
+     &nbsp;:isFatherOf(?Y&nbsp;?X)&nbsp;:- And(&nbsp;:isChildOf(?X&nbsp;?Y)&nbsp;?Y#:Male )
+    )
+
+   &nbsp;:c1#:isChildOf(:Adrian&nbsp;:Uwe)
+   &nbsp;:Adrian#:Male
+   &nbsp;:Uwe#:Male
+
+    Forall&nbsp;?X&nbsp;?Y&nbsp;?C ( 
+     &nbsp;:isMotherOf(?Y&nbsp;?X)&nbsp;:- And(&nbsp;?C#:isChildOf(?X&nbsp;?Y)&nbsp;?Y#:Female )
+    )
+   &nbsp;:isChildOf(:Adrian&nbsp;:Emily)
+   &nbsp;:Emily#:Female
+  )
+)
+</pre>
+<p><br>
+</p>
+<ul><li> Queries</li></ul>
+<pre>:isFatherOf(?X1&nbsp;?X2) &nbsp;%&nbsp;?X1=&lt;http://psoa.ruleml.org/test#Adrian&gt;&nbsp;?X2=&lt;http://psoa.ruleml.org/test#Uwe&gt;
+:isMotherOf(?X1&nbsp;?X2) &nbsp;%&nbsp;?X1=&lt;http://psoa.ruleml.org/test#Adrian&gt;&nbsp;?X2=&lt;http://psoa.ruleml.org/test#Emily&gt;
+</pre>
+<h3><span class="mw-headline" id="Subclass_Axiomatization"><span class="mw-headline-number">5.36</span> Subclass Axiomatization</span></h3>
+<ul><li> Knowledge Base</li></ul>
+<pre>Document (
+  Prefix (: &lt;http://psoa.ruleml.org/test#&gt;)
+
+  Group (
+    Forall&nbsp;?X
+    (
+     &nbsp;?X#:c1&nbsp;:-&nbsp;?X#:c2
+    )
+    Forall&nbsp;?X
+    (
+     &nbsp;?X#:c1(:p1-&gt;:v1)&nbsp;:-&nbsp;?X#:c2(:p2-&gt;:v1)
+    )
+   &nbsp;:o1#:c2
+   &nbsp;:o2#:c2(:p2-&gt;:v1)
+
+    Forall&nbsp;?X
+    (
+     &nbsp;?X#:c1&nbsp;:-&nbsp;?X#:c3
+    )
+    Forall&nbsp;?X
+    (
+     &nbsp;?X#Top(:p1-&gt;:v1)&nbsp;:-&nbsp;?X#:c3(:p2-&gt;:v1)
+    )
+   &nbsp;:o3#:c3(:p2-&gt;:v1)
+  )
+)
+</pre>
+<ul><li> Queries</li></ul>
+<pre>:o1#:c1
+:o2#:c1
+:o1#:c1(:p1-&gt;:v1)
+:o2#:c1(:p1-&gt;:v1)
+:o3#:c1(:p1-&gt;:v1)
+</pre>
+<h2><span class="mw-headline" id="Use_Cases"><span class="mw-headline-number">6</span> Use Cases</span></h2>
+<p>Besides the above <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#Test_Cases" title="PSOA RuleML">Test Cases</a>, we have been developing the following PSOA RuleML use cases.
+</p>
+<h3><span class="mw-headline" id="Port_Clearance_Rules"><span class="mw-headline-number">6.1</span> Port Clearance Rules</span></h3>
+<p>Uses rules for encoding ship regulations motivated by Decision Management <a class="external text" href="https://dmcommunity.org/challenge/challenge-march-2016/#Solutions">Challenge March-2016</a> and documented in <a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#References" title="PSOA RuleML">Ref. 13</a>.
+</p>
+<h3><span class="mw-headline" id="Geospatial_Rules"><span class="mw-headline-number">6.2</span> Geospatial Rules</span></h3>
+<p>Uses rules for enhancing geospatial data in a geographic information system (GIS) or a GIS combination (<a href="http://wiki.ruleml.org/index.php/Geospatial_Rules" title="Geospatial Rules">Geospatial Rules</a>).
+</p>
+<h3><span class="mw-headline" id="OfficeProspector"><span class="mw-headline-number">6.3</span> OfficeProspector</span></h3>
+<p>Uses rules for helping companies find suitable office suites.
+</p>
+<h2><span class="mw-headline" id="Changes"><span class="mw-headline-number">7</span> Changes</span></h2>
+<ul><li> PSOA2TPTP
+<ul><li> Change translation of <tt>o#f()</tt> from <tt>member(o,f)</tt> to <tt>memterm(o,f)</tt>, employed by both PSOA2Prolog and PSOA2TPTP, because <tt>member</tt> is a built-in predicate in some Prolog engines, e.g. SWI Prolog</li></ul></li></ul>
+<h2><span class="mw-headline" id="PSOA_RuleML_vs._RIF_RuleML"><span class="mw-headline-number">8</span> PSOA RuleML vs. RIF RuleML</span></h2>
+<table border="1" style="font-size:140%;border-color:gray;">
+<caption style="font-weight:bold;line-height:2em;padding-bottom:1ex"> Comparison of Syntax and Semantics between PSOA RuleML and RIF RuleML
+</caption>
+<tbody><tr style="font-size:medium">
+<th> PSOA KB </th>
+<th> RIF KB </th>
+<th> Notes
+</th></tr>
+<tr>
+<td>
+<pre>Document (
+  Group (
+    _Tim#Top(_job-&gt;_engineer)
+  )
+)
+</pre>
+</td>
+<td>
+<pre>Document (
+  Group (
+    _Tim[_job-&gt;_engineer]
+  )
+)
+</pre>
+</td>
+<td>
+</td></tr>
+<tr>
+<td>
+<pre>Document (
+  Group (
+    _1#_married(_Joe _Sue)
+  )
+)
+</pre>
+</td>
+<td>
+<pre>Document (
+  Group (
+    _married(_Joe _Sue)
+  )
+)
+</pre>
+</td>
+<td>
+</td></tr>
+<tr>
+<td>
+<pre>Document (
+  Group (
+    _Joe#_male()
+  )
+)
+</pre>
+</td>
+<td>
+<pre>Document (
+  Group (
+    _Joe#_male
+  )
+)
+</pre>
+</td>
+<td>
+</td></tr>
+<tr>
+<td>
+<pre>Document (
+  Group (
+    _Tim#_person(_job-&gt;engineer _child-&gt;_jack)
+  )
+)
+
+</pre>
+</td>
+<td>
+<pre>Document (
+  Group (
+    _Tim[_job-&gt;engineer _child-&gt;_jack]
+    _Tim#_person
+  )
+)
+</pre>
+</td>
+<td>
+</td></tr>
+<tr>
+<td>
+<pre>Document (
+  Group (
+    _1#_larger(_first-&gt;2 _last-&gt;1)
+  )
+)
+</pre>
+</td>
+<td>
+<pre>Document (
+  Group (
+    _larger(_first-&gt;2 _last-&gt;1)
+  )
+)
+</pre>
+</td>
+<td>
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="References"><span class="mw-headline-number">9</span> References</span></h2>
+<p>1. Harold Boley, A RIF-Style Semantics for RuleML-Integrated Positional-Slotted, Object-Applicative Rules. In Nick Bassiliades, Guido Governatori, and Adrian Paschke, editors, RuleML Europe, volume 6826 of LNCS, pp. 94–211. Springer, 2011. Preprint: <a class="external free" href="http://www.cs.unb.ca/~boley/papers/SemanticsPsoaRules.pdf">http://www.cs.unb.ca/~boley/papers/SemanticsPsoaRules.pdf</a>. Slides for IJCAI 2011 Best Papers from Sister Conferences Track: <a class="external free" href="http://www.cs.unb.ca/~boley/talks/SemanticsPsoaRules-talk-IJCAI2011.pdf">http://www.cs.unb.ca/~boley/talks/SemanticsPsoaRules-talk-IJCAI2011.pdf</a>. Slides with maximum details from paper: <a class="external free" href="http://www.cs.unb.ca/~boley/talks/SemanticsPsoaRules-talk-UNB2011.pdf">http://www.cs.unb.ca/~boley/talks/SemanticsPsoaRules-talk-UNB2011.pdf</a>
+</p><p>2. Zou, G., Peter-Paul, R., Boley, H., Riazanov, A.: PSOA2TPTP: A Reference Translator for Interoperating PSOA RuleML with TPTP Reasoners. In: Bikakis, A., Giurca, A. (eds.) RuleML 2012. LNCS, vol. 7438, pp. 264–279. Springer, Heidelberg (2012). Preprint: <a class="external free" href="http://www.cs.unb.ca/~boley/papers/DirectPSOA2TPTP.pdf">http://www.cs.unb.ca/~boley/papers/DirectPSOA2TPTP.pdf</a>. Slides: <a class="external free" href="http://www.cs.unb.ca/~boley/talks/DirectPSOA2TPTP-talk.pdf">http://www.cs.unb.ca/~boley/talks/DirectPSOA2TPTP-talk.pdf</a>
+</p><p>3. Zou, G., Peter-Paul, R., Boley, H., Riazanov, A.: PSOATransRun: Translating and Running PSOA RuleML via the TPTP Interchange Language for Theorem Provers. 6th International Rule Challenge, RuleML 2012. Preprint: <a class="external free" href="http://www.cs.unb.ca/~boley/papers/PSOATransRun.pdf">http://www.cs.unb.ca/~boley/papers/PSOATransRun.pdf</a>. Slides for Invited Demo: <a class="external free" href="http://www.cs.unb.ca/~boley/talks/PSOATransRun-talk.pdf">http://www.cs.unb.ca/~boley/talks/PSOATransRun-talk.pdf</a>
+</p><p>4. Al Manir, M.S., Riazanov, A., Boley, H., Baker, C.J.O.: PSOA RuleML API: A Tool for Processing Abstract and Concrete Syntaxes. In: Bikakis, A., Giurca, A. (eds.) RuleML 2012. LNCS, vol. 7438, pp. 280–288. Springer, Heidelberg (2012). Preprint: <a class="external free" href="http://www.cs.unb.ca/~boley/papers/PSOA_RuleML_API.pdf">http://www.cs.unb.ca/~boley/papers/PSOA_RuleML_API.pdf</a>. Slides: <a class="external free" href="http://www.cs.unb.ca/~boley/talks/PSOA_RuleML_API-talk.pdf">http://www.cs.unb.ca/~boley/talks/PSOA_RuleML_API-talk.pdf</a>
+</p><p>5. Zou, G., Boley, H.: A Translator Framework for the Interoperation of Graph plus Relational Data and Rules on the Web. 5th Atlantic Workshop on Semantics and Services, February 2014, Slides: <a class="external free" href="http://www.cs.unb.ca/~boley/talks/InteropGraphRel-AWoSS2014-talk.pdf">http://www.cs.unb.ca/~boley/talks/InteropGraphRel-AWoSS2014-talk.pdf</a>
+</p><p>6. Boley, H.: A Music Album Knowledge Base in the Relational and Object-Centered Paradigms of the PSOA RuleML Language. RuleML Memo, 25 October 2014, <a class="external free" href="http://www.cs.unb.ca/~boley/papers/MusicAlbumKB.txt">http://www.cs.unb.ca/~boley/papers/MusicAlbumKB.txt</a>
+</p><p>7. Boley, H.: PSOA RuleML: Integrated Object-Relational Data and Rules. In Wolfgang Faber and Adrian Paschke, editors, Reasoning Web. Web Logic Rules (RW2015) - 11th International Summer School 2015, Berlin, Germany, July 31-August 4, 2015, Tutorial Lectures, volume 9203 of Lecture Notes in Computer Science, pp. 114-150. Springer, 2015. SpringerLink: <a class="external text" href="http://link.springer.com/chapter/10.1007/978-3-319-21768-0_5">Abstract</a>. Postprint: <a class="external free" href="http://www.cs.unb.ca/~boley/papers/PSOAObjRelDataRules.pdf">http://www.cs.unb.ca/~boley/papers/PSOAObjRelDataRules.pdf</a>. Presented in the <a class="external text" href="https://www.google.com/calendar/event?eid=ZmRlYW1rY2FsYW9wYzVrbWQxcWRuNG9jdHMgZm9ydW1zdGFuZm9yZEBt">Computational Logic Seminar – MUGS</a>, 27 May 2015, the <a class="external text" href="http://www.ai.sri.com/seminars/detail.php?id=480">SRI AIC Seminar Series</a>, 9 June 2015, plus <a class="external text" href="http://www.csw.inf.fu-berlin.de/rw2015/lecturers.html#PSOARuleML">RW2015</a>, 31 July - 4 August 2015. Slides for RW2015: <a class="external free" href="http://www.cs.unb.ca/~boley/talks/PSOAObjRelDataRules-talk-RW2015.pdf">http://www.cs.unb.ca/~boley/talks/PSOAObjRelDataRules-talk-RW2015.pdf</a>. Slides with maximum details from paper: <a class="external free" href="http://www.cs.unb.ca/~boley/talks/PSOAObjRelDataRules-talk.pdf">http://www.cs.unb.ca/~boley/talks/PSOAObjRelDataRules-talk.pdf</a>. PSOARuleMLSQLSPARQL (<a class="external text" href="http://www.cs.unb.ca/~boley/talks/PSOARuleMLSQLSPARQL.pdf">pdf</a>, <a class="external text" href="http://www.cs.unb.ca/~boley/talks/PSOARuleMLSQLSPARQL.docx">docx</a>) subset of slides for AWoSS 2015: <a class="external free" href="http://www.cs.unb.ca/~boley/talks/PSOAObjRelDataRules-AWoSS2015-talk.pdf">http://www.cs.unb.ca/~boley/talks/PSOAObjRelDataRules-AWoSS2015-talk.pdf</a>
+</p><p>8. Zou, G., Boley, H.: PSOA2Prolog: Object-Relational Rule Interoperation and Implementation by Translation from PSOA RuleML to ISO Prolog. In Bassiliades, N. and Gottlob, G. and Sadri, F. and Paschke, A. and Roman, D. (eds.) RuleML 2015. LNCS, vol. 9202, pp. 176-192. Springer, 2015. SpringerLink: <a class="external text" href="http://link.springer.com/chapter/10.1007/978-3-319-21542-6_12">Abstract</a>. Preprint: <a class="external free" href="http://www.cs.unb.ca/~boley/papers/PSOA2Prolog.pdf">http://www.cs.unb.ca/~boley/papers/PSOA2Prolog.pdf</a>. Slides: <a class="external free" href="http://www.cs.unb.ca/~boley/talks/PSOA2Prolog-talk.pdf">http://www.cs.unb.ca/~boley/talks/PSOA2Prolog-talk.pdf</a>
+</p><p>9. Zou, G.: PSOA RuleML Integration of Relational and Object-Centered Geospatial Data, In Bassiliades, N., Fodor, P., Giurca, A., Gottlob, G., Kliegr, T., Nalepa, G. J., Palmirani, M., Paschke, A., Proctor, M., Roman, D., Sadri, F. and Stojanovic, N. (eds.) Joint Proceedings of the 9th International Rule Challenge, the Special Track on Rule-based Recommender Systems for the Web of Data, RuleML2015 Industry Track and the 5th RuleML Doctoral Consortium. Paper: <a class="external free" href="http://ceur-ws.org/Vol-1417/paper14.pdf">http://ceur-ws.org/Vol-1417/paper14.pdf</a>. Slides: <a class="external free" href="http://ruleml.org/talks/GeoIntegrationPSOA-talk.pdf">http://ruleml.org/talks/GeoIntegrationPSOA-talk.pdf</a>
+</p><p>10. Zou, G.: The PSOATransRun 1.0 System for Object-Relational Reasoning in RuleML. 6th Atlantic Workshop on Semantics and Services, December 2015, Abstract: <a class="external free" href="http://ruleml.org/talks/AWoSS2015/PSOATransRun1.0-AWoSS2015.pdf">http://ruleml.org/talks/AWoSS2015/PSOATransRun1.0-AWoSS2015.pdf</a>, Slides: <a class="external free" href="http://ruleml.org/talks/AWoSS2015/PSOATransRun1.0-AWoSS2015-talk.pdf">http://ruleml.org/talks/AWoSS2015/PSOATransRun1.0-AWoSS2015-talk.pdf</a>.
+</p><p>11. Boley, H.: The RuleML Knowledge-Interoperation Hub. In volume 9718 of Lecture Notes in Computer Science, pp. 19-33. Springer, 2016. SpringerLink: <a class="external text" href="http://link.springer.com/chapter/10.1007/978-3-319-42019-6_2">Abstract</a>. Preprint: <a class="external free" href="http://www.cs.unb.ca/~boley/papers/RuleMLKnowleropHub.pdf">http://www.cs.unb.ca/~boley/papers/RuleMLKnowleropHub.pdf</a>. Slides: <a class="external free" href="http://www.cs.unb.ca/~boley/talks/RuleMLKnowleropHub-talk.pdf">http://www.cs.unb.ca/~boley/talks/RuleMLKnowleropHub-talk.pdf</a>.
+</p><p>12. Zou, G., Boley, H.: Minimal Objectification and Maximal Unnesting in PSOA RuleML. In volume 9718 of Lecture Notes in Computer Science, pp. 130-147. Springer, 2016. SpringerLink: <a class="external text" href="http://link.springer.com/chapter/10.1007/978-3-319-42019-6_9">Abstract</a>. Preprint: <a class="external free" href="http://www.cs.unb.ca/~boley/papers/MinObjMaxUnnPSOARuleML.pdf">http://www.cs.unb.ca/~boley/papers/MinObjMaxUnnPSOARuleML.pdf</a>. Slides: <a class="external free" href="http://www.cs.unb.ca/~boley/talks/MinObjMaxUnnPSOARuleML-talk.pdf">http://www.cs.unb.ca/~boley/talks/MinObjMaxUnnPSOARuleML-talk.pdf</a>.
+</p><p>13. Gen Zou, Harold Boley, Dylan Wood, Kieran Lea: Port Clearance Rules in PSOA RuleML: From Controlled-English Regulation to Object-Relational Logic. In Nick Bassiliades, Antonis Bikakis, Stefania Costantini, Enrico Franconi, Adrian Giurca, Roman Kontchakov, Theodore Patkos, Fariba Sadri, William Van Woensel (eds.) Proceedings of the Doctoral Consortium, Challenge, Industry Track, Tutorials and Posters @ RuleML+RR 2017 hosted by International Joint Conference on Rules and Reasoning 2017 (RuleML+RR 2017), July 2017. Paper: <a class="external free" href="http://ceur-ws.org/Vol-1875/paper6.pdf">http://ceur-ws.org/Vol-1875/paper6.pdf</a>. Slides: <a class="external free" href="http://ruleml.org/talks/PortClearanceRulesPSOARuleML-talk.pdf">http://ruleml.org/talks/PortClearanceRulesPSOARuleML-talk.pdf</a>.
+Extended to tutorial for: OnTheMove Federated Conferences &amp; Workshops (OTM 2017), Industry Case Studies Program (ICSP 2017), October 2017.
+Abstract: <a class="external free" href="http://www.otmconferences.org/index.php/program/30-tutorials-2017/83-harold-boley">http://www.otmconferences.org/index.php/program/30-tutorials-2017/83-harold-boley</a>.
+Slides: <a class="external free" href="http://ruleml.org/talks/FactBasedModel4PortClearanceRulesPSOARuleML-talk.pdf">http://ruleml.org/talks/FactBasedModel4PortClearanceRulesPSOARuleML-talk.pdf</a> (with link to above RuleML+RR slides as continuation).
+</p><p>14. Harold Boley, Gen Zou: Data in Perspective: The Rich TA Example as Grailog Visualization and PSOA RuleML Facts. Standards Session, RuleML+RR 2017, July 12-15, 2017. Update: Nov. 15, 2017, <a class="external free" href="http://ruleml.org/talks/RichTAGlance.pdf">http://ruleml.org/talks/RichTAGlance.pdf</a>.
+</p><p>15. Harold Boley, Gen Zou: Perspectival Knowledge in PSOA RuleML: Representation, Model Theory, and Translation. ArXiv e-prints arXiv:1712.02869 [cs.AI], [v1] 7 Dec 2017, <a class="external free" href="http://arxiv.org/abs/1712.02869">http://arxiv.org/abs/1712.02869</a>.
+</p><p>16. <a href="http://wiki.ruleml.org/index.php/PSOATransRun_Development_Tutorial" title="PSOATransRun Development Tutorial">PSOATransRun Development Tutorial (Starting Open-Source Projects)</a>, 19 Dec 2017 - 17 Jan 2018.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20180121143306
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.335 seconds
+Real time usage: 2.612 seconds
+Preprocessor visited node count: 746/1000000
+Preprocessor generated node count: 1474/1000000
+Post‐expand include size: 301/2097152 bytes
+Template argument size: 204/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    8.871      1 - -total
+100.00%    8.871      1 - Template:Creators
+-->
+
+<!-- Saved in parser cache with key rulemlso_wikidb-ruleml:pcache:idhash:57-0!*!0!1!en!*!* and timestamp 20180121143306 and revision id 19522
+ -->
+</div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="http://wiki.ruleml.org/index.php?title=PSOA_RuleML&amp;oldid=19522">http://wiki.ruleml.org/index.php?title=PSOA_RuleML&amp;oldid=19522</a>"					</div>
+				<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://wiki.ruleml.org/index.php/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://wiki.ruleml.org/index.php/Category:HomePage" title="Category:HomePage">HomePage</a></li><li><a href="http://wiki.ruleml.org/index.php/Category:RuleML" title="Category:RuleML">RuleML</a></li><li><a href="http://wiki.ruleml.org/index.php/Category:Presentation_Syntax" title="Category:Presentation Syntax">Presentation Syntax</a></li><li><a href="http://wiki.ruleml.org/index.php/Category:RIF" title="Category:RIF">RIF</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="http://wiki.ruleml.org/index.php/Category:Pages_with_syntax_highlighting_errors" title="Category:Pages with syntax highlighting errors">Pages with syntax highlighting errors</a></li></ul></div></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-login"><a href="http://wiki.ruleml.org/index.php?title=Special:UserLogin&amp;returnto=PSOA+RuleML" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li id="ca-nstab-main" class="selected"><span><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML" title="View the content page [alt-shift-c]" accesskey="c">Page</a></span></li>
+															<li id="ca-talk"><span><a href="http://wiki.ruleml.org/index.php/Talk:PSOA_RuleML" title="Discussion about the content page [alt-shift-t]" accesskey="t" rel="discussion">Discussion</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label" tabindex="0">
+							<span>Variants</span><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#" tabindex="-1"></a>
+						</h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML">Read</a></span></li>
+															<li id="ca-viewsource"><span><a href="http://wiki.ruleml.org/index.php?title=PSOA_RuleML&amp;action=edit" title="This page is protected.
+You can view its source [alt-shift-e]" accesskey="e">View source</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="http://wiki.ruleml.org/index.php?title=PSOA_RuleML&amp;action=history" title="Past revisions of this page [alt-shift-h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label" style="">
+						<h3 id="p-cactions-label" tabindex="0"><span>More</span><a href="http://wiki.ruleml.org/index.php/PSOA_RuleML#" tabindex="-1"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="http://wiki.ruleml.org/index.php" id="searchform">
+							<div id="simpleSearch">
+							<input type="search" name="search" placeholder="Search" title="Search RuleML Wiki [alt-shift-f]" accesskey="f" id="searchInput" tabindex="1" autocomplete="off"><input type="hidden" value="Special:Search" name="title"><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton">							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="http://wiki.ruleml.org/index.php/RuleML_Home" title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+			<h3 id="p-navigation-label">Navigation</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-Home"><a href="http://wiki.ruleml.org/index.php/RuleML_Home">Home</a></li><li id="n-portal"><a href="http://wiki.ruleml.org/index.php/RuleML_Wiki:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li><li id="n-currentevents"><a href="http://wiki.ruleml.org/index.php/RuleML_Wiki:Current_events" title="Find background information on current events">Current events</a></li><li id="n-recentchanges"><a href="http://wiki.ruleml.org/index.php/Special:RecentChanges" title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li><li id="n-Sitemap"><a href="http://wiki.ruleml.org/index.php/Category:RuleML">Sitemap</a></li><li id="n-randompage"><a href="http://wiki.ruleml.org/index.php/Special:Random" title="Load a random page [alt-shift-x]" accesskey="x">Random page</a></li><li id="n-Popular-pages"><a href="http://wiki.ruleml.org/index.php/Special:Popularpages">Popular pages</a></li><li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" title="The place to find out">Help</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-RuleML_Social" aria-labelledby="p-RuleML_Social-label">
+			<h3 id="p-RuleML_Social-label">RuleML Social</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-Blog"><a href="http://blog.ruleml.org/">Blog</a></li><li id="n-Twitter"><a href="http://www.twitter.com/rulemlorg">Twitter</a></li><li id="n-Facebook"><a href="https://www.facebook.com/RuleML">Facebook</a></li><li id="n-LinkedIn"><a href="http://www.linkedin.com/groups/RuleML-Group-2190838/about">LinkedIn</a></li><li id="n-Mailing-Lists"><a href="http://wiki.ruleml.org/index.php/Mailing_Lists">Mailing Lists</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-RuleML_Meetings" aria-labelledby="p-RuleML_Meetings-label">
+			<h3 id="p-RuleML_Meetings-label">RuleML Meetings</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-Webinar"><a href="http://wiki.ruleml.org/index.php/RuleML_Webinar">Webinar</a></li><li id="n-RuleML.2BRR-2018"><a href="http://2018.ruleml-rr.org/">RuleML+RR 2018</a></li><li id="n-Symposium-Series"><a href="http://en.wikipedia.org/wiki/RuleML_Symposium">Symposium Series</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-RuleML_Specifications" aria-labelledby="p-RuleML_Specifications-label">
+			<h3 id="p-RuleML_Specifications-label">RuleML Specifications</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-RuleML"><a href="http://ruleml.org/spec">RuleML</a></li><li id="n-Deliberation-RuleML"><a href="http://deliberation.ruleml.org/spec">Deliberation RuleML</a></li><li id="n-Reaction-RuleML"><a href="http://reaction.ruleml.org/">Reaction RuleML</a></li><li id="n-Consumer-RuleML"><a href="http://consumer.ruleml.org/">Consumer RuleML</a></li><li id="n-Primer"><a href="http://ruleml.org/papers/Primer/RuleMLPrimer2012-08-09/RuleMLPrimer-p0-2012-08-09.html">Primer</a></li><li id="n-XSD-Schemas"><a href="http://wiki.ruleml.org/index.php/Specification_of_RuleML#XSD">XSD Schemas</a></li><li id="n-Relax-NG-Schemas"><a href="http://wiki.ruleml.org/index.php/Specification_of_RuleML#Relax_NG">Relax NG Schemas</a></li><li id="n-Normalizer"><a href="http://wiki.ruleml.org/index.php/Specification_of_RuleML#Normalizer">Normalizer</a></li><li id="n-Upgrader"><a href="http://wiki.ruleml.org/index.php/Specification_of_RuleML#Upgrader">Upgrader</a></li><li id="n-Examples"><a href="http://wiki.ruleml.org/index.php/Specification_of_RuleML#Examples">Examples</a></li><li id="n-Glossary"><a href="http://wiki.ruleml.org/index.php/Specification_of_RuleML#Glossary">Glossary</a></li><li id="n-Schema-Docs"><a href="http://wiki.ruleml.org/index.php/Specification_of_RuleML#Schema_Docs">Schema Docs</a></li><li id="n-MYNG"><a href="http://deliberation.ruleml.org/spec/myng/">MYNG</a></li><li id="n-RuleML-on-Github"><a href="https://github.com/RuleML">RuleML on Github</a></li><li id="n-OO-jDREW"><a href="http://www.jdrew.org/oojdrew/">OO jDREW</a></li><li id="n-Implementations"><a href="http://wiki.ruleml.org/index.php/RuleML_Implementations">Implementations</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Tools</h3>
+
+			<div class="body">
+									<ul>
+						<li id="t-whatlinkshere"><a href="http://wiki.ruleml.org/index.php/Special:WhatLinksHere/PSOA_RuleML" title="A list of all wiki pages that link here [alt-shift-j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://wiki.ruleml.org/index.php/Special:RecentChangesLinked/PSOA_RuleML" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://wiki.ruleml.org/index.php/Special:SpecialPages" title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://wiki.ruleml.org/index.php?title=PSOA_RuleML&amp;printable=yes" rel="alternate" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://wiki.ruleml.org/index.php?title=PSOA_RuleML&amp;oldid=19522" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://wiki.ruleml.org/index.php?title=PSOA_RuleML&amp;action=info" title="More information about this page">Page information</a></li>					</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 21 January 2018, at 10:33.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://wiki.ruleml.org/index.php/RuleML_Wiki:Privacy_policy" title="RuleML Wiki:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://wiki.ruleml.org/index.php/RuleML_Wiki:About" title="RuleML Wiki:About">About RuleML Wiki</a></li>
+											<li id="footer-places-disclaimer"><a href="http://wiki.ruleml.org/index.php/RuleML_Wiki:General_disclaimer" title="RuleML Wiki:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-contacts"><a href="http://wiki.ruleml.org/index.php/Contacts" title="Contacts">Contact Us</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-poweredbyico">
+							<a href="http://www.mediawiki.org/"><img src="./PSOA RuleML - RuleML Wiki_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31"></a>						</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.loader.state({"user":"ready","user.groups":"ready"});mw.loader.load(["mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"]);
+} );</script><script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgBackendResponseTime":363});
+} );</script>
+	
+
+<div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>

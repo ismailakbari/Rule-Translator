@@ -1,0 +1,74 @@
+ground queries using the top-level predicate MayEnterDutchPortUnloaded applied to specific ship instances
+local:MayEnterDutchPortUnloaded(local:ship1)
+Yes
+
+local:MayEnterDutchPortUnloaded(local:ship7)
+No
+
+A non-ground query to :MayEnterDutchPortUnloaded, using output variable ?x  to deduce ships that may enter a Dutch port 
+local:MayEnterDutchPortUnloaded(?w)
+
+Query over the KB in a bottom-up traversal manner. We start with the object-centered-query portion of this traversal. This query can be proved by Rule 1&5 and the h7 frame embedded inside the ship7 fact.
+local:status( h7 local:clean )
+Yes
+
+Next query asks whether the hold ?h of ship7 is clean
+local:ship( local:ship7 ) 
+local:hold( local:ship7 ?h ) 
+local:status( ?h local:clean )
+
+The next query asks whether ship7 is a large ship
+local:size( ship7 local:large )
+Yes
+
+
+An extended query then asks whether ship7 is a large ship and its hold is clean and double hulled
+local:size( ship7 local:large )
+local:hold( local:ship7 ?h ) 
+local:status( ?h local:clean ) 
+local:hull( ?h local:double )
+
+We now proceed to the relational-query portion of this traversal. The following
+query asks whether ship7 meets the safety requirements
+MeetsSafetyRequirementsUnloaded(ship7) 
+Yes
+
+The next query asks whether ship7 has a valid certificate
+HasValidCertificate(ship7) 
+Yes
+
+The query of this traversal asks whether ship7 complies with the requirements of the inspection for unloaded ships. It can be proved by Rule 3 based on the previous two (sub)queries.
+CompliesInspectionRequirementsUnloaded(ship7) 
+Yes
+
+Next, some non-ground queries that can extract interesting content from the KB. The following query asks for the size of ship1 [3].
+local:size( ship1 ?z )
+
+The subsequent query asks for any large ship whose hold is clean.
+local:size( ?s local:large )
+local:hold( ?s ?h ) 
+local:status( ?h local:clean )
+
+
+The next query asks for any ship that is large and has a valid certificate.
+ local:HasValidCertificate(?s)
+local:size( ?s local:large )
+
+The final query asks for any ship that is small and meets the safety requirements
+for unloaded ships.
+local:MeetsSafetyRequirementsUnloaded(?s)
+local:size( ?s local:small )
+
+
+
+
+
+
+
+
+
+
+
+
+
+

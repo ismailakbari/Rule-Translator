@@ -1,0 +1,191 @@
+Document (
+  Prefix(: <http://psoa.ruleml.org/usecases/PortClearance#>)
+  Prefix(math: <http://psoa.ruleml.org/lib/math#>)
+  
+  Import(<http://psoa.ruleml.org/lib/math.psoa>)
+  
+  Group (
+    % Copy&paste-ready KB used as the PSOATransRun input file:
+    % http://wiki.ruleml.org/index.php/PSOA_RuleML#PSOATransRun (Current Release)
+
+    % Reordering, subgrouping, and explaining the rules from
+    % https://dmcommunity.org/challenge/challenge-march-2016/
+
+    % Main relational rule invokes inspection rule for certificate And safety
+
+    % Rule 2
+    Forall ?s (
+      :MayEnterDutchPortUnloaded(?s) :- 
+        :CompliesInspectionRequirementsUnloaded(?s)
+    )
+    
+    % Rule 3
+    Forall ?s (
+      :CompliesInspectionRequirementsUnloaded(?s) :-
+        And(:HasValidCertificate(?s)
+            :MeetsSafetyRequirementsUnloaded(?s))
+    )
+
+    % Object-relational certificate rule compares ship's registry expiration with current date
+
+    % Rule 10
+    Forall ?s ?d ?e (
+      :HasValidCertificate(?s) :- 
+        And(?s#:Ship(:registryExpirationDate->?e)
+            :currentDate(?d)
+            math:lessThan(?d ?e))
+    )
+
+    % Object-relational size-switched safety rules check status (small) or status and hull (large)
+    
+    % Rule 8 (includes disjunct of original Rule 6)
+    Forall ?s ?h (
+      :MeetsSafetyRequirementsUnloaded(?s) :-
+        ?s#:Ship(:size->:small 
+                 :hold->?h#:ShipHold(:status->:clean))
+    )
+    
+    % Rule 7 (includes disjunct of original Rule 6)
+    Forall ?s ?h (
+      :MeetsSafetyRequirementsUnloaded(?s) :-
+        ?s#:Ship(:size->:large 
+                 :hold->?h#:ShipHold(:status->:clean 
+                                     :hull->:double))
+    )
+
+    % Object-centered (except for math) rules to get qualitative size by thresholding length
+       
+    % Rule 9
+    Forall ?s ?l (
+      ?s#Top(:size->:small) :-
+        And(?s#:Ship(:totalLength->?l) 
+            math:lessThan(?l 80))
+    )
+    
+    % Rule 4
+    Forall ?s ?l (
+      ?s#Top(:size->:large) :-
+        And(?s#:Ship(:totalLength->?l) 
+            math:greaterEq(?l 80))
+    )
+
+    % Object-centered (except for math) rule to get qualitative status by thresholding residual
+    
+    % Rule 1&5 (combines Rule 1 and Rule 5)
+    Forall ?h ?c (
+      ?h#Top(:status->:clean) :- 
+        And(?h#:ShipHold(:residualCargoMeasurement->?c) 
+            math:lessEq(?c 0.5))  
+    )
+
+
+    :currentDate(20170506)   % Fixed for testing purposes
+
+    
+    % Ship facts (No or Yes refer to answers for queries with :ship1, :ship2, ... as arguments)
+    
+    % Facts covering all cases with qualitative slot-filler distinctions
+    % Explanatory comments for Yes answers focus on the most relevant slots
+    
+    % Distinction for :registryExpirationDate
+    
+    % Ship 1 - No, registry has expired (as of 20170506)
+    :ship1#:Ship(:registryExpirationDate->20170501 
+                 :totalLength->20
+                 :hold->:h1#:ShipHold(:residualCargoMeasurement->0.2
+                                      :hull->:single))
+
+    % Ship 2 - Yes, registry is valid (as of 20170506)
+    :ship2#:Ship(:registryExpirationDate->20171001 
+                 :totalLength->20
+                 :hold->:h2#:ShipHold(:residualCargoMeasurement->0.2 
+                                      :hull->:single))
+    
+    % Distinction for :residualCargoMeasurement
+
+    % Ship 3 - No, hold not clean
+    :ship3#:Ship(:registryExpirationDate->20200101
+                 :totalLength->70                 
+                 :hold->:h3#:ShipHold(:residualCargoMeasurement->0.6 
+                                      :hull->:single))
+   
+    % Ship 4 - Yes, hold clean (qualitatively the same as for Ship 2)
+    :ship4#:Ship(:registryExpirationDate->20200101 
+                 :totalLength->70
+                 :hold->:h4#:ShipHold(:residualCargoMeasurement->0.4
+                                      :hull->:single))
+
+    % Distinctions for :residualCargoMeasurement and :hull
+
+    % Ship 5 - No, hold not clean
+    :ship5#:Ship(:registryExpirationDate->20200101
+                 :totalLength->90
+                 :hold->:h5#:ShipHold(:residualCargoMeasurement->0.6 
+                                      :hull->:double))
+
+    % Ship 6 - No, size large yet hold single-hulled
+    :ship6#:Ship(:registryExpirationDate->20200101
+                 :totalLength->90 
+                 :hold->:h6#:ShipHold(:residualCargoMeasurement->0.4 
+                                      :hull->:single))
+
+    % Ship 7 - Yes, hold clean and double-hulled
+    :ship7#:Ship(:registryExpirationDate->20200101
+                 :totalLength->90 
+                 :hold->:h7#:ShipHold(:residualCargoMeasurement->0.4 
+                                      :hull->:double))
+   
+
+    % Facts with multiple reasons for No or Yes
+    
+    % Three reasons for No
+    
+    % Ship 8 - No, registry expired, hold not clean, and size large yet hold single-hulled
+    :ship8#:Ship(:registryExpirationDate->20170101
+                 :totalLength->90 
+                 :hold->:h8#:ShipHold(:residualCargoMeasurement->0.9 
+                                      :hull->:single))
+
+    % Two reasons for No
+    
+    % Ship 9 - No, hold not clean and size large yet hold single-hulled
+    :ship9#:Ship(:registryExpirationDate->20180101
+                 :totalLength->90 
+                 :hold->:h9#:ShipHold(:residualCargoMeasurement->0.9 
+                                      :hull->:single))
+
+    % Ship 10 - No, registry expired and size large yet hold single-hulled
+    :ship10#:Ship(:registryExpirationDate->20170101
+                  :totalLength->90 
+                  :hold->:h10#:ShipHold(:residualCargoMeasurement->0.2 
+                                        :hull->:single))
+
+    % Ship 11 - No, registry expired and hold not clean
+    :ship11#:Ship(:registryExpirationDate->20170101
+                  :totalLength->90
+                  :hold->:h11#:ShipHold(:residualCargoMeasurement->0.9 
+                                        :hull->:double))
+
+    % Two reasons for Yes
+
+    % Ship 12 - Yes, size small nevertheless hold double-hulled                   
+    :ship12#:Ship(:registryExpirationDate->20200101
+                  :totalLength->60 
+                  :hold->:h12#:ShipHold(:residualCargoMeasurement->0.1 
+                                        :hull->:double))    
+    
+    
+    % Facts probing special cases
+                                      
+    % Ship 13 - Yes, date, length, and measurement are at the threshold
+    :ship13#:Ship(:registryExpirationDate->20170507  % As of 20170506
+                  :totalLength->80       
+                  :hold->:h13#:ShipHold(:residualCargoMeasurement->0.5 
+                                        :hull->:double))
+
+    % Ship 14 - No, large ship must have some (a double) hull
+    :ship14#:Ship(:registryExpirationDate->20200101
+                  :totalLength->120     
+                  :hold->:h14#:ShipHold(:residualCargoMeasurement->0.2))
+  )
+)

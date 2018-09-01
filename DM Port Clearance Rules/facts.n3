@@ -1,0 +1,171 @@
+# this file formalizes the port clearance rules in N3 language
+# not: N3 doc has hav maximum one '@forAll' and one '@forSome'. visit N3.g4 grammar (r  : g0 g1 g2 n3_statements_optional; ) where g1 is universal and g2 is existential.
+#  rules rules widthout @for are universally quantified.  
+# version 1.0
+# Date : Jan 2018
+# Author: Ismail Akbari
+#--------------------------------
+
+@base <https://dmcommunity.org/> .
+@prefix : <https://dmcommunity.org/challenge/challenge-march-2016#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#>.
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . 
+
+#-------------------------------------facts-----------------------
+#Ship facts (No or Yes refer to answers for queries  with :ship1, :ship2, ... as arguments)
+
+:Joe :father :Fred.
+:Fred :brother :Bob, :Rob.
+:Alex :brother :Jack, :John ; :sister :Sarah.
+
+
+today time:currentDate "2018-01-21" .
+
+# Ship 1 - No, registry has expired
+:ship1 rdf:Type :ship ;	
+	   :registryExpirationDate "2017-01-01"  ;
+       :totalLength "20" ;
+       :hold [
+		rdf:Type :ShipHold ;
+		:residualCargoMeasurement "0.2" ;
+		:hull :single ] .	
+
+
+# Ship 2 - Yes, registry is valid
+:ship2  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "20" ;
+		:hold [
+		rdf:Type :ShipHold ;
+		:residualCargoMeasurement "0.2" ;
+		:hull :single ] .	
+
+
+# Distinction for :residualCargoMeasurement
+#Ship 3 - No, hold not clean
+:ship3  rdf:Type :ship ;
+		:registryExpirationDate "2020-01-01"  ;
+		:totalLength "70" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.6" ;
+			:hull :single ] .	
+
+# Ship 4 - Yes, hold clean (qualitatively the same as for Ship 2)
+:ship4  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "70" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.4" ;
+			:hull :single ] .	
+			
+
+#Distinctions for :residualCargoMeasurement and :hull
+#Ship 5 - No, hold not clean
+:ship5  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.6" ;
+			:hull :double ] .
+
+#Ship 6 - No, size large yet hold single-hulled
+:ship6  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.4" ;
+			:hull :single ] .
+
+#Ship 7 - Yes, hold clean and double-hulled
+:ship7  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.4" ;
+			:hull :double ] .
+
+
+#Facts with multiple reasons for No or Yes
+#Three reasons for No
+#Ship 8 - No, registry expired, hold not clean, and size large yet hold single-hulled
+:ship8  rdf:Type :ship ;	
+	    :registryExpirationDate "2017-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.9" ;
+			:hull :single ] .
+
+#Two reasons for No
+#Ship 9 - No, hold not clean and size large yet hold single-hulled
+:ship9  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.9" ;
+			:hull :single ] .
+
+#Ship 10 - No, registry expired and size large yet hold single-hulled
+:ship10  rdf:Type :ship ;	
+	    :registryExpirationDate "2017-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.2" ;
+			:hull :single ] .
+
+#Ship 11 - No, registry expired and hold not clean
+:ship11  rdf:Type :ship ;	
+	    :registryExpirationDate "2017-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.9" ;
+			:hull :double ] .
+
+#Two reasons for Yes
+#Ship 12 - Yes, size small nevertheless hold double-hulled  
+:ship12  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "60" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.1" ;
+			:hull :double ] .  
+
+#Facts probing special cases
+#Ship 13 - No, large ship must have some (a double) hull
+:ship13  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "120" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.2" 
+			] .         
+
+#Ship 14 - Yes, date, length, and measurement are at the threshold
+:ship14  rdf:Type :ship ;	
+	    :registryExpirationDate "2018-01-21"  ;
+	    :totalLength "80" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.5" ;
+			:hull :double ] . 
+
+
+
+
+
+
+
+
+
+

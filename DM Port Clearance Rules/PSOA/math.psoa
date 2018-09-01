@@ -1,0 +1,22 @@
+Document
+(
+  Prefix(func: <http://www.w3.org/2007/rif-builtin-function#>)
+  Prefix(pred: <http://www.w3.org/2007/rif-builtin-predicate#>)
+  Prefix(: <http://psoa.ruleml.org/lib/math#>)
+  
+  Group
+  (
+    Forall ?x ?y (
+      :lessThan(?x ?y) :- External(pred:numeric-less-than(?x ?y))
+    )
+    Forall ?x ?y (
+      :greaterThan(?x ?y) :- External(pred:numeric-greater-than(?x ?y))
+    )
+    Forall ?x ?y (
+      :lessEq(?x ?y) :- External(pred:numeric-less-than-or-equal(?x ?y))
+    )    
+    Forall ?x ?y (
+      :greaterEq(?x ?y) :- External(pred:numeric-greater-than-or-equal(?x ?y))
+    )
+  )
+)

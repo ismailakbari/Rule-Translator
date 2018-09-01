@@ -1,0 +1,230 @@
+% this file formalizes the port clearance rules in POSL language
+% note: it seems there are no prefix definition in posl
+% posl also does not have numeric/string libraries. however it seems that it supports XML Schema data types
+% version 1.1
+% Date : Jan 2018
+% Author: Ismail Akbari
+%--------------------------------
+
+
+% Rule 2 : An unloaded ship may only enter a Dutch port if the ship complies with the requirements of the Inspection for unloaded ships.
+MayEnterDutchPortUnloaded(?s)  :-  CompliesInspectionRequirementsUnloaded(?s)  .
+
+
+% Rule 3: A ship must comply with the requirements of the Inspection for unloaded ships if the ship complies with all of the following: 
+% a) the ship meets the safety requirements for unloaded ships; 
+% b) the ship has a certificate of registry that is valid.
+CompliesInspectionRequirementsUnloaded(?s) 	:-
+ 	HasValidCertificate(?s) , MeetsSafetyRequirementsUnloaded(?s).
+	
+	
+% Rule 10: A ship’s certificate of registry must be considered valid if the date up to which the registration is valid of the certificate of registry is after the current date.
+HasValidCertificate(?s)  :-		
+	registryExpirationDate(?s:ship, ?e) , 	currentDate(?cd) , 	greaterThanOrEqual(?e, ?cd)  .
+
+
+%Rule 8: A ship only meets the safety requirements for small unloaded ships if the ship complies with all of the following: 
+%a) the ship is categorized as small; 
+%b) the hold of the ship is clean.
+%Rule 8 (includes disjunct of original Rule 6)
+MeetsSafetyRequirementsUnloaded(?s)	:-	 
+size(?s:ship , "small") , hold(?s:ship , ?h:shipHold) , status(?h:shipHold , "clean").
+
+
+%Rule 7: A ship only meets the safety requirements for large unloaded ships if the ship complies with all of the following:
+% a) the ship is categorized as large; 
+% b) the hold of the ship is clean;
+% c) the hold of the ship is "double" hulled.
+%Rule 7 (includes disjunct of original Rule 6)
+
+MeetsSafetyRequirementsUnloaded(?s) :-
+size(?s:ship ,"large") , hold(?s:ship , ?h:shipHold) , status(?h:shipHold , "clean") , hull(?h:shipHold , "double") .
+
+
+%Rule 9: A ship must be categorized as small if the total length of the ship is less than 80 meters.
+size(?s:ship , "small")	:-	
+	totalLength(?s:ship , ?l) , lessThan(?l , 80) .
+
+%Rule 4: A ship must be categorized as large if the total length of the ship is at least 80 meters.
+size(?s:ship , "large")	:-	
+	totalLength(?s:ship , ?l) , greaterThanOrEqual(?l , 80) .
+
+% Rule 1&5 (combines Rule 1 and Rule 5)
+% Rule 1: The hold of a ship must be considered clean if the hold does not contain remainders of cargo.
+% Rule 5: A ship’s hold contains remainders of cargo if the residual cargo measurement is higher than 0.5 mg dry weight per cm2.
+% Negation is eliminated by propagation into Rule 5’s condition, where the negated math:greaterThanOrEqual call is simplified to a math:lessEq call
+ status(?h:shipHold , "clean") 	:-
+	residualCargoMeasurement(?h:shipHold , ?c) , LessEq(?c , 0.5 ) .
+
+
+
+%-------------------------------------facts-----------------------
+%Ship facts (No or Yes refer to answers for queries  with :ship1, :ship2, ... as arguments)
+
+
+/% the two above facts about ship1 (and the other ships here) can also be written as below: %/
+ship(ship1[
+	   registryExpirationDate -> "2017-01-01"  ;
+       totalLength -> 20 ;
+       hold->h1[	    
+		residualCargoMeasurement -> 0.2 ;
+		hull -> "single" ]
+]).
+ShipHold(h1).
+
+
+% Ship 2 - Yes, registry is valid
+ship(ship2[
+	   registryExpirationDate -> "2020-01-01"  ;
+       totalLength -> 20 ;
+       hold->h2[
+		residualCargoMeasurement -> 0.2 ;
+		hull -> "single" ]
+]).
+ShipHold(h2).
+
+% Distinction for :residualCargoMeasurement
+ship(ship3[
+	   registryExpirationDate -> "2020-01-01"  ;
+       totalLength -> 70 ;
+       hold->h3[
+		residualCargoMeasurement -> 0.6 ;
+		hull -> "single" ]
+]).			
+ShipHold(h3).			
+					
+% Ship 4 - Yes, hold clean (qualitatively the same as for Ship 2)
+ship(ship4[
+	   registryExpirationDate -> "2020-01-01"  ;
+       totalLength -> 70 ;
+       hold->h4[
+		residualCargoMeasurement -> 0.4 ;
+		hull -> "single" ]
+]).
+ShipHold(h4).
+
+%Distinctions for :residualCargoMeasurement and :hull
+ship(ship5[
+	   registryExpirationDate -> "2020-01-01"  ;
+       totalLength -> 90 ;
+       hold->h5[
+		residualCargoMeasurement -> 0.6 ;
+		hull -> "double" ]
+]).			
+ShipHold(h5).			
+			
+			
+%Ship 6 - No, size large yet hold single-hulled
+ship(ship6[
+	   registryExpirationDate -> "2020-01-01"  ;
+       totalLength -> 90 ;
+       hold->h6[
+		residualCargoMeasurement -> 0.4 ;
+		hull -> "single" ]
+]).	
+ShipHold(h6).
+
+
+%Ship 7 - Yes, hold clean and double-hulled
+ship(ship7[
+	   registryExpirationDate -> "2020-01-01"  ;
+       totalLength -> 90 ;
+       hold->h7[
+		residualCargoMeasurement -> 0.4 ;
+		hull -> "double" ]
+]).
+ShipHold(h7).
+
+%Facts with multiple reasons for No or Yes
+%Three reasons for No
+%Ship 8 - No, registry expired, hold not clean, and size large yet hold single-hulled
+ship(ship8[
+	   registryExpirationDate -> "2017-01-01"  ;
+       totalLength -> 90 ;
+       hold->h8[
+		residualCargoMeasurement -> 0.9 ;
+		hull -> "single" ]
+]).
+ShipHold(h8).
+
+%Two reasons for No
+%Ship 9 - No, hold not clean and size large yet hold single-hulled
+ship(ship9[
+	   registryExpirationDate -> "2020-01-01"  ;
+       totalLength -> 90 ;
+       hold->h9[
+		residualCargoMeasurement -> 0.9 ;
+		hull -> "single" ]
+]).
+ShipHold(h9).
+
+%Ship 10 - No, registry expired and size large yet hold single-hulled
+ship(ship10[
+	   registryExpirationDate -> "2017-01-01"  ;
+       totalLength -> 90 ;
+       hold->h10[
+		residualCargoMeasurement -> 0.2 ;
+		hull -> "single" ]
+]).
+ShipHold(h10).
+
+
+%Ship 11 - No, registry expired and hold not clean
+ship(ship11[
+	   registryExpirationDate -> "2017-01-01"  ;
+       totalLength -> 90 ;
+       hold->h11[
+		residualCargoMeasurement -> 0.9 ;
+		hull -> "double" ]
+]).
+ShipHold(h11).
+
+
+%Two reasons for Yes
+%Ship 12 - Yes, size small nevertheless hold double-hulled  
+ship(ship12[
+	   registryExpirationDate -> "2020-01-01"  ;
+       totalLength -> 60 ;
+       hold->h12[
+		residualCargoMeasurement -> 0.1 ;
+		hull -> "double" ]
+]).
+ShipHold(h12).
+
+
+%Facts probing special cases
+%Ship 13 - No, large ship must have some (a double) hull
+ship(ship13[
+	   registryExpirationDate -> "2020-01-01"  ;
+       totalLength -> 120 ;
+       hold->h13[
+		residualCargoMeasurement -> 0.2
+	  ]
+]).
+ShipHold(h13).
+
+
+%Ship 14 - Yes, date, length, and measurement are at the threshold
+ship(ship14[
+	   registryExpirationDate -> "2018-01-21"  ;
+       totalLength -> 80 ;
+       hold->h14[
+		residualCargoMeasurement -> 0.5 ;
+		hull -> "double" ]
+]).
+ShipHold(h14).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

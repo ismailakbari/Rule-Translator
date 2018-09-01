@@ -1,0 +1,42 @@
+<?xml version='1.0' ?>
+<!DOCTYPE swrlx:Ontology [
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">  
+	<!ENTITY swrlb  "http://www.w3.org/2003/11/swrlb#" >	
+    <!ENTITY dm "https://dmcommunity.org/challenge/challenge-march-2016#">	
+]>
+
+<?xml-stylesheet type="text/xsl" href="SWRL2RIF.xsl"?>
+<swrlx:Ontology
+  xmlns:owlx="http://www.w3.org/2003/05/owl-xml"
+  xmlns:swrlx="http://www.w3.org/2003/11/swrlx"
+  xmlns:ruleml="http://www.w3.org/2003/11/ruleml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.w3.org/2003/11/swrlx http://www.ruleml.org/swrl/xsd/swrlx.xsd"
+>
+  <owlx:Annotation>
+    <owlx:Documentation>Port Clearance Rules in SWRL</owlx:Documentation>
+  </owlx:Annotation>
+  <owlx:VersionInfo>Version 1.0, February 2018</owlx:VersionInfo>
+  <!--
+  Rule 2 : An unloaded ship may only enter a Dutch port if the ship complies with the requirements of the Inspection for unloaded ships. 
+  commentes show the rules in POSL languages.
+  MayEnterDutchPortUnloaded(?s)  :-  CompliesInspectionRequirementsUnloaded(?s)  .
+  -->
+  
+<ruleml:var>s</ruleml:var>
+
+<ruleml:imp> 
+  <ruleml:_rlab ruleml:href="#Rule2"/>
+  <ruleml:_body> 
+    <swrlx:individualPropertyAtom  swrlx:property="CompliesInspectionRequirementsUnloaded"> 
+      <ruleml:var>s</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+  </ruleml:_body> 
+  <ruleml:_head> 
+    <swrlx:individualPropertyAtom  swrlx:property="MayEnterDutchPortUnloaded"> 
+      <ruleml:var>s</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+  </ruleml:_head> 
+</ruleml:imp> 
+    
+  </swrlx:Ontology>

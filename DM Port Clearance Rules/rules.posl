@@ -1,0 +1,75 @@
+% this file formalizes the port clearance rules in POSL language
+% note: it seems there are no prefix definition in posl
+% posl also does not have numeric/string libraries. however it seems that it supports XML Schema data types
+% version 1.0
+% Date : Jan 2018
+% Author: Ismail Akbari
+%--------------------------------
+
+
+% Rule 2 : An unloaded ship may only enter a Dutch port if the ship complies with the requirements of the Inspection for unloaded ships.
+MayEnterDutchPortUnloaded(?s)  :-  CompliesInspectionRequirementsUnloaded(?s)  .
+
+% Rule 3: A ship must comply with the requirements of the Inspection for unloaded ships if the ship complies with all of the following: 
+% a) the ship meets the safety requirements for unloaded ships; 
+% b) the ship has a certificate of registry that is valid.
+CompliesInspectionRequirementsUnloaded(?s) 	:-
+ 	HasValidCertificate(?s) , MeetsSafetyRequirementsUnloaded(?s).
+	
+% Rule 10: A ship’s certificate of registry must be considered valid if the date up to which the registration is valid of the certificate of registry is after the current date.
+HasValidCertificate(?s)  :-		
+	registryExpirationDate(?s:ship, ?e) , 	currentDate(?cd) , 	greaterThanOrEqual(?e, ?cd)  .
+
+
+%Rule 8: A ship only meets the safety requirements for small unloaded ships if the ship complies with all of the following: 
+%a) the ship is categorized as small; 
+%b) the hold of the ship is clean.
+%Rule 8 (includes disjunct of original Rule 6)
+MeetsSafetyRequirementsUnloaded(?s)	:-	 
+size(?s:ship , "small") , hold(?s:ship , ?h:shipHold) , status(?h:shipHold , "clean").
+
+%Rule 7: A ship only meets the safety requirements for large unloaded ships if the ship complies with all of the following:
+% a) the ship is categorized as large; 
+% b) the hold of the ship is clean;
+% c) the hold of the ship is double hulled.
+%Rule 7 (includes disjunct of original Rule 6)
+
+%MeetsSafetyRequirementsUnloaded(?s) :-
+%size(?s:ship , "large") , hold(?s , ?h:shipHold -> [status -> "clean" ; hull  -> "double" ]).
+
+% rule 7 can also be written as following after Unnesting and Slotribution (see PSOA formalization of Port Clearance Rules)
+MeetsSafetyRequirementsUnloaded(?s) :-
+size(?s:ship ,"large") , hold(?s:ship , ?h:shipHold) , status(?h:shipHold , "clean") , hull(?h:shipHold , "double") .
+
+
+%Rule 9: A ship must be categorized as small if the total length of the ship is less than 80 meters.
+size(?s:ship , "small")	:-	
+	totalLength(?s:ship , ?l) , lessThan(?l , 80) .
+
+%Rule 4: A ship must be categorized as large if the total length of the ship is at least 80 meters.
+size(?s:ship , "large")	:-	
+	totalLength(?s:ship , ?l) , greaterThanOrEqual(?l , 80) .
+
+% Rule 1&5 (combines Rule 1 and Rule 5)
+% Rule 1: The hold of a ship must be considered clean if the hold does not contain remainders of cargo.
+% Rule 5: A ship’s hold contains remainders of cargo if the residual cargo measurement is higher than 0.5 mg dry weight per cm2.
+% Negation is eliminated by propagation into Rule 5’s condition, where the negated math:greaterThanOrEqual call is simplified to a math:lessEq call
+ status(?h:shipHold , "clean") 	:-
+	residualCargoMeasurement(?h:shipHold , ?c) , LessEq(?c , 0.5 ) .
+
+
+
+%-------------------------------------facts-----------------------
+
+
+
+
+
+
+
+
+
+
+
+
+

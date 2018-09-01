@@ -1,0 +1,180 @@
+% this file formalizes the port clearance rules in POSL language
+% note: it seems there are no prefix definition in posl
+% posl also does not have numeric/string libraries. however it seems that it supports XML Schema data types
+% version 1.0
+% Date : Jan 2018
+% Author: Ismail Akbari
+%--------------------------------
+
+
+
+%-------------------------------------facts-----------------------
+%Ship facts (No or Yes refer to answers for queries  with :ship1, :ship2, ... as arguments)
+
+
+currentDate("2018-01-21").
+
+% Ship 1 - No, registry has expired
+true(ship1:ship [
+	   registryExpirationDate -> "2017-01-01"  ;
+       totalLength -> "20" ;
+       hold:ShipHold -> [
+		residualCargoMeasurement -> "0.2" ;
+		hull -> single ]
+]).
+
+% Ship 2 - Yes, registry is valid
+ship2:ship[
+	    registryExpirationDate -> "2020-01-01"  ;
+	    totalLength -> "20" ;
+		hold:shipHold [
+		residualCargoMeasurement -> "0.2" ;
+		hull -> single ]
+].
+
+
+% Distinction for :residualCargoMeasurement
+ship3:ship[
+	    registryExpirationDate -> "2020-01-01"  ;
+	    totalLength -> "70" ;
+		hold:shipHold [
+		residualCargoMeasurement -> "0.6" ;
+		hull -> single ]
+].
+			
+			
+			
+			
+			
+% Ship 4 - Yes, hold clean (qualitatively the same as for Ship 2)
+ship4:ship[
+	    registryExpirationDate -> "2020-01-01"  ;
+	    totalLength -> "70" ;
+		hold:shipHold [
+		residualCargoMeasurement -> "0.4" ;
+		hull -> single ]
+].
+
+
+
+%Distinctions for :residualCargoMeasurement and :hull
+ship5:ship[
+	    registryExpirationDate -> "2020-01-01"  ;
+	    totalLength -> "90" ;
+		hold:shipHold [
+		residualCargoMeasurement -> "0.6" ;
+		hull -> double ]
+].
+			
+			
+			
+			
+%Ship 6 - No, size large yet hold single-hulled
+ship6:ship[
+	    registryExpirationDate -> "2020-01-01"  ;
+	    totalLength -> "90" ;
+		hold:shipHold [
+		residualCargoMeasurement -> "0.4" ;
+		hull -> single ]
+].
+
+%Ship 7 - Yes, hold clean and double-hulled
+ship7:ship[
+	    registryExpirationDate -> "2020-01-01"  ;
+	    totalLength -> "90" ;
+		hold:shipHold [
+		residualCargoMeasurement -> "0.4" ;
+		hull -> double ]
+].
+
+%Facts with multiple reasons for No or Yes
+%Three reasons for No
+%Ship 8 - No, registry expired, hold not clean, and size large yet hold single-hulled
+ship8:ship[
+	    registryExpirationDate -> "2017-01-01"  ;
+	    totalLength -> "90" ;
+		hold:shipHold [
+		residualCargoMeasurement -> "0.9" ;
+		hull -> single ]
+].
+
+%Two reasons for No
+%Ship 9 - No, hold not clean and size large yet hold single-hulled
+ship9:ship[
+	    registryExpirationDate -> "2020-01-01"  ;
+	    totalLength -> "90" ;
+		hold:shipHold [
+		residualCargoMeasurement -> "0.9" ;
+		hull -> single ]
+].
+
+%Ship 10 - No, registry expired and size large yet hold single-hulled
+ship10:ship[
+	    registryExpirationDate -> "2017-01-01"  ;
+	    totalLength -> "90" ;
+		hold:shipHold [
+		residualCargoMeasurement -> "0.2" ;
+		hull -> single ]
+].
+
+
+%Ship 11 - No, registry expired and hold not clean
+:ship11  rdf:Type :ship ;	
+	    :registryExpirationDate "2017-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.9" ;
+			:hull :double ] .
+ship11:ship[
+	    registryExpirationDate -> "2017-01-01"  ;
+	    totalLength -> "90" ;
+		hold:shipHold [
+		residualCargoMeasurement -> "0.9" ;
+		hull -> double ]
+].
+
+%Two reasons for Yes
+%Ship 12 - Yes, size small nevertheless hold double-hulled  
+ship12:ship[
+	    registryExpirationDate -> "2020-01-01"  ;
+	    totalLength -> "60" ;
+		hold:shipHold [
+		residualCargoMeasurement -> "0.1" ;
+		hull -> double ]
+].
+
+%Facts probing special cases
+%Ship 13 - No, large ship must have some (a double) hull
+ship13:ship[
+	    registryExpirationDate -> "2020-01-01"  ;
+	    totalLength -> "120" ;
+		hold:shipHold [
+		residualCargoMeasurement -> "0.2" ]
+].
+
+%Ship 14 - Yes, date, length, and measurement are at the threshold
+ship14:ship[
+	    registryExpirationDate -> "2018-01-21"  ;
+	    totalLength -> "80" ;
+		hold:shipHold [
+		residualCargoMeasurement -> "0.5" ;
+		hull -> double ]
+].
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

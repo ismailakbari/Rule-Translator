@@ -1,0 +1,288 @@
+Document(
+Base(<https://dmcommunity.org/>) 
+Prefix(local  <https://dmcommunity.org/challenge/challenge-march-2016#>) 
+Prefix(log <http://www.w3.org/2000/10/swap/log#>) 
+Prefix(math <http://www.w3.org/2000/10/swap/math#>) 
+Prefix(time <http://www.w3.org/2000/10/swap/time#>) 
+Prefix(rdf <http://www.w3.org/1999/02/22-rdf-syntax-ns#>) 
+Group(
+
+Forall  ?s (
+ 
+local:MayEnterDutchPortUnloaded( ?s ) 
+ :-
+  local:CompliesInspectionRequirementsUnloaded( ?s ) 
+
+
+)
+Forall  ?s (
+ 
+local:CompliesInspectionRequirementsUnloaded( ?s ) 
+ :-
+And(
+
+  local:HasValidCertificate( ?s ) 
+
+ local:MeetsSafetyRequirementsUnloaded( ?s ) 
+))
+Forall  ?cd  ?s  ?d  ?e (
+ 
+local:HasValidCertificate( ?s ) 
+ :-
+And(
+
+  local:ship( ?s ) 
+
+ local:registryExpirationDate( ?s ?e ) 
+
+ time:currentDate( ?d ?cd ) 
+
+ math:greaterThan( ?e ?cd ) 
+))
+Forall  ?s  ?h (
+ 
+local:MeetsSafetyRequirementsUnloaded( ?s ) 
+:-
+And(
+
+  local:ship( ?s ) 
+
+ local:size( ?s local:small ) 
+
+ local:hold( ?s ?h ) 
+
+ local:shipHold( ?h ) 
+
+ local:status( ?h local:clean ) 
+))
+Forall  ?s  ?x1 (
+ 
+local:MeetsSafetyRequirementsUnloaded( ?s ) 
+ :-
+And(
+
+  local:ship( ?s ) 
+
+ local:size( ?s local:large ) 
+
+ local:hold( ?s ?x1 ) 
+local:shipHold( ?x1 ) 
+local:status( ?x1 local:clean ) 
+local:hull( ?x1 local:double ) 
+
+))
+.
+
+
+Forall  ?s  ?h (
+ 
+local:MeetsSafetyRequirementsUnloaded( ?s ) 
+ :-
+And(
+
+  local:ship( ?s ) 
+
+ local:size( ?s local:large ) 
+
+ local:hold( ?s local:h ) 
+
+ local:shipHold( ?h ) 
+
+ local:status( ?h local:clean ) 
+
+ local:hull( ?h local:double ) 
+))
+Forall  ?s  ?l (
+ 
+local:size( ?s local:small ) 
+ :-
+And(
+
+  local:ship( ?s ) 
+
+ local:totalLength( ?s ?l ) 
+
+ math:lessThan( ?l 80 ) 
+))
+Forall  ?s  ?l (
+ 
+local:size( ?s local:large ) 
+ :-
+And(
+
+  local:ship( ?s ) 
+
+ local:totalLength( ?s ?l ) 
+
+ math:greaterThan( ?l 80 ) 
+))
+Forall  ?c  ?h (
+ 
+local:status( ?h local:clean ) 
+ :-
+And(
+
+  local:shipHold( ?h ) 
+
+ local:residualCargoMeasurement( ?h ?c ) 
+
+ math:LessEq( ?c 0
+ 5 ) 
+))
+time:currentDate( today "2018-01-21" ) 
+
+
+local:ship( local:ship1 ) 
+local:registryExpirationDate( local:ship1 "2017-01-01" ) 
+local:totalLength( local:ship1 20 ) 
+local:hold( local:ship1 ?x2 ) 
+local:ShipHold( ?x2 ) 
+local:residualCargoMeasurement( ?x2 0.2 ) 
+local:hull( ?x2 local:single ) 
+
+
+
+
+local:ship( local:ship2 ) 
+local:registryExpirationDate( local:ship2 "2020-01-01" ) 
+local:totalLength( local:ship2 20 ) 
+local:hold( local:ship2 ?x3 ) 
+local:ShipHold( ?x3 ) 
+local:residualCargoMeasurement( ?x3 0.2 ) 
+local:hull( ?x3 local:single ) 
+
+
+
+
+local:ship( local:ship3 ) 
+local:registryExpirationDate( local:ship3 "2020-01-01" ) 
+local:totalLength( local:ship3 70 ) 
+local:hold( local:ship3 ?x4 ) 
+local:ShipHold( ?x4 ) 
+local:residualCargoMeasurement( ?x4 0.6 ) 
+local:hull( ?x4 local:single ) 
+
+
+
+
+local:ship( local:ship4 ) 
+local:registryExpirationDate( local:ship4 "2020-01-01" ) 
+local:totalLength( local:ship4 70 ) 
+local:hold( local:ship4 ?x5 ) 
+local:ShipHold( ?x5 ) 
+local:residualCargoMeasurement( ?x5 0.4 ) 
+local:hull( ?x5 local:single ) 
+
+
+
+
+local:ship( local:ship5 ) 
+local:registryExpirationDate( local:ship5 "2020-01-01" ) 
+local:totalLength( local:ship5 90 ) 
+local:hold( local:ship5 ?x6 ) 
+local:ShipHold( ?x6 ) 
+local:residualCargoMeasurement( ?x6 0.6 ) 
+local:hull( ?x6 local:double ) 
+
+
+
+
+local:ship( local:ship6 ) 
+local:registryExpirationDate( local:ship6 "2020-01-01" ) 
+local:totalLength( local:ship6 90 ) 
+local:hold( local:ship6 ?x7 ) 
+local:ShipHold( ?x7 ) 
+local:residualCargoMeasurement( ?x7 0.4 ) 
+local:hull( ?x7 local:single ) 
+
+
+
+
+local:ship( local:ship7 ) 
+local:registryExpirationDate( local:ship7 "2020-01-01" ) 
+local:totalLength( local:ship7 90 ) 
+local:hold( local:ship7 ?x8 ) 
+local:ShipHold( ?x8 ) 
+local:residualCargoMeasurement( ?x8 0.4 ) 
+local:hull( ?x8 local:double ) 
+
+
+
+
+local:ship( local:ship8 ) 
+local:registryExpirationDate( local:ship8 "2017-01-01" ) 
+local:totalLength( local:ship8 90 ) 
+local:hold( local:ship8 ?x9 ) 
+local:ShipHold( ?x9 ) 
+local:residualCargoMeasurement( ?x9 0.9 ) 
+local:hull( ?x9 local:single ) 
+
+
+
+
+local:ship( local:ship9 ) 
+local:registryExpirationDate( local:ship9 "2020-01-01" ) 
+local:totalLength( local:ship9 90 ) 
+local:hold( local:ship9 ?x10 ) 
+local:ShipHold( ?x10 ) 
+local:residualCargoMeasurement( ?x10 0.9 ) 
+local:hull( ?x10 local:single ) 
+
+
+
+
+local:ship( local:ship10 ) 
+local:registryExpirationDate( local:ship10 "2017-01-01" ) 
+local:totalLength( local:ship10 90 ) 
+local:hold( local:ship10 ?x11 ) 
+local:ShipHold( ?x11 ) 
+local:residualCargoMeasurement( ?x11 0.2 ) 
+local:hull( ?x11 local:single ) 
+
+
+
+
+local:ship( local:ship11 ) 
+local:registryExpirationDate( local:ship11 "2017-01-01" ) 
+local:totalLength( local:ship11 90 ) 
+local:hold( local:ship11 ?x12 ) 
+local:ShipHold( ?x12 ) 
+local:residualCargoMeasurement( ?x12 0.9 ) 
+local:hull( ?x12 local:double ) 
+
+
+
+
+local:ship( local:ship12 ) 
+local:registryExpirationDate( local:ship12 "2020-01-01" ) 
+local:totalLength( local:ship12 60 ) 
+local:hold( local:ship12 ?x13 ) 
+local:ShipHold( ?x13 ) 
+local:residualCargoMeasurement( ?x13 0.1 ) 
+local:hull( ?x13 local:double ) 
+
+
+
+
+local:ship( local:ship13 ) 
+local:registryExpirationDate( local:ship13 "2020-01-01" ) 
+local:totalLength( local:ship13 120 ) 
+local:hold( local:ship13 ?x14 ) 
+local:ShipHold( ?x14 ) 
+local:residualCargoMeasurement( ?x14 0.2 ) 
+
+
+
+
+local:ship( local:ship14 ) 
+local:registryExpirationDate( local:ship14 "2018-01-21" ) 
+local:totalLength( local:ship14 80 ) 
+local:hold( local:ship14 ?x15 ) 
+local:ShipHold( ?x15 ) 
+local:residualCargoMeasurement( ?x15 0.5 ) 
+local:hull( ?x15 local:double ) 
+
+
+
+
+))

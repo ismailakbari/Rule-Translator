@@ -1,0 +1,805 @@
+<?xml version='1.0' ?>
+<!DOCTYPE swrlx:Ontology [
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">  
+	<!ENTITY swrlb  "http://www.w3.org/2003/11/swrlb#" >	
+    <!ENTITY dm "https://dmcommunity.org/challenge/challenge-march-2016#">	
+]>
+
+<?xml-stylesheet type="text/xsl" href="SWRL2RIF.xsl"?>
+<swrlx:Ontology
+  xmlns:owlx="http://www.w3.org/2003/05/owl-xml"
+  xmlns:swrlx="http://www.w3.org/2003/11/swrlx"
+  xmlns:ruleml="http://www.w3.org/2003/11/ruleml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.w3.org/2003/11/swrlx http://www.ruleml.org/swrl/xsd/swrlx.xsd"
+>
+  <owlx:Annotation>
+    <owlx:Documentation>Port Clearance Rules in SWRL</owlx:Documentation>
+  </owlx:Annotation>
+  <owlx:VersionInfo>Version 1.0, February 2018</owlx:VersionInfo>
+  <!--
+  Rule 2 : An unloaded ship may only enter a Dutch port if the ship complies with the requirements of the Inspection for unloaded ships. 
+  commentes show the rules in POSL languages.
+  MayEnterDutchPortUnloaded(?s)  :-  CompliesInspectionRequirementsUnloaded(?s)  .
+  -->
+  
+<ruleml:var>s</ruleml:var>
+
+<ruleml:imp> 
+  <ruleml:_rlab ruleml:href="#Rule2"/>
+  <ruleml:_body> 
+    <swrlx:individualPropertyAtom  swrlx:property="CompliesInspectionRequirementsUnloaded"> 
+      <ruleml:var>s</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+  </ruleml:_body> 
+  <ruleml:_head> 
+    <swrlx:individualPropertyAtom  swrlx:property="MayEnterDutchPortUnloaded"> 
+      <ruleml:var>s</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+  </ruleml:_head> 
+</ruleml:imp> 
+
+<!--
+% Rule 3: A ship must comply with the requirements of the Inspection for unloaded ships if the ship complies with all of the following: 
+% a) the ship meets the safety requirements for unloaded ships; 
+% b) the ship has a certificate of registry that is valid.
+CompliesInspectionRequirementsUnloaded(?s) 	:-
+ 	HasValidCertificate(?s) , MeetsSafetyRequirementsUnloaded(?s).
+
+-->
+
+<ruleml:imp> 
+  <ruleml:_rlab ruleml:href="#rule3"/>
+  <ruleml:_body> 
+    <swrlx:individualPropertyAtom  swrlx:property="HasValidCertificate"> 
+      <ruleml:var>s</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+    <swrlx:individualPropertyAtom  swrlx:property="MeetsSafetyRequirementsUnloaded"> 
+      <ruleml:var>s</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+  </ruleml:_body> 
+  <ruleml:_head> 
+    <swrlx:individualPropertyAtom  swrlx:property="CompliesInspectionRequirementsUnloaded"> 
+      <ruleml:var>s</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+  </ruleml:_head> 
+</ruleml:imp> 
+
+
+<!--
+% Rule 10: A ship’s certificate of registry must be considered valid if the date up to which the registration is valid of the certificate of registry is after the current date.
+HasValidCertificate(?s)  :-		
+	registryExpirationDate(?s:ship, ?e) , 	currentDate(?cd) , 	greaterThan(?e, ?cd)  .
+
+-->
+
+<ruleml:imp> 
+  <ruleml:_rlab ruleml:href="#rule10"/>
+  <ruleml:_body> 
+	 <swrlx:classAtom> 
+      <owlx:Class owlx:name="ship" />
+      <ruleml:var>s</ruleml:var>
+    </swrlx:classAtom> 
+    <swrlx:individualPropertyAtom  swrlx:property="registryExpirationDate"> 
+      <ruleml:var>s</ruleml:var>
+	   <ruleml:var>e</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+    <swrlx:individualPropertyAtom  swrlx:property="currentDate"> 
+      <ruleml:var>cd</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+	<swrlx:builtinAtom  swrlx:builtin="&swrlb;greaterThanOrEqual">
+		<ruleml:var>cd</ruleml:var>
+		<ruleml:var>e</ruleml:var>
+	</swrlx:builtinAtom>
+  </ruleml:_body> 
+  <ruleml:_head> 
+    <swrlx:individualPropertyAtom  swrlx:property="HasValidCertificate"> 
+      <ruleml:var>s</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+  </ruleml:_head> 
+</ruleml:imp> 
+
+
+<!--
+%Rule 8: A ship only meets the safety requirements for small unloaded ships if the ship complies with all of the following: 
+%a) the ship is categorized as small; 
+%b) the hold of the ship is clean.
+%Rule 8 (includes disjunct of original Rule 6)
+MeetsSafetyRequirementsUnloaded(?s)	:-	 
+size(?s:ship , "small") , hold(?s:ship , ?h:shipHold) , status(?h:shipHold , "clean").
+
+-->
+
+
+<ruleml:imp> 
+  <ruleml:_rlab ruleml:href="#rule8"/>
+  <ruleml:_body> 
+	 <swrlx:classAtom> 
+      <owlx:Class owlx:name="ship" />
+      <ruleml:var>s</ruleml:var>
+    </swrlx:classAtom> 
+	<swrlx:datavaluedPropertyAtom  swrlx:property="size"> 
+      <ruleml:var>s</ruleml:var>
+      <owlx:DataValue owlx:datatype="&xsd;string">small</owlx:DataValue>
+    </swrlx:datavaluedPropertyAtom>
+	<swrlx:classAtom> 
+      <owlx:Class owlx:name="shipHold" />
+      <ruleml:var>h</ruleml:var>
+    </swrlx:classAtom> 	
+    <swrlx:individualPropertyAtom  swrlx:property="hold"> 
+      <ruleml:var>s</ruleml:var>
+	   <ruleml:var>h</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+	<swrlx:datavaluedPropertyAtom  swrlx:property="status"> 
+      <ruleml:var>h</ruleml:var>
+      <owlx:DataValue owlx:datatype="&xsd;string">clean</owlx:DataValue>
+    </swrlx:datavaluedPropertyAtom>
+  </ruleml:_body> 
+  <ruleml:_head> 
+    <swrlx:individualPropertyAtom  swrlx:property="MeetsSafetyRequirementsUnloaded"> 
+      <ruleml:var>s</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+  </ruleml:_head> 
+</ruleml:imp> 
+
+<!--
+%Rule 7: A ship only meets the safety requirements for large unloaded ships if the ship complies with all of the following:
+% a) the ship is categorized as large; 
+% b) the hold of the ship is clean;
+% c) the hold of the ship is double hulled.
+%Rule 7 (includes disjunct of original Rule 6)
+
+%MeetsSafetyRequirementsUnloaded(?s) :-
+%size(?s:ship , "large") , hold(?s , ?h:shipHold -> [status -> "clean" ; hull  -> "double" ]).
+
+% rule 7 can also be written as following after Unnesting and Slotribution (see PSOA formalization of Port Clearance Rules)
+MeetsSafetyRequirementsUnloaded(?s) :-
+size(?s:ship ,"large") , hold(?s:ship , ?h:shipHold) , status(?h:shipHold , "clean") , hull(?h:shipHold , "double") .
+
+-->
+
+
+<ruleml:imp> 
+  <ruleml:_rlab ruleml:href="#rule7"/>
+  <ruleml:_body> 
+	 <swrlx:classAtom> 
+      <owlx:Class owlx:name="ship" />
+      <ruleml:var>s</ruleml:var>
+    </swrlx:classAtom> 
+	<swrlx:datavaluedPropertyAtom  swrlx:property="size"> 
+      <ruleml:var>s</ruleml:var>
+      <owlx:DataValue owlx:datatype="&xsd;string">large</owlx:DataValue>
+    </swrlx:datavaluedPropertyAtom>
+	<swrlx:classAtom> 
+      <owlx:Class owlx:name="shipHold" />
+      <ruleml:var>h</ruleml:var>
+    </swrlx:classAtom> 	
+    <swrlx:individualPropertyAtom  swrlx:property="hold"> 
+      <ruleml:var>s</ruleml:var>
+	   <ruleml:var>h</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+	<swrlx:datavaluedPropertyAtom  swrlx:property="status"> 
+      <ruleml:var>h</ruleml:var>
+      <owlx:DataValue owlx:datatype="&xsd;string">clean</owlx:DataValue>
+    </swrlx:datavaluedPropertyAtom>
+	<swrlx:datavaluedPropertyAtom  swrlx:property="hull"> 
+      <ruleml:var>h</ruleml:var>
+      <owlx:DataValue owlx:datatype="&xsd;string">double</owlx:DataValue>
+    </swrlx:datavaluedPropertyAtom>
+  </ruleml:_body> 
+  <ruleml:_head> 
+    <swrlx:individualPropertyAtom  swrlx:property="MeetsSafetyRequirementsUnloaded"> 
+      <ruleml:var>s</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+  </ruleml:_head> 
+</ruleml:imp> 
+
+<!--
+
+%Rule 9: A ship must be categorized as small if the total length of the ship is less than 80 meters.
+size(?s:ship , "small")	:-	
+	totalLength(?s:ship , ?l) , lessThan(?l , 80) .
+
+-->
+
+<ruleml:imp> 
+  <ruleml:_rlab ruleml:href="#rule9"/>
+  <ruleml:_body> 
+	 <swrlx:classAtom> 
+      <owlx:Class owlx:name="ship" />
+      <ruleml:var>s</ruleml:var>
+    </swrlx:classAtom> 	
+    <swrlx:individualPropertyAtom  swrlx:property="totalLength"> 
+      <ruleml:var>s</ruleml:var>
+	   <ruleml:var>l</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+	<swrlx:builtinAtom  swrlx:builtin="&swrlb;lessThan">
+      <ruleml:var>l</ruleml:var>
+      <owlx:DataValue owlx:datatype="&xsd;int">80</owlx:DataValue>
+    </swrlx:builtinAtom>
+  </ruleml:_body> 
+  <ruleml:_head> 
+   <swrlx:datavaluedPropertyAtom  swrlx:property="size"> 
+      <ruleml:var>s</ruleml:var>
+      <owlx:DataValue owlx:datatype="&xsd;string">small</owlx:DataValue>
+    </swrlx:datavaluedPropertyAtom>
+  </ruleml:_head> 
+</ruleml:imp> 
+
+<!--
+%Rule 4: A ship must be categorized as large if the total length of the ship is at least 80 meters.
+size(?s:ship , "large")	:-	
+	totalLength(?s:ship , ?l) , greaterThan(?l , 80) .
+-->
+
+<ruleml:imp> 
+  <ruleml:_rlab ruleml:href="#rule4"/>
+  <ruleml:_body> 
+	 <swrlx:classAtom> 
+      <owlx:Class owlx:name="ship" />
+      <ruleml:var>s</ruleml:var>
+    </swrlx:classAtom> 	
+    <swrlx:individualPropertyAtom  swrlx:property="totalLength"> 
+      <ruleml:var>s</ruleml:var>
+	   <ruleml:var>l</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+	<swrlx:builtinAtom  swrlx:builtin="&swrlb;greaterThanOrEqual">
+      <ruleml:var>l</ruleml:var>
+      <owlx:DataValue owlx:datatype="&xsd;int">80</owlx:DataValue>
+    </swrlx:builtinAtom>
+  </ruleml:_body> 
+  <ruleml:_head> 
+   <swrlx:datavaluedPropertyAtom  swrlx:property="size"> 
+      <ruleml:var>s</ruleml:var>
+      <owlx:DataValue owlx:datatype="&xsd;string">large</owlx:DataValue>
+    </swrlx:datavaluedPropertyAtom>
+  </ruleml:_head> 
+</ruleml:imp> 
+
+<!--
+
+% Rule 1&5 (combines Rule 1 and Rule 5)
+% Rule 1: The hold of a ship must be considered clean if the hold does not contain remainders of cargo.
+% Rule 5: A ship’s hold contains remainders of cargo if the residual cargo measurement is higher than 0.5 mg dry weight per cm2.
+% Negation is eliminated by propagation into Rule 5’s condition, where the negated math:greaterThan call is simplified to a math:lessEq call
+ status(?h:shipHold , "clean") 	:-
+	residualCargoMeasurement(?h:shipHold , ?c) , LessEq(?c , 0.5 ) .
+
+-->
+
+
+<ruleml:imp> 
+  <ruleml:_rlab ruleml:href="#rule9"/>
+  <ruleml:_body> 
+	 <swrlx:classAtom> 
+      <owlx:Class owlx:name="shipHold" />
+      <ruleml:var>h</ruleml:var>
+    </swrlx:classAtom> 	
+    <swrlx:individualPropertyAtom  swrlx:property="residualCargoMeasurement"> 
+      <ruleml:var>h</ruleml:var>
+	   <ruleml:var>c</ruleml:var>
+    </swrlx:individualPropertyAtom> 
+	<swrlx:builtinAtom  swrlx:builtin="&swrlb;lessThanOrEqual">
+      <ruleml:var>c</ruleml:var>
+      <owlx:DataValue owlx:datatype="&xsd;double">0.5</owlx:DataValue>
+    </swrlx:builtinAtom>
+  </ruleml:_body> 
+  <ruleml:_head> 
+   <swrlx:datavaluedPropertyAtom  swrlx:property="status"> 
+      <ruleml:var>h</ruleml:var>
+      <owlx:DataValue owlx:datatype="&xsd;string">clean</owlx:DataValue>
+    </swrlx:datavaluedPropertyAtom>
+  </ruleml:_head> 
+</ruleml:imp> 
+
+
+<!--            facts                 -->
+<!--Ship facts (No or Yes refer to answers for queries  with :ship1, :ship2, ... as arguments) -->
+
+<!-- today time:currentDate "2018-01-21" . -->
+<!--
+ <swrlx:datavaluedPropertyAtom  swrlx:property="currentDate"> 
+	<ruleml:var>today</ruleml:var>
+	 <owlx:DataValue owlx:datatype="&xsd;dateTime">2018-01-21</owlx:DataValue>
+</swrlx:datavaluedPropertyAtom> 
+-->
+<owlx:DataPropertyValue owlx:property="currentDate">
+    <owlx:DataValue owlx:datatype="&xsd;dateTime">2018-01-21</owlx:DataValue> 
+</owlx:DataPropertyValue>
+
+<!--
+# Ship 1 - No, registry has expired
+:ship1 rdf:Type :ship ;	
+	   :registryExpirationDate "2017-01-01"  ;
+       :totalLength "20" ;
+       :hold [
+		rdf:Type :ShipHold ;
+		:residualCargoMeasurement "0.2" ;
+		:hull :single ] .	
+-->
+<owlx:Individual owlx:name="ship1">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2017-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">20</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.2</owlx:DataValue>
+      </owlx:DataPropertyValue>
+      <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">single</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+
+<!--
+# Ship 2 - Yes, registry is valid
+:ship2  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "20" ;
+		:hold [
+		rdf:Type :ShipHold ;
+		:residualCargoMeasurement "0.2" ;
+		:hull :single ] .	
+-->
+<owlx:Individual owlx:name="ship2">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">202-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">20</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.2</owlx:DataValue>
+      </owlx:DataPropertyValue>
+      <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">single</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+<!--
+# Distinction for :residualCargoMeasurement
+#Ship 3 - No, hold not clean
+:ship3  rdf:Type :ship ;
+		:registryExpirationDate "2020-01-01"  ;
+		:totalLength "70" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.6" ;
+			:hull :single ] .	
+-->
+<owlx:Individual owlx:name="ship3">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2020-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">70</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.6</owlx:DataValue>
+      </owlx:DataPropertyValue>
+      <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">single</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+<!--
+# Ship 4 - Yes, hold clean (qualitatively the same as for Ship 2)
+:ship4  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "70" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.4" ;
+			:hull :single ] .	
+-->
+<owlx:Individual owlx:name="ship4">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2020-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">70</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.4</owlx:DataValue>
+      </owlx:DataPropertyValue>
+      <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">single</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+<!--
+#Distinctions for :residualCargoMeasurement and :hull
+#Ship 5 - No, hold not clean
+:ship5  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.6" ;
+			:hull :double ] .
+-->
+<owlx:Individual owlx:name="ship5">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2020-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">90</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.6</owlx:DataValue>
+      </owlx:DataPropertyValue>
+      <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">double</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+<!--
+#Ship 6 - No, size large yet hold single-hulled
+:ship6  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.4" ;
+			:hull :single ] .
+-->
+<owlx:Individual owlx:name="ship6">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2020-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">90</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.4</owlx:DataValue>
+      </owlx:DataPropertyValue>
+      <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">single</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+<!--
+#Ship 7 - Yes, hold clean and double-hulled
+:ship7  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.4" ;
+			:hull :double ] .
+-->
+<owlx:Individual owlx:name="ship7">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2020-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">90</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.4</owlx:DataValue>
+      </owlx:DataPropertyValue>
+      <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">double</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+<!--
+#Facts with multiple reasons for No or Yes
+#Three reasons for No
+#Ship 8 - No, registry expired, hold not clean, and size large yet hold single-hulled
+:ship8  rdf:Type :ship ;	
+	    :registryExpirationDate "2017-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.9" ;
+			:hull :single ] .
+-->
+<owlx:Individual owlx:name="ship8">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2017-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">90</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.9</owlx:DataValue>
+      </owlx:DataPropertyValue>
+      <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">single</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+<!--
+#Two reasons for No
+#Ship 9 - No, hold not clean and size large yet hold single-hulled
+:ship9  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.9" ;
+			:hull :single ] .
+-->
+<owlx:Individual owlx:name="ship9">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2020-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">90</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.9</owlx:DataValue>
+      </owlx:DataPropertyValue>
+      <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">single</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+<!--
+#Ship 10 - No, registry expired and size large yet hold single-hulled
+:ship10  rdf:Type :ship ;	
+	    :registryExpirationDate "2017-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.2" ;
+			:hull :single ] .
+-->
+<owlx:Individual owlx:name="ship10">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2017-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">90</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.2</owlx:DataValue>
+      </owlx:DataPropertyValue>
+      <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">single</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+<!--
+#Ship 11 - No, registry expired and hold not clean
+:ship11  rdf:Type :ship ;	
+	    :registryExpirationDate "2017-01-01"  ;
+	    :totalLength "90" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.9" ;
+			:hull :double ] .
+-->
+<owlx:Individual owlx:name="ship11">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2017-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">90</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.9</owlx:DataValue>
+      </owlx:DataPropertyValue>
+      <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">double</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+<!--
+#Two reasons for Yes
+#Ship 12 - Yes, size small nevertheless hold double-hulled  
+:ship12  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "60" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.1" ;
+			:hull :double ] .  
+-->
+<owlx:Individual owlx:name="ship12">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2020-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">60</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.1</owlx:DataValue>
+      </owlx:DataPropertyValue>
+      <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">double</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+<!--
+#Facts probing special cases
+#Ship 13 - No, large ship must have some (a double) hull
+:ship13  rdf:Type :ship ;	
+	    :registryExpirationDate "2020-01-01"  ;
+	    :totalLength "120" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.2" 
+			] .         
+-->
+<owlx:Individual owlx:name="ship13">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2020-01-01</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">120</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.2</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+<!--
+#Ship 14 - Yes, date, length, and measurement are at the threshold
+:ship14  rdf:Type :ship ;	
+	    :registryExpirationDate "2018-01-21"  ;
+	    :totalLength "80" ;
+		:hold [
+			rdf:Type :ShipHold ;
+			:residualCargoMeasurement "0.5" ;
+			:hull :double ] . 
+-->
+<owlx:Individual owlx:name="ship14">
+   <owlx:type owlx:name="&dm;ship" />
+   <!--<swrlx:classAtom> 
+      <owlx:Class owlx:name="&dm;ship" />
+      <ruleml:var>ship1</ruleml:var>
+    </swrlx:classAtom> -->
+	<owlx:DataPropertyValue owlx:property="registryExpirationDate">
+		<owlx:DataValue owlx:datatype="&xsd;dateTime">2018-01-21</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+	<owlx:DataPropertyValue owlx:property="totalLength">
+		<owlx:DataValue owlx:datatype="&xsd;int">80</owlx:DataValue> 
+	</owlx:DataPropertyValue>
+  <owlx:ObjectPropertyValue owlx:property="hold">
+  <owlx:type owlx:name="&dm;shipHold" />
+    <owlx:Individual>
+      <owlx:DataPropertyValue owlx:property="residualCargoMeasurement">
+        <owlx:DataValue owlx:datatype="&xsd;double">0.5</owlx:DataValue>
+      </owlx:DataPropertyValue>
+	  <owlx:DataPropertyValue owlx:property="hull">
+        <owlx:DataValue owlx:datatype="&xsd;string">double</owlx:DataValue>
+      </owlx:DataPropertyValue>
+    </owlx:Individual>
+  </owlx:ObjectPropertyValue>
+</owlx:Individual>
+
+</swrlx:Ontology>
