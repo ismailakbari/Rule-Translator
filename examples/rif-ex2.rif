@@ -1,0 +1,31 @@
+Document(
+ Prefix(ex <http://example.org/example#>)
+ Prefix(xs <http://www.w3.org/2001/XMLSchema#>) 
+
+ Group ( 
+
+  Forall ?x ?y  ?z  ( ?y=?z   :-  And ( ex:p(?x ?y)  ex:p(?x ?z) ) )
+
+  Forall ?Customer (
+   	And (ex:discount(value -> 10 customer -> ?Customer) ex:sendGift(?Customer) ) :-   Exists ?Customer (Or( ex:gold(customer -> ?Customer) ex:female(customer -> ?Customer) ))
+  )
+
+  Forall ?Customer (
+   	ex:discount(customer -> ?Customer value -> 5) :- And ( ex:silver(customer -> ?Customer) ex:female(customer -> ?Customer) )
+  )
+
+  ex:gold(customer -> "Jane Doe")
+  ex:female(customer -> "Jane Doe")
+  ex:gold(customer -> "John Doe")
+  ex:silver(customer -> "Sil Ver")
+  ex:female(customer -> "Sil Ver")  
+  ex:p(ex:a ex:b)
+  ex:p(ex:a ex:c)
+  bronze("Alice Morgan")
+  female("Alice Morgan")	
+  _pd[dc:publisher -> "http://www.w3.org/"^^rif:iri    dc:date -> "2008-04-04"^^xs:date]
+
+
+ )
+)
+

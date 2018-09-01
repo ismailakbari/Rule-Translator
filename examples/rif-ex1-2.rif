@@ -1,0 +1,13 @@
+Document(
+ 
+  
+  (* "http://sample.org"^^rif:iri _pd[dc:publisher -> "http://www.w3.org/"^^rif:iri
+                                      dc:date -> "2008-04-04"^^xs:date] *)
+  Group
+  (
+     
+  )
+)
+
+
+

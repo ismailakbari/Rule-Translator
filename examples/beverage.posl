@@ -1,0 +1,72 @@
+% POSL Examples Using Sorted Unification Run in OO jDREW                2007-07-30
+% Harold Boley, Benjamin L. Craig, Greg Sherman
+
+% Positional Fact
+
+% Fact: Mikes has available all objects that are Beverages.
+available(Mikes,?:Beverage).
+
+% Query (rule): Does Mikes have available an object that is a Cola?
+an(?X) :- available(Mikes,?X:Cola).
+
+% Query (rule): Does Mikes have available an object that is a Wine?
+an(?X) :- available(Mikes,?X:Wine).
+
+% Query (rule): Does Mikes have available an object that is a Coffee?
+an(?X) :- available(Mikes,?X:SparkingBeverage).
+
+
+% Positional Fact and Rule
+
+% Rule: Mikes serves a beverage that is a Alcholic to a ?Y if
+%       ?Y is over 19 and ?Y is thirsty
+
+servesDrink(Mikes,?Drink:Alcoholic,?Y) :- over19(?Y), orders(?Y,?Drink).
+
+% Rule: Mikes serves a beverage that is a NonAlcholic to a ?Y if
+%       ?Y is thirsty
+
+servesDrink(Mikes,?Drink:NonAlcoholic,?Y) :- orders(?Y,?Drink).
+
+% Fact: John is over 19 and is thirsty
+
+orders(John,?Drink:Beverage).
+over19(Trevor).
+orders(Trevor,?Drink:Beverage).
+
+% Query (rule): Does Mikes serves a beverage that is a Cola to someone?
+anp(?X,?P) :- servesDrink(Mikes,?X:Cola,?P).
+
+% Query (rule): Does Mikes serves a beverage that is a Wine to someone?
+anp(?X,?P) :- servesDrink(Mikes,?X:Wine,?P).
+
+% Query (rule): Does Budget rent an object that is a Coffee to someone?
+anp(?X,?P) :-servesDrink(Mikes,?X:Coffee,?P).
+
+% Slotted Fact and Rule
+
+% Rule: Mikes serves a beverage that is a Alcholic to a ?Y if
+%       ?Y is over 19 and ?Y is thirsty
+
+servesDrink(restaurant->Mikes;beverage->?Drink:Alcoholic;beverageConsumer->?Y) :-
+ over19(person->?Y), orders(person->?Y;beverage->?Drink).
+
+% Rule: Mikes serves a beverage that is a NonAlcholic to a ?Y if
+%       ?Y is thirsty
+ 
+servesDrink(restaurant->Mikes;beverage->?Drink:NonAlcoholic;beverageConsumer->?Y) :- 
+  orders(person->?Y;beverage->?Drink).
+
+% Fact: John is over 19 and is thirsty
+orders(person->John;beverage->?Drink:Beverage).
+over19(person->Trevor).
+orders(person->Trevor;beverage->?Drink:Beverage).
+
+% Query (rule): Does Mikes serves a beverage that is a Cola vehicle to someone?
+ans(?X,?Y) :- servesDrink(restaurant->Mikes;beverage->?X:Cola;beverageConsumer->?Y).
+
+% Query (rule): Does Mikes serves a beverage that is a Wine to someone?
+ans(?X,?Y) :- servesDrink(restaurant->Mikes;beverage->?X:Wine;beverageConsumer->?Y).
+
+% Query (rule): Does Budget rent an object that is a Coffee to someone?
+ans(?X,?Y) :- servesDrink(restaurant->Mikes;beverage->?X:Coffee;beverageConsumer->?Y).

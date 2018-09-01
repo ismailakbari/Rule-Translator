@@ -1,0 +1,36 @@
+% POSL Rule Example Run in OO jDREW                2007-07-17
+% Harold Boley, Benjamin L. Craig, Greg Sherman
+
+% Rule: A discount of 5.0 percent is given to a ?customer
+% on a certain ?product, if that ?customer is premium and the ?product is a regular product.
+
+discount(?customer, ?product, "5.0 percent") :- premium(?customer), regular(?product).
+
+
+% Rule: A discount of 7.5 percent is given to a ?customer
+% on a certain ?product, if that ?customer is premium and the ?product is a luxury product.
+
+discount(?customer, ?product, "7.5 percent") :- premium(?customer), luxury(?product).
+
+
+% Rule: A ?customer is premium if their spending is "min 5000 euro" in the previous year.
+
+premium(?customer) :- spending(?customer, "min 5000 euro", "previous year").
+
+
+% Fact: A Porsche is a luxury product.
+
+luxury(Porsche).
+
+
+% Fact: A Honda is a regular product.
+regular(Honda).
+
+
+% Fact: "Peter Miller"'s spending was "min 5000 euro" in the previous year.
+
+spending("Peter Miller", "min 5000 euro", "previous year").
+spending("Peter Miller", "min 7000 euro", "previous year").
+
+
+

@@ -1,0 +1,14 @@
+Document(
+  Base(<http://example.com/people#>)
+  Prefix(cpt <http://example.com/concepts#>)
+  Prefix(bks <http://example.com/books#>)
+
+  Group
+  (
+    Forall ?Buyer ?Item ?Seller (
+        cpt:buy(?Buyer ?Item ?Seller) :- cpt:sell(?Seller ?Item ?Buyer)
+    )
+ 
+    cpt:sell(<John> bks:LeRif "Mary"^^rif:iri)
+  )
+)

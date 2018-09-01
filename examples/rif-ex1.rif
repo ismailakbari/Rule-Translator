@@ -1,0 +1,30 @@
+Document(
+  Base(<http://example.com/people#>)
+  Prefix(cpt  <http://example.com/concepts#>)
+  Prefix(dc   <http://purl.org/dc/terms/>)
+  Prefix(func <http://www.w3.org/2007/rif-builtin-function#>)
+  Prefix(pred <http://www.w3.org/2007/rif-builtin-predicate#>)
+  Prefix(xs   <http://www.w3.org/2001/XMLSchema#>)
+  
+  (* "http://sample.org"^^rif:iri _pd[dc:publisher -> "http://www.w3.org/"^^rif:iri
+                                      dc:date -> "2008-04-04"^^xs:date] *)
+  Group
+  (
+    Forall ?item ?deliverydate ?scheduledate ?diffduration ?diffdays (
+        cpt:reject(<John> ?item) :-
+            And(cpt:perishable(?item)
+                cpt:delivered(?item ?deliverydate <John>)
+                cpt:scheduled(?item ?scheduledate)
+                ?diffduration = External(func:subtract-dateTimes(?deliverydate ?scheduledate))
+                ?diffdays = External(func:days-from-duration(?diffduration))
+                External(pred:numeric-greater-than(?diffdays 10)))
+    )
+ 
+    Forall ?item (
+        cpt:reject(<Fred> ?item) :- cpt:unsolicited(?item)
+    )
+  )
+)
+
+
+

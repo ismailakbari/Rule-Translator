@@ -1,0 +1,64 @@
+% POSL Examples Using Sorted Unification Run in OO jDREW                2007-07-16
+% Harold Boley, Benjamin L. Craig, Greg Sherman
+
+% The RDF[S] type definitions are visualized in:
+% http://www.jdrew.org/oojdrew/6905-slides.pdf (slide 31)
+% and their source can be loaded from:
+% http://www.jdrew.org/oojdrew/carTypes.rdf
+
+
+% Positional Fact
+
+% Fact: Budget has available all objects that are passenger vehicles.
+available(Budget,?:PassengerVehicle).
+
+% Query (rule): Does Budget have available an object that is a passenger vehicle?
+an(?X) :- available(Budget,?X:PassengerVehicle).
+
+% Query (rule): Does Budget have available an object that is a minivan?
+an(?X) :- available(Budget,?X:MiniVan).
+
+% Query (rule): Does Budget have available an object that is a van?
+an(?X) :- available(Budget,?X:Van).
+
+
+% Positional Fact and Rule
+
+% Rule: Budget rents an object that is a passenger vehicle to a ?Y if
+%       ?Y is licensed for passenger vehicles.
+
+rents(Budget,?:PassengerVehicle,?Y) :-
+  licensed(?Y,?:PassengerVehicle).
+
+% Fact: John is licensed for passenger vehicles.
+licensed(John,?:PassengerVehicle).
+
+% Query (rule): Does Budget rent an object that is a passenger vehicle to someone?
+anp(?X,?P) :- rents(Budget,?X:PassengerVehicle,?P).
+
+% Query (rule): Does Budget rent an object that is a minivan to someone?
+anp(?X,?P) :- rents(Budget,?X:MiniVan,?P).
+
+% Query (rule): Does Budget rent an object that is a van to someone?
+anp(?X,?P) :- rents(Budget,?X:Van,?P).
+
+
+% Slotted Fact and Rule
+
+% Rule: Budget rents an object that is a passenger vehicle to a ?Y if
+%       ?Y is licensed for passenger vehicles.
+
+rents(company->Budget;rental->?:PassengerVehicle;driver->?Y) :-
+  licensed(person->?Y;device->?:PassengerVehicle).
+
+% Fact: John is licensed for passenger vehicles.
+licensed(person->John;device->?:PassengerVehicle).
+
+% Query (rule): Does Budget rent an object that is a passenger vehicle to someone?
+ans(?X,?P) :- rents(company->Budget;rental->?X:PassengerVehicle;driver->?P).
+
+% Query (rule): Does Budget rent an object that is a minivan to someone?
+ans(?X,?P) :- rents(company->Budget;rental->?X:MiniVan;driver->?P).
+
+% Query (rule): Does Budget rent an object that is a van to someone?
+ans(?X,?P) :- rents(company->Budget;rental->?X:Van;driver->?P).

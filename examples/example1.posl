@@ -1,0 +1,7 @@
+% POSL Rule Example Run in OO jDREW                2007-07-17
+% Harold Boley, Benjamin L. Craig, Greg Sherman
+
+/% Rule: A discount of 5.0 percent is given to a ?customer
+ on a certain ?product, if that ?customer is premium and the ?product is a regular product.%/
+
+discount(?customer, ?product, "5.0 percent") :- premium(?customer), regular(?product).

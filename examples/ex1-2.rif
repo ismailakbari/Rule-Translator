@@ -1,0 +1,12 @@
+Document(
+  Base(<http://example.com/people#>)
+  Prefix(cpt <http://example.com/concepts#>)
+  Prefix(bks <http://example.com/books#>)
+
+  Group
+  (
+    
+ 
+    cpt:sell(<John> bks:LeRif "Mary"^^rif:iri)
+  )
+)

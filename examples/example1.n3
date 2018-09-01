@@ -1,0 +1,9 @@
+#  Example 1
+#  Notation3 generation by
+#       notation3.py,v 1.54 2001/02/12 18:38:31 timbl Exp
+
+@base <http://www.example.org/> .
+@prefix : <http://www.example.org/People#> .
+:Joe :father :Fred.
+:Fred :brother :Bob, :Rob.
+:Alex :brother :Jack, John ; :sister :Sarah.

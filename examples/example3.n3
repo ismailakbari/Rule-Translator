@@ -1,0 +1,4 @@
+#Example 3     
+@prefix : <http://www.example.org/meeting_organization#> .
+@forSome :who1, :who2.
+{ :who1 :father [ :brother :who2 ] } => { :who1 :uncle :who2 }.

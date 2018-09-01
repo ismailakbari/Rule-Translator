@@ -1,0 +1,23 @@
+#Processed by Id: cwm.py,v 1.29 2001/02/28 20:45:26 timbl Exp 
+        #    using base file:/afs/w3.org/pub/WWW/2000/10/swap/test/meet/
+        
+#  Notation3 generation by
+#       notation3.py,v 1.54 2001/02/12 18:38:31 timbl Exp
+
+#   Base was: file:/afs/w3.org/pub/WWW/2000/10/swap/test/meet/
+#   NEXT LINE IS ADDED BY ISMAIL AKBARI
+#     @base <http://www.example.org/> .
+
+#@prefix : <uncle#>.
+#:Joe @has :father :Fred.
+#:Fred has :brother :Bob.
+#:Joe :father :Fred.
+#:Fred :brother :Bob, :Rob.
+#:Alex :brother :Jack, John ; :sister :Sarah.
+
+#@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@forSome :who1, :who2.
+#{ :who1 :father [ :brother :who2 ] } log:implies { :who1 :uncle :who2 }.
+{ :who1 :father [ :brother :who2 ] } => { :who1 :uncle :who2 }.
+#:who1 :father [ :brother :who2 ] .
+#{ :who1 :father ?x } = { :who1 :uncle :who2 }.
